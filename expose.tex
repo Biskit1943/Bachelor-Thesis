@@ -1,5 +1,6 @@
 \documentclass[a4paper, 12pt, oneside, headspline]{scrartcl}
-\input{latex_einstellungen/v_main}
+\input{latex_einstellungen/v_expose}
+
 
 % Farbige links
 \usepackage{color}
@@ -77,50 +78,13 @@
 \fancyfoot[C]{\thepage} %Seitennummer
 \renewcommand{\footrulewidth}{0.4pt} %untere Trennlinie
 
-\begin{document}
-	% Leere Seite am Anfang
-	\newpage
-	\thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
-	\section*{ }
-	
+\begin{document}	
 	% Titelseite
 	\include{latex_einstellungen/deckblatt}
-
-	% 1.5 facher Zeilenabstand
-	\onehalfspacing
-	
-	% Einleitung / Abstract
-	\include{abstract}
-	
-	% einfacher Zeilenabstand
-	\singlespacing
 	
 	% Inhaltsverzeichnis anzeigen
 	\newpage
 	\tableofcontents
-	
-	% das Abbildungsverzeichnis
-	\newpage
-	% Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-	\addcontentsline{toc}{section}{Abbildungsverzeichnis}
-	% Abbildungsverzeichnis endgueltig anzeigen
-	\listoffigures
-	
-	% das Tabellenverzeichnis
-	\newpage
-	% Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-	\addcontentsline{toc}{section}{Tabellenverzeichnis}
-	% \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
-	% Abbildungsverzeichnis endgueltig anzeigen
-	\listoftables
-	
-	% das Listingverzeichnis
-	\newpage
-	% Listingverzeichnis soll im Inhaltsverzeichnis auftauchen
-	\addcontentsline{toc}{section}{Listingverzeichnis}
-	\fancyhead[L]{Listingverzeichnis} %Kopfzeile links
-	\renewcommand{\lstlistlistingname}{Listingverzeichnis}
-	\lstlistoflistings
 	
 	% das Abkürzungsverzeichnis
 	\newpage
@@ -139,7 +103,12 @@
 	\onehalfspacing
 	
 	% einzelne Kapitel
-	\input{1_1_einleitung}
+	\input{2_1_fragestellung}	
+	\input{2_2_zielsetzung}
+	\input{2_3_grundlage}
+	\input{2_4_konzept}
+	\input{2_5_gliederung}
+	\input{2_6_motivation}
 	
 	\onecolumn
 	
@@ -152,18 +121,5 @@
 	
 	% Literaturverzeichnis anzeigen
 	\renewcommand\refname{Literaturverzeichnis}
-	\bibliography{main}
-	
-	% 1,5 facher Zeilenabstand
-	\onehalfspacing
-
-	\newpage
-	
-	% Eidesstattliche Erklärung
-	\addcontentsline{toc}{section}{Eidesstattliche Erklärung}
-	\include{erklaerung}
-	
-	% leere Abschlussseite
-	\newpage
-	\thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
+	\bibliography{expose}
 \end{document}
