@@ -1,7 +1,6 @@
 \documentclass[a4paper, 12pt, oneside, headspline]{scrartcl}
 \input{latex_einstellungen/v_expose}
 
-
 % Farbige links
 \usepackage{color}
 
@@ -35,6 +34,12 @@
 % für Stichwortverzeichnis
 \usepackage{makeidx}
 
+% Für Glossar
+\usepackage{glossaries}
+
+% Bessere Listen
+\usepackage{enumitem}
+
 % Festlegung Art der Zitierung - Havardmethode: Abkuerzung Autor + Jahr
 \bibliographystyle{alphadin}
 
@@ -56,6 +61,7 @@
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
 \setlength{\nomitemsep}{-\parsep}
 \makenomenclature
+\makeglossaries
 
 % Disable single lines at the start of a paragraph (Schusterjungen)
 \clubpenalty = 10000
@@ -94,6 +100,15 @@
 	\fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
 	\input{latex_einstellungen/abkuezungen/abkuerzungen}
 	\printnomenclature
+    
+    % das Glossar
+    \newpage
+    % Glossar soll im Inhaltsverzeichnis auftauchen
+    \addcontentsline{toc}{section}{Glossar}
+    % das Abkürzungsverzeichnis entgültige Ausgeben
+    \fancyhead[L]{Glossar} %Kopfzeile links
+    \input{latex_einstellungen/glossar}
+    \printglossaries
 	
 	%%%%% Beginn Dokument %%%%%
 	\newpage
@@ -107,7 +122,7 @@
 	\input{2_2_zielsetzung}
 	\input{2_3_grundlage}
 	\input{2_4_konzept}
-	\input{2_5_gliederung}
+	%\input{2_5_gliederung}
 	\input{2_6_motivation}
 	
 	\onecolumn
