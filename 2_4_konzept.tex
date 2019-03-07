@@ -1,9 +1,58 @@
 % !TeX root = ../expose.tex
 \section{Konzept}
-\subsection{Hypothese}
-TDD ist einfach zu betreiben und sorgt dafür, dass die Software jederzeit in einem
-vorzeigbaren Zustand ist und keine Fehler, die vermeidbar wären oder schon einmal da waren, die Produktion behindern.
+Die Test-Tools aus der Standard Bibliothek von Python sowie die größten
+Test-Tools die es sonst noch gibt werden anhand folgender Aspekte verglichen:
 
-\subsection{Methodik}
-Anhand des Dummy Projekts wird gezeigt, wie es möglich ist die Software immer stabil zu
-halten und im späteren Verlauf automatisch Fixes in die produktive Software zu deployen.
+\begin{itemize}
+    \item Anwendbarkeit
+        \subitem Bietet das Tool alles um TDD betreiben zu können? (Bei TDD
+        kann man Tests \gls{mocken}, wodurch sie nicht schief gehen)
+        Ist das Tool abhängig von vielen Paketen, die man extra installieren
+        muss, da sie nicht in der Sandard Bibliothek sind?
+    \item Effizienz
+        \subitem Wie viel lässt sich mit diesem Tool möglichst einfach und
+        schnell erreichen? Ist besonders viel Vorarbeit notwendig um die Tests
+        auf zu setzen oder kann sofort mit dem schreiben der Tests begonnen
+        werden.
+        \newline
+        \\
+        Genau so stellt sich die Frage wie schnell kann der Entwickler sehen
+        und verstehen wieso Tests schiefgegangen sind?
+    \item Komplexität
+        \subitem Wie komplex ist das Tool? Das heißt, wie viel Funktionalität
+        bietet das Tool dem Entwickler von Haus aus, aber auch wie schwer es
+        ist Code zu schreiben oder wie schnell Code unübersichtlich wird, da
+        das Tool viel Code abseits der Tests benötigt.
+    \item Erweiterbarkeit
+        \subitem Wie leicht lässt sich das Tool mit anderen Tools erweitern?
+        Gibt es vielleicht Erweiterungen der Community für dieses Tool die sehr
+        hilfreich sind?
+    \item Eventuell werden beim schreiben der Arbeit weitere Aspekte entstehen
+    die hier aufgeführt werden können.
+\end{itemize}
+
+Dieser Vergleich entsteht zum einen durch das analysieren der Tools auf der
+jeweiligen Website sowie durch ein komplexes Code-Beispiel das mit dem
+jeweiligen Tool geschrieben wird. Passend zum Code-Beispiel wird auch analysiert
+wie einfach die Automatisierung mit Travis CI verläuft indem dies auch mit
+echtem Code getestet wird.
+
+Sind die Grundlagen für den Vergleich geschaffen, werden die Tools
+untereinander verglichen und ihre schwächen und stärken noch einmal zusammen
+gefasst.
+\newline
+\\
+Sofern dies möglich ist wird versucht die Tools zu kombinieren um etwaige
+Schwächen einen Tools zu umgehen.
+
+Nachdem das/die beste(n) Tool(s) gefunden wurde, wird auf die schwächen von TDD
+im allgemeinen eingegangen. Dies behandelt den erforderlichen Aufwand und die
+daraus resultierende Zeit die "verloren" geht (Zeit die statt für Tests
+schreiben auch für Code schreiben genutzt werden könnte) sowie die Disziplin
+die den Entwicklern abverlangt wird, zuerst Tests zu schreiben bevor die
+tatsächliche Funktionalität geschrieben wird. Dabei wird auch noch auf den
+Wirtschaftlichen Aspekt von TDD eingegangen den ein Arbeitgeber in zu beachten
+hat bei der Entscheidung TDD zu verwenden.
+
+Am Ende der Arbeit werde ich meine Persönliche Meinung über TDD und ob ich es
+als Entwickler oder Arbeitgeber nutzen würde Preis geben.
