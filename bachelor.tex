@@ -40,7 +40,6 @@
 % Bessere Listen
 \usepackage{enumitem}
 
-%\bibliographystyle{}
 \usepackage[
     maxnames=6,
     minnames=1,
@@ -82,7 +81,7 @@
 
 % Hyperlinks im Text
 \usepackage[bookmarksnumbered,pdftitle={\titleDocument},hyperfootnotes=false]{hyperref}
-\hypersetup{colorlinks, citecolor=red, linkcolor=blue, urlcolor=black}
+\hypersetup{colorlinks, citecolor=red, linkcolor=blue, urlcolor=blue}
 
 % neue Kopfzeilen mit fancypaket
 \usepackage{fancyhdr} %Paket laden
@@ -142,6 +141,15 @@
     \fancyhead[L]{Listingverzeichnis} %Kopfzeile links
     \renewcommand{\lstlistlistingname}{Listingverzeichnis}
     \lstlistoflistings
+    
+    % das Glossar
+    \newpage
+    % Glossar soll im Inhaltsverzeichnis auftauchen
+    \addcontentsline{toc}{section}{Glossar}
+    % das Abkürzungsverzeichnis entgültige Ausgeben
+    \fancyhead[L]{Glossar} %Kopfzeile links
+    \input{latex_einstellungen/glossar}
+    \printglossaries
 
     % das Abkürzungsverzeichnis
     \newpage

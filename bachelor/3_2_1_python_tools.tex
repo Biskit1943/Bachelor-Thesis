@@ -1,4 +1,31 @@
 % !TeX root = ../bachelor.tex
 \subsubsection{Python Test-Tools}\label{python-tools:extlib:python}
 
-Blubb
+Auf \url{https://wiki.python.org/moin/PythonTestingToolsTaxonomy} werden viele
+externe Tools gelistet, jedoch scheinen viele inaktiv zu sein da ihre \glspl{commit}
+teilweise mehr als ein Jahr zurück liegen. Dies ist weder für eine Bibliothek noch
+für ein Tool ein gutes Zeichen, da sich die Anforderungen stetig ändern und niemals
+alle Bugs gefixt sind.
+\newline
+\\
+Manche der dort aufgelisteten Tools sind bereits oder werden gerade in andere Tools
+integriert. Dies kann zum einem sein, da ein Tool eine Erweiterung für ein anderes
+war und die Entwickler die Änderungen angenommen haben und zum anderen um die Tools
+zu verbessern und mehr Entwickler zur Verfügung zu haben. Eventuell sind auch
+andere Gründe dafür verantwortlich, jedoch war dies der Grund bei zum Beispiel
+\href{https://github.com/Yelp/Testify/}{Testify}
+von Yelp \footnote{https://github.com/Yelp/Testify/}.
+\newline
+\\
+Lässt man die Erweiterungen von Tool zunächst außen vor und ignoriert Tools deren
+letzter \gls{commit} älter als ein Jahr ist, so bleiben nach
+\cite{wiki.python:PythonTestingToolsTaxonomy} folgende Modul Test-Tools zur Verfügung:
+\begin{itemize}
+    \item \href{http://pytest.org/latest/}{py.test}\footnote{http://pytest.org/latest/}
+    \item \href{http://pytest.org/latest/}{nose}\footnote{http://pytest.org/latest/}
+    \item \href{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{tofu}\footnote{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}
+    \item \href{https://pypi.org/project/zope.testing/}{zope.testing}\footnote{https://pypi.org/project/zope.testing/}
+\end{itemize}
+\noindent
+Als weitere Kategorie werden \Gls{mock}-Tools geführt. Zumeist erweitern diese
+bereits bestehende Tools wie zum Beispiel 

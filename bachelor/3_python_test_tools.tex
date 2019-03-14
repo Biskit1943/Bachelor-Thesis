@@ -1,7 +1,41 @@
 % !TeX root = ../bachelor.tex
 \section{Python Test-Tools}\label{python-tools}
 
-Das ist meine Einleitung
+Dieses Kapitel befasst sich mit den von der STDLIB bereitgestellten Test-Tools
+sowie denen aus externen Paketen.
+Diese werden unter \ref{python-tools:stdlib} und \ref{python-tools:extlib}
+zusammengefasst, wobei die Tools aus externen Paketen aufgeteilt werden in
+\nameref{python-tools:extlib:python}, \nameref{python-tools:extlib:framework} und
+\nameref{python-tools:extlib:sonstige}.
+\newline
+\\
+Jedes Tool wird anhand folgender Aspekte untersucht:
+\begin{itemize}
+    \item \underline{Anwendbarkeit}:\newline
+    Bietet das Tool alles, um TDD betreiben zu können? (Bei TDD
+    kann man Tests \gls{mock}en, wodurch sie nicht fehlschlagen.)
+    Mit wie vielen Paketen muss das Tool betrieben werden?
+    
+    \item \underline{Effizienz}:\newline
+    Wie viel lässt sich mit diesem Tool möglichst einfach und
+    schnell erreichen? Ist besonders viel Vorarbeit notwendig um die Tests
+    auf zu setzen oder kann sofort mit dem Schreiben der Tests begonnen
+    werden?
+    \newline
+    Genauso stellt sich die Frage, wie Effizient der Entwickler die Tests
+    auswerten kann.
+    
+    \item \underline{Komplexität}:\newline
+    Wie komplex ist das Tool? Das heißt, wie viel Funktionalität
+    bietet das Tool dem Entwickler von Haus aus, aber auch wie schwer
+    ist es einen Code zu schreiben oder wie schnell wird ein Code unübersichtlich, da
+    das Tool viel Code abseits der Tests benötigt.
+    
+    \item \underline{Erweiterbarkeit}:\newline
+    Wie leicht lässt sich das Tool mit anderen Tools erweitern?
+    Gibt es vielleicht Erweiterungen der Community für dieses Tool, die sehr
+    hilfreich sind?
+\end{itemize}
 
 \input{bachelor/3_1_stdlib}
 \input{bachelor/3_2_extlib}
