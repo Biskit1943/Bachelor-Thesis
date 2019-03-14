@@ -1,0 +1,197 @@
+\documentclass[a4paper, 12pt, oneside, headspline]{scrartcl}
+\input{latex_einstellungen/v_main}
+
+% Farbige links
+\usepackage{color}
+
+% Umlaute unter UTF8 nutzen
+\usepackage[utf8]{inputenc}
+
+% deutsche Silbentrennung
+\usepackage[ngerman]{babel}
+
+% Grafiken aus PNG Dateien einbinden
+\usepackage{graphicx}
+
+% bricht lange URLs "schoend" um
+\usepackage[hyphens,obeyspaces,spaces]{url}
+
+% mehrseitige Tabellen ermöglichen
+\usepackage{longtable}
+
+% für Tabellen
+\usepackage{array}
+
+% Schaltet den zusätzlichen Zwischenraum ab, den LaTeX normalerweise nach einem Satzzeichen einfügt.
+\frenchspacing
+
+% Paket für Zeilenabstand
+\usepackage{setspace}
+
+% für Bildbezeichner
+\usepackage{capt-of}
+
+% für Stichwortverzeichnis
+\usepackage{makeidx}
+
+% Für Glossar
+\usepackage{glossaries}
+
+% Bessere Listen
+\usepackage{enumitem}
+
+%\bibliographystyle{}
+\usepackage[
+    maxnames=6,
+    minnames=1,
+    style=apa,
+    backend=biber,
+    bibencoding=utf8,
+    sortlocale=de_DE,
+]{biblatex}
+\DeclareLanguageMapping{ngerman}{ngerman-apa}
+\DefineBibliographyStrings{ngerman}{
+    andothers = {{et\,al\adddot}},
+}
+
+% für Listings
+\usepackage{listings}
+\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, keywordstyle=\color{black}\bfseries, stringstyle=\ttfamily,showstringspaces=false,basicstyle=\footnotesize,captionpos=b}
+\lstset{language=python}
+
+% Indexerstellung
+\makeindex
+
+% Abkürzungsverzeichnis
+\usepackage[german]{nomencl}
+\let\abbrev\nomenclature
+
+% Abkürzungsverzeichnis LiveTex Version
+\renewcommand{\nomname}{Abkürzungsverzeichnis}
+\setlength{\nomlabelwidth}{.25\hsize}
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+\setlength{\nomitemsep}{-\parsep}
+\makenomenclature
+\makeglossaries
+
+% Disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% Disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% Hyperlinks im Text
+\usepackage[bookmarksnumbered,pdftitle={\titleDocument},hyperfootnotes=false]{hyperref}
+\hypersetup{colorlinks, citecolor=red, linkcolor=blue, urlcolor=black}
+
+% neue Kopfzeilen mit fancypaket
+\usepackage{fancyhdr} %Paket laden
+\pagestyle{fancy} %eigener Seitenstil
+\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
+\fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
+\fancyhead[C]{} %zentrierte Kopfzeile
+\fancyhead[R]{\thepage} %Kopfzeile rechts
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+\fancyfoot[C]{\thepage} %Seitennummer
+\renewcommand{\footrulewidth}{0.4pt} %untere Trennlinie
+
+% Bibliothek hinzufuegen
+\addbibresource{bachelor.bib}
+
+\begin{document}
+    % Leere Seite am Anfang
+    \newpage
+    \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
+    \section*{ }
+
+    % Titelseite
+    \include{latex_einstellungen/deckblatt}
+
+    % 1.5 facher Zeilenabstand
+    \onehalfspacing
+
+    % Einleitung / Abstract
+    \include{bachelor/1_abstract}
+
+    % einfacher Zeilenabstand
+    \singlespacing
+
+    % Inhaltsverzeichnis anzeigen
+    \newpage
+    \tableofcontents
+
+    % das Abbildungsverzeichnis
+    \newpage
+    % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+    \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+    % Abbildungsverzeichnis endgueltig anzeigen
+    \listoffigures
+
+    % das Tabellenverzeichnis
+    \newpage
+    % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+    \addcontentsline{toc}{section}{Tabellenverzeichnis}
+    % \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
+    % Abbildungsverzeichnis endgueltig anzeigen
+    \listoftables
+
+    % das Listingverzeichnis
+    \newpage
+    % Listingverzeichnis soll im Inhaltsverzeichnis auftauchen
+    \addcontentsline{toc}{section}{Listingverzeichnis}
+    \fancyhead[L]{Listingverzeichnis} %Kopfzeile links
+    \renewcommand{\lstlistlistingname}{Listingverzeichnis}
+    \lstlistoflistings
+
+    % das Abkürzungsverzeichnis
+    \newpage
+    % Abkürzungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+    \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+    % das Abkürzungsverzeichnis entgültige Ausgeben
+    \fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
+    \input{latex_einstellungen/abkuezungen/abkuerzungen}
+    \printnomenclature
+
+    %%%%% Beginn Dokument %%%%%
+    \newpage
+    \fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
+
+    % 1,5 facher Zeilenabstand
+    \onehalfspacing
+
+    % einzelne Kapitel
+    \input{bachelor/2_einleitung}
+    \input{bachelor/3_python_test_tools}
+    \input{bachelor/4_zusammenfassung}
+    \input{bachelor/5_vergleich}
+    \input{bachelor/6_kombination}
+    \input{bachelor/7_diskussion}
+    \input{bachelor/8_fazit}
+    \input{bachelor/9_nachwort}
+
+    \onecolumn
+
+    % einfacher Zeilenabstand
+    \singlespacing
+
+    % Literaturliste soll im Inhaltsverzeichnis auftauchen
+    \newpage
+    \addcontentsline{toc}{section}{Literaturverzeichnis}
+
+    % Literaturverzeichnis anzeigen
+    \renewcommand\refname{Literaturverzeichnis}
+    \printbibliography
+
+    % 1,5 facher Zeilenabstand
+    \onehalfspacing
+
+    \newpage
+
+    % Eidesstattliche Erklärung
+    \addcontentsline{toc}{section}{Eidesstattliche Erklärung}
+    \include{erklaerung}
+
+    % leere Abschlussseite
+    \newpage
+    \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
+\end{document}
