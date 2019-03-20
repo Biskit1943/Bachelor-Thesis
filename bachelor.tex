@@ -1,5 +1,7 @@
 \documentclass[a4paper, 12pt, oneside, headspline]{scrartcl}
 \input{latex_einstellungen/v_main}
+\usepackage[openbib]{currvita}
+
 
 % Farbige links
 \usepackage{color}
@@ -36,6 +38,14 @@
 
 % Für Glossar
 \usepackage{glossaries}
+
+% Ermöglicht mehr als 3 punkte tiefe -> 1.2.3.4
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\noindent}
+
+
 
 % Bessere Listen
 \usepackage{enumitem}
@@ -127,12 +137,12 @@
     \listoffigures
 
     % das Tabellenverzeichnis
-    \newpage
+    %\newpage
     % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-    \addcontentsline{toc}{section}{Tabellenverzeichnis}
+    %\addcontentsline{toc}{section}{Tabellenverzeichnis}
     % \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
     % Abbildungsverzeichnis endgueltig anzeigen
-    \listoftables
+    %\listoftables
 
     % das Listingverzeichnis
     \newpage

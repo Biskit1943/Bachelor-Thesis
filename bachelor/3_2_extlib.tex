@@ -1,7 +1,71 @@
 % !TeX root = ../bachelor.tex
 \subsection{Tools abseits der Standard Bibliothek}\label{python-tools:extlib}
-Alle tools abseits der stdlib
+Abseits der Standard Bibliothek gibt es einige Tools deren Nutzung von
+Vorteil gegenüber der STDLIB ist. Diese werden unter diesem Punkt aufgeführt.
+\newline
+\\
+Auf \url{https://wiki.python.org/moin/PythonTestingToolsTaxonomy} werden viele
+externe Tools gelistet, jedoch scheinen viele inaktiv zu sein da ihre \glspl{commit}
+teilweise mehr als ein Jahr zurück liegen. Dies ist weder für eine Bibliothek noch
+für ein Tool ein gutes Zeichen, da sich die Anforderungen stetig ändern und niemals
+alle Bugs gefixt sind.
+\newline
+\\
+Manche der dort aufgelisteten Tools sind bereits oder werden gerade in andere Tools
+integriert. Dies kann zum einem sein, da ein Tool eine Erweiterung für ein anderes
+war und die Entwickler die Änderungen angenommen haben und zum anderen um die Tools
+zu verbessern und mehr Entwickler zur Verfügung zu haben. Eventuell sind auch
+andere Gründe dafür verantwortlich, jedoch war dies der Grund bei zum Beispiel
+\href{https://github.com/Yelp/Testify/}{Testify}
+von Yelp \footnote{https://github.com/Yelp/Testify/}.
+\newline
+\\
+Da sowohl Software als auch Programmiersprachen sich stetig weiter entwickeln werden in
+dieser Arbeit nur jene Tools behandelt die sich diesen Entwicklungen Anpassen, sei dies
+durch das unterstützen der aktuellsten Version von Python als auch durch neue Innovationen,
+sowie \Gls{bug}-fixes. Aus diesem Grund werden Tools deren letzter \Gls{commit} weiter
+als ein Jahr zurück liegt hier nicht behandelt.
+\newline
+\\
+Lässt man zusätzlich die Erweiterungen von Tool zunächst außen vor, so bleiben nach
+\cite{wiki.python:PythonTestingToolsTaxonomy} folgende Modul Test-Tools zur Verfügung:
+\begin{itemize}
+    \item \href{https://github.com/pytest-dev/pytest/}{py.test}\footnote{https://github.com/pytest-dev/pytest/}
+    \item \href{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{tofu}\footnote{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}
+    \item \href{https://pypi.org/project/zope.testing/}{zope.testing}\footnote{https://pypi.org/project/zope.testing/}
+\end{itemize}
+Die Quelle aus dem Offiziellen Python Wiki beschreibt sonst keine weiteren Tools.
+Sucht auf Google nach weiteren Tools, so findet man die oben gelisteten wenn man
+nach den gleichen Kriterien Tools heraus filtert.
+\newline
+\\
+Als weitere Kategorie werden \Gls{mock}-Tools geführt. Auch wenn fast alle
+unittest-Tools integriertes \gls{mock}ing haben, so lässt sich mit diesen
+Tools meist mehr erreichen. Es wurden die gleichen Filter-Kriterien verwendet wie bei den
+Test-Tools oben.
+\begin{itemize}
+    \item \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}{stubble}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}
+    \item \href{https://github.com/timbertson/mocktest/tree/master}{mocktest}\footnote{https://github.com/timbertson/mocktest/tree/master}
+    \item \href{https://github.com/bkabrda/flexmock}{flexmock}\footnote{https://github.com/bkabrda/flexmock}
+    \item \href{https://bitbucket.org/DavidVilla/python-doublex}{python-doublex}\footnote{https://bitbucket.org/DavidVilla/python-doublex}
+    \item \href{https://github.com/ionelmc/python-aspectlib}{python-aspectlib}\footnote{https://github.com/ionelmc/python-aspectlib}
+\end{itemize}
+Auch hier finden sich sonst keine weiteren Tools die Open-source sind.
+\newline
+\\
+Als letzte Kategorie werden hier die \Gls{fuzz} Tools behandelt, da diese eine
+gute Möglichkeit bieten Code ausgiebig zu testen. Das wohl umfangreichste und nach den obigen Kriterien
+einzige Tool ist \href{https://github.com/HypothesisWorks/hypothesis}{hypothesis}\footnote{https://github.com/HypothesisWorks/hypothesis}.
 
-\input{bachelor/3_2_1_python_tools}
-\input{bachelor/3_2_2_framework_tools}
-\input{bachelor/3_2_3_weitere}
+\input{bachelor/3_2_1_unit}
+\input{bachelor/3_2_2_mock}
+\input{bachelor/3_2_3_fuzz}
+
+
+
+
+
+
+%\input{bachelor/3_2_1_python_tools}
+%\input{bachelor/3_2_2_framework_tools}
+%\input{bachelor/3_2_3_weitere}
