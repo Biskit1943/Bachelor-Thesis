@@ -12,7 +12,8 @@
     name={mock},
     description={Etwas mocken bedeutet, ein Objekt durch ein falsches Objekt, den
     Mock zu ersetzen, das genau so aussieht, wie das erwartete Objekt, aber nicht das
-    Gleiche ist}
+    Gleiche ist. So ist es möglich eine Funktion zu mocken, wodurch nicht die Funktion,
+    sondern der Mock aufgerufen wird und das eingestellte ergebnis liefert.}
 }
 \newglossaryentry{commit}{
     name={commit},
@@ -33,5 +34,18 @@
     bei dem das zu testende Modul oder Programm mit zufälligen Werten aufgerufen wird. Dabei
     soll jede mögliche anwendung des Moduls oder Programms dargestellt werden}
 }
-\newglossaryentry{bug}{name={bug},description={Ein Bug(zu deutsch Käfer) ist ein Fehler in
-einem Programm oder in einer Software}}
+\newglossaryentry{bug}{
+    name={bug},
+    description={Ein Bug(zu deutsch Käfer) ist ein Fehler in einem Programm oder in einer Software}
+}
+\newglossaryentry{fixture}{
+    name={fixture},
+    description={Ein vordefiniertes Element welches einen festen Wert hat.
+    Ein tests kann von einer Fixture abhängig sein, wodurch bei verschiedenen durchläufen davon ausgegangen
+    werden kann das ein Fehler nicht an diesem Element liegt wenn es vorher bereits funktioniert hatte.
+    Dadurch kann man fehler externer abhängigkeiten ausschließen.}
+}
+\newglossaryentry{cli}{
+    name={Command-line interface},
+    description={Eine Benutzerschnitstelle für das Terminal}
+}

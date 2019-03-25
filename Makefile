@@ -12,7 +12,7 @@ open:
 
 clean:
 	@read -p "Tex filename (wihtout .tex):" tex; \
-	rm -f $$tex.{log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls}
+	rm -f $$tex.{log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,glg,gls,glsdefs,ist,lol,nlo,nls}
 
 ba:
 	pdflatex bachelor && \

@@ -1,4 +1,63 @@
 % !TeX root = ../bachelor.tex
 \subsubsection{unittest}\label{python-tools:unittest}
 
-Unittest
+Das von JUnit inspirierte (\cite{docs.python:unittest}) Tool unittest, ist bestand
+der Python Standardbibliothek und bietet seit jeher seinen Nutzern ein umfangreiches
+Repertoire an Funktionen zum testen von Python Code.
+
+Die Funktionen von unittest lassen sich unter folgenden Punkten beschreiben:
+\begin{itemize}
+    \item \Gls{fixture}, zum präparieren der Tests.
+    \item Test Fälle, zum gliedern einzelner Tests.
+    \item Testumgebungen, zum gliedern von zusammengehörigen Tests.
+    \item Test runner, zum ausführen von Testumgebungen oder Test Fällen.
+\end{itemize}
+
+Mithilfe der genannten Punkte ist es dem Entwickler möglich eine Stabile Test Umgebung
+auf zu bauen. Jedoch bietet unittest alleine nicht alles um TDD betreiben zu können.
+
+Bei TDD werden zuerst die Tests und dann die Funktionalitäten geschrieben, daher
+muss es möglich sein andere Module(units) zu \gls{mock}en auf denen ein Test basiert.
+Durch die \Glspl{fixture} ist es bereits möglich den Test oder die Tests so vor zu
+bereiten, dass diese funktionieren, jedoch bieten \Glspl{mock} einfachere und
+schnellere Möglichkeiten Funktionen, Methoden, Klassen usw. zu imitieren.
+
+Jedoch gibt es in der STDLIB eine Erweiterung zu unittest mit dem Namen
+\lstinline|unittest.mock| welche unter eben diesem importiert werden kann um die \gls{mock}ing Funktionalität
+zu bekommen.
+
+Das Tool bietet des weiteren einen CLI, mit welchem es dem Benutzer möglich ist
+seine Tests gebündelt aus zu führen und aus zu werten. Mit dem CLI ist es auch
+auch möglich automatisch Tests in einem Ordner zu "`entdecken"'(discover) und
+aus zu führen. Dadurch ist es sehr leicht neue Tests in ein bestehendes Test
+System ein zu führen und diese ohne Veränderungen am bestehenden System aus zu
+führen.
+\newline
+\\
+Mit Hilfe von unittest lässt sich sehr einfach und schnell ein Test schreiben,
+so würde das der Code aus Listing \ref{listing:unittest:example} bereits unsere
+quadrat-Funktion testen, einmal mit unserem selbst berechneten Wert und
+einmal gegen den wert der quadrat-Funktion aus der STDLIB.
+
+\lstinputlisting[
+    language=Python,
+    label=listing:unittest:example,
+    caption=unittest einfaches Beispiel
+]{analyse/unittest_/example.py}
+
+Die basis-Funktionalität von unittest ist schnell verstanden und setzt sich
+eigentlich nur aus \lstinline|self.assert{irgendwas}(...)| zusammen. Hat man die
+richtige assert Funktion gefunden lässt sich eigentlich jede unabhängige
+Funktion testen.
+
+Möchte man allerdings fortgeschrittenere Tests schreiben so muss man sich der
+Dokumentation bedienen, welche unter \url{https://docs.python.org/3/library/unittest.html}
+zu finden ist. Würde man die Seite als PDF herunterladen so wären dies 58
+Seiten Fließtext. Möchte man nun zum Beispiel vor den Tests etwas vorbereiten
+oder präparieren so lässt sich mit \lstinline|setUp()| und \lstinline|tearDown()| dies realisieren,
+diese zwei Methoden überschreiben die Methoden aus \lstinline|unittest.TestCase| und
+werden vor jeder Funktion ausgeführt. Das Gleiche gibt es auch für den Test Fall, bei dem
+\lstinline|setUp()| und \lstinline|tearDown()| allerdings nur beim eintritt der Klasse und beim
+austritt ausgeführt werden. Diese Methoden sind die sogenannten \Glspl{fixture}.
+
+Das folgende Listing zeigt wie
