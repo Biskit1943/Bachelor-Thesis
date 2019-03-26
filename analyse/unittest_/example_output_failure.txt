@@ -1,0 +1,13 @@
+F
+======================================================================
+FAIL: test_my_pow (unittest_.example.TestMyModule)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "unittest_/example.py", line 9, in test_my_pow
+    self.assertEqual(my_pow(4, 7), pow(4, 8))
+AssertionError: 16384 != 65536
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

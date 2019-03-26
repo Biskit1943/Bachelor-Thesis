@@ -1,7 +1,7 @@
 % !TeX root = ../bachelor.tex
 \subsubsection{unittest}\label{python-tools:unittest}
 
-Das von JUnit inspirierte (\cite{docs.python:unittest}) Tool unittest, ist bestand
+Das von JUnit inspirierte (\cite{docs.python:unittest}) Tool \lstinline|unittest|, ist bestand
 der Python Standardbibliothek und bietet seit jeher seinen Nutzern ein umfangreiches
 Repertoire an Funktionen zum testen von Python Code.
 
@@ -14,7 +14,7 @@ Die Funktionen von unittest lassen sich unter folgenden Punkten beschreiben:
 \end{itemize}
 
 Mithilfe der genannten Punkte ist es dem Entwickler möglich eine Stabile Test Umgebung
-auf zu bauen. Jedoch bietet unittest alleine nicht alles um TDD betreiben zu können.
+auf zu bauen. Jedoch bietet \lstinline{unittest} alleine nicht alles um TDD betreiben zu können.
 
 Bei TDD werden zuerst die Tests und dann die Funktionalitäten geschrieben, daher
 muss es möglich sein andere Module(units) zu \gls{mock}en auf denen ein Test basiert.
@@ -23,8 +23,10 @@ bereiten, dass diese funktionieren, jedoch bieten \Glspl{mock} einfachere und
 schnellere Möglichkeiten Funktionen, Methoden, Klassen usw. zu imitieren.
 
 Jedoch gibt es in der STDLIB eine Erweiterung zu unittest mit dem Namen
-\lstinline|unittest.mock| welche unter eben diesem importiert werden kann um die \gls{mock}ing Funktionalität
-zu bekommen.
+\lstinline|unittest.mock| welche unter eben diesem importiert werden kann um die 
+\gls{mock}ing Funktionalität zu bekommen. Diese Erweiterung, auch als \lstinline|submodule|
+bezeichnet ist Teil der STDLIB seit Python 3.3 wie in PEP417 von \cite{python.org:PEP417}
+definiert wird.
 
 Das Tool bietet des weiteren einen CLI, mit welchem es dem Benutzer möglich ist
 seine Tests gebündelt aus zu führen und aus zu werten. Mit dem CLI ist es auch
@@ -32,18 +34,20 @@ auch möglich automatisch Tests in einem Ordner zu "`entdecken"'(discover) und
 aus zu führen. Dadurch ist es sehr leicht neue Tests in ein bestehendes Test
 System ein zu führen und diese ohne Veränderungen am bestehenden System aus zu
 führen.
+
+Im Aspekt Anwendbarkeit bietet \lstinline|unittest| alles um als Tool für TDD in
+Frage zu kommen, jedoch nur unter Einbezug der Erweiterung \lstinline|unittest.mock|.
 \newline
 \\
 Mit Hilfe von unittest lässt sich sehr einfach und schnell ein Test schreiben,
-so würde das der Code aus Listing \ref{listing:unittest:example} bereits unsere
-quadrat-Funktion testen, einmal mit unserem selbst berechneten Wert und
-einmal gegen den wert der quadrat-Funktion aus der STDLIB.
+so würde das der Code aus Listing \ref{listing:unittest:example} bereits unsere 
+selbst geschriebene quadrat-Funktion aus Listing \ref{listing:base:my_module} testen,
+einmal mit unserem selbst berechneten Wert und einmal gegen den wert der quadrat-Funktion
+aus der STDLIB.
 
-\lstinputlisting[
-    language=Python,
-    label=listing:unittest:example,
-    caption=unittest einfaches Beispiel
-]{analyse/unittest_/example.py}
+Mit \lstinline{self.assertEqual} wird überprüft ob der erste Wert dem zweiten Wert
+gleicht. Im ersten \lstinline{assert} wird auf einen im Kopf ausgerechneten Wert
+geprüft und im zweiten wird die von Python gegebene Methode zum überprüfen verwendet.
 
 Die basis-Funktionalität von unittest ist schnell verstanden und setzt sich
 eigentlich nur aus \lstinline|self.assert{irgendwas}(...)| zusammen. Hat man die
@@ -60,4 +64,24 @@ werden vor jeder Funktion ausgeführt. Das Gleiche gibt es auch für den Test Fa
 \lstinline|setUp()| und \lstinline|tearDown()| allerdings nur beim eintritt der Klasse und beim
 austritt ausgeführt werden. Diese Methoden sind die sogenannten \Glspl{fixture}.
 
-Das folgende Listing zeigt wie
+Die folgenden Listings \ref{listing:unittest:example_output_success} und
+\ref{listing:unittest:example_output_failure} zeigen wie ein Erfolgreicher Test
+und wie ein Misslungener Test aussehen.
+
+In Beiden Listings ist gut zu erkennen ob und was schief gegangen ist bei einem Test.
+Der erfolgreiche Test zeigt dem Nutzer sofort wie viele Test in wie vielen Sekunden gelaufen
+sind, und ist dies erwünscht kann der Nutzer mit \lstinline|--verbose| sich noch mehr
+Informationen anzeigen lassen.
+
+Bei misslungenen Tests ist im Output immer der \gls{stacktrace} abgebildet um so den Fehler
+bis zur Wurzel zurück verfolgen zu können. Auch der Fehler selbst wird in den Output geschrieben,
+wie in Zeile 8 in Listing \ref{listing:unittest:example_output_failure} zu erkennen ist. Am
+Ende wird auch noch einmal angezeigt wie viele Tests schief gelaufen sind.
+
+Die Effizient Tests aus zu werten ist also sehr hoch, jedoch wird der Output bei Mehreren Fehlern
+und langem \gls{stacktrace} sehr schnell sehr unübersichtlich für das Terminal. Ein Farbiger Output
+würde hier Abhilfe schaffen.
+
+Um die Komplexität von \lstinline{unittest} dar zu stellen wurde mithilfe des in Listing \ref{listing:base:my_modulelisting:basic} definierten Codes ein Fortgeschrittener Test
+geschrieben, welcher die Basis Features von \lstinline{unittest} umfasst. Dieser Code
+befindet sich in Listing \ref{listing:unittest:advanced}.

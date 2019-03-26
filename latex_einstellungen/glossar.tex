@@ -13,7 +13,7 @@
     description={Etwas mocken bedeutet, ein Objekt durch ein falsches Objekt, den
     Mock zu ersetzen, das genau so aussieht, wie das erwartete Objekt, aber nicht das
     Gleiche ist. So ist es möglich eine Funktion zu mocken, wodurch nicht die Funktion,
-    sondern der Mock aufgerufen wird und das eingestellte ergebnis liefert.}
+    sondern der Mock aufgerufen wird und das eingestellte ergebnis liefert}
 }
 \newglossaryentry{commit}{
     name={commit},
@@ -40,12 +40,17 @@
 }
 \newglossaryentry{fixture}{
     name={fixture},
-    description={Ein vordefiniertes Element welches einen festen Wert hat.
-    Ein tests kann von einer Fixture abhängig sein, wodurch bei verschiedenen durchläufen davon ausgegangen
-    werden kann das ein Fehler nicht an diesem Element liegt wenn es vorher bereits funktioniert hatte.
-    Dadurch kann man fehler externer abhängigkeiten ausschließen.}
+    description={Beschreibt die Präperation von Tests mit festen (fix) Werten, so wird zum Beispiel
+    vor jedem Test eine Variable gesetzt. Dies dient der übersichtlichkeit, da dies dann nicht in
+    jedem Test vorgenommen werden muss und um varianz zwischen Tests und Test läufen zu vermeiden}
 }
 \newglossaryentry{cli}{
     name={Command-line interface},
     description={Eine Benutzerschnitstelle für das Terminal}
+}
+\newglossaryentry{stacktrace}{
+    name={StackTrace},
+    description={Der StackTrace ist ein Protokoll der aufgerufenen Funktionen und Methoden die 
+    ineinander verschachtelt sind, bis hin zu der tiefsten Funkion/Methode die einen Fehler
+    geworfen hat}
 }

@@ -36,6 +36,18 @@ Jedes Tool wird anhand folgender Aspekte untersucht:
     hilfreich sind?
 \end{itemize}
 
+Diese Aspekte eines jeden Tools, werden mithilfe von dem in Listing \ref{listing:base:my_module}
+abgebildeten Code auf gezeigt. Dieser Code dient als das zu testende Modul.
+
+Das Modul enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
+welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die Komplexität
+zu erhöhen wurde eine in-memory Datenbank implementiert, welche Items enthält. Jedes Item 
+hat eine ID (\lstinline|id|), einen Namen (\lstinline|name|), einen Lager Platz
+(\lstinline|storage_location|) und eine Anzahl der vorrätigen Items \lstinline|amount|.
+Jedes Item besitzt zudem eine Methode \lstinline|do_something()| welche eine externe
+Funktion/Methode aufruft, die jedoch noch nicht existiert
+\lstinline|do_something_which_does_not_exist()|.
+
 \input{bachelor/3_1_stdlib}
 \input{bachelor/3_2_extlib}
 

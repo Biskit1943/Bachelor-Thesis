@@ -65,7 +65,16 @@
 
 % für Listings
 \usepackage{listings}
-\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, keywordstyle=\color{black}\bfseries, stringstyle=\ttfamily,showstringspaces=false,basicstyle=\footnotesize,captionpos=b}
+\lstset{
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    keywordstyle=\color{black}\bfseries,
+    stringstyle=\ttfamily,
+    showstringspaces=false,
+    basicstyle=\footnotesize,
+    captionpos=b
+}
 \lstset{language=python}
 
 % Indexerstellung
@@ -199,6 +208,15 @@
     % Literaturverzeichnis anzeigen
     \renewcommand\refname{Literaturverzeichnis}
     \printbibliography
+    
+    
+    % einfacher Zeilenabstand
+    \singlespacing
+    % leere Abschlussseite
+    \newpage
+    \fancyhead[L]{Listings} %Kopfzeile links
+    \addcontentsline{toc}{section}{Listings}
+    \input{bachelor/listings}
 
     % 1,5 facher Zeilenabstand
     \onehalfspacing
@@ -208,8 +226,4 @@
     % Eidesstattliche Erklärung
     \addcontentsline{toc}{section}{Eidesstattliche Erklärung}
     \include{erklaerung}
-
-    % leere Abschlussseite
-    \newpage
-    \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
 \end{document}
