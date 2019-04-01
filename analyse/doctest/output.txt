@@ -1,0 +1,9 @@
+Trying:
+    from advanced import *
+Expecting nothing
+ok
+Trying:
+    my_pow(2, 2)
+Expecting:
+    4
+ok

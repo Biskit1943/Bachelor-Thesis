@@ -1,0 +1,36 @@
+In dieser Datei stehen alle Docstrings ausgelagert
+
+Um my_module zu testen muss alles importiert werden.
+>>> from my_module import *
+>>> my_pow(2, 2)
+4
+>>> my_pow(4, 8)
+65536
+
+
+Da Doctest keine Fixtures unterstuetzt muss hier der setUp Code stehen:
+>>> Base.metadata.create_all(engine)
+>>> item = Item(id_=1, name='name', storage_location=1, amount=1)
+>>> session.add(item)
+>>> session.commit()
+
+
+Check ob das item commited wurde
+>>> len(session.new)
+0
+
+Check ob das item in der Datenbank ist.
+Das item wird mit seiner __repr__() Methode representiert, da die
+Werte bekannt sind kann ueberprueft werden ob diese uebereinstimmen.
+>>> session.query(Item).first()
+item<1, name, 1, 1>
+
+do_something existiert nicht, da mit Doctest kein Mock erstellt werden kann
+wird auf die Exceptioni ueberprueft.
+>>> item.do_something()
+Traceback (most recent call last):
+    ...
+TypeError: 'NoneType' object is not callable
+
+Hier wird der tearDown Code ausgefuehrt
+>>> session.close()

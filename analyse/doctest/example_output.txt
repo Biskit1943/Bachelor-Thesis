@@ -1,0 +1,12 @@
+**********************************************************************
+File "example.py", line 14, in __main__.return_3
+Failed example:
+    return_3(i=True)
+Expected:
+    '4'
+Got:
+    3
+**********************************************************************
+1 items had failures:
+   1 of   3 in __main__.return_3
+***Test Failed*** 1 failures.
