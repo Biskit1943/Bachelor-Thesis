@@ -25,6 +25,11 @@ von doctest bedienen, die es Ihm ermöglicht Tests in eine externe Datei zu verl
 wird die Datei als ein \Gls{docstring} behandelt, wodurch sie keine \lstinline{""""} benötigt.
 Um jedoch Code in diese Datei ausführen zu können muss das zu testende Modul importiert werden.
 
+Die Komplexität als auch die Anforderungen für doctest sind sehr gering. Das testen geschieht
+mithilfe der interaktiven Python-Sitzung, welche jedem Python Entwickler bekannt ist. Die
+Tests selbst sind aufrufe der geschriebenen Funktionen und Methoden und ein Abgleich des
+Outputs mit dem Erwarteten Wert.
+
 Das Listing \ref{listing:doctest:advanced} zeigt den Code aus \ref{listing:base:my_module} mit
 \Glspl{docstring} versehen. Dieser Test wurde mithilfe der \lstinline{main} Funktion von Python
 ausgeführt. Der in Listing \ref{listing:doctest:advanced_text} ausgelagerte Test, wurde mithilfe
