@@ -56,5 +56,25 @@
 }
 \newglossaryentry{docstring}{
     name={docstring},
-    description={Ein Docstring ist ein Block von Text der sich zwischen jeweils drei Anführungsstrichen befindet. Mit diesem Text wird ein Objekt in Python dokumentiert}
+    description={Ein Docstring ist ein Block von Text der sich zwischen jeweils drei 
+    Anführungsstrichen befindet. Mit diesem Text wird ein Objekt in Python dokumentiert}
+}
+\newglossaryentry{context}{
+    name={contextmanager},
+    description={Ein Contextmanager in Python ist ein Objekt, dass einen Kontext bietet,
+    in dem gearbeitet werden kann. Dieser Kontext wird mit \lstinline{with {contextmanager} as c}
+    geöffnet und schließt sich selbst beim verlassen des Kontextes. Dadurch stehen dem entwickler
+    der nutzbare Kontext als Variable \lstinline{c} zur Verfügung}
+}
+\newglossaryentry{paket}{
+    name={Paket-Manager},
+    description={Ein Paket-Manager ist ein Tool zum verwalten von externen Python bibliotheken,
+    mitdessen Hilfe Pakete (bibliotheken) installiert und versioniert werden können}
+}
+\newglossaryentry{decorator}{
+    name={decorator},
+    description={Ein Decorator ist eine Funktion die eine andere Funktion oder Methode umschließt,
+    wodurch der Code im Decorator vor und/oder nach der Funktion oder Methode ausgeführt werden kann.
+    Ein Decorator wird einer anderen Funktion mit \lstinline{@{decorator-funktion}}} über der
+    Funktions- oder Methoden-Definition übergeben
 }
