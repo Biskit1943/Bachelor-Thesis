@@ -45,6 +45,20 @@
 
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\noindent}
 
+% Von https://tex.stackexchange.com/a/10110
+\newcommand{\footlabel}[2]{%
+    \addtocounter{footnote}{1}%
+    \footnotetext[\thefootnote]{%
+        \addtocounter{footnote}{-1}%
+        \refstepcounter{footnote}\label{#1}%
+        #2%
+    }%
+    $^{\ref{#1}}$%
+}
+
+\renewcommand{\footref}[1]{%
+    $^{\ref{#1}}$%
+}
 
 
 % Bessere Listen
