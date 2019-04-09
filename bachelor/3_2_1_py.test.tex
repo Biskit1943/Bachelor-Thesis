@@ -1,0 +1,106 @@
+% !TeX root = ../bachelor.tex
+\subsubsection{pytest}\label{python-tools:pytest}\mbox{}
+\newline
+Das am 04. August 2009 in Version 1.0.0 veröffentlichte Tool pytest (auch py.test genannt)
+ist ein sehr umfangreiches und weit entwickeltes Tool. Seit 2009 wird das Tool stets
+weiter entwickelt und vorangetrieben, wodurch es eine Menge an Features gewonnen hat.
+\noindent
+Die Basis Features von pytest sind folgende:
+\begin{itemize}
+    \item Simple \lstinline{assert} statements.
+    \subitem Kein \lstinline{self.assert}
+    \subitem Error Überprüfung mit \Gls{context}
+    \item Informativer Output in Farbe
+    \subitem Der gesamte Output kann angepasst werden
+    \item Feature reiche \Glspl{fixture}
+    \subitem Vordefinierte \Glspl{fixture} von pytest
+    \subitem Geteilte \Glspl{fixture} unter Tests
+    \subitem Globale \Glspl{fixture} zwischen Modulen
+    \subitem Parametrisierung von Test als \Glspl{fixture}
+    \item Überprüfung von \lstinline{stdout} und \lstinline{stderr}
+    \item Gliedern von Test in Fällen
+    \subitem ... durch Markierung
+    \subitem ... durch Nodes (Auswahl der Modul Abhängigkeit)
+    \subitem ... durch String Abgleich der Funktions-Namen
+\end{itemize}
+\noindent
+Da pytest nicht in der STDLIB ist, muss es mit einem \Gls{paket} installiert werden.
+Dabei werden für \lstinline{pytest 4.4.0} die in Listing \ref{listing:pytest:requirements}
+gezeigten Abhängigkeiten installiert. Demnach benötigt pytest sechs externe Abhängigkeiten
+zusätzlich zu sich selbst.
+\newline
+\\
+Wie anhand der Basis Features erkennbar ist, bietet pytest einiges um Tests zu schreiben und
+aus zu führen. So ist mit den gebotenen \Glspl{fixture} bereits eine Voraussetzung mehr als
+erfüllt, da pytest viele verschiedene Arten bietet \Glspl{fixture} zu benutzen.
+\Glspl{fixture} werden in pytest allerdings nicht mit \lstinline{setUp} und \lstinline{tearDown}
+geschrieben, sondern werden mithilfe eines \glspl{decorator} markiert und den Test Funktionen
+als Parameter übergeben. Um die \lstinline{setUp} und \lstinline{tearDown} funktionalität zu
+bekommen muss lediglich das keyword \lstinline{yield} verwendet werden, die \Gls{fixture} wird
+dann den Code bis zum \lstinline{yield} ausführen und nach der Funktion den Rest nach
+\lstinline{yield} ausführen.
+\newline
+\\
+Diese lassen sich durch zusätzliche Parameter weiter anpassen. Diese
+Funktionen sind in Kapitel fünf nach \cite{docs.pytest.org:4.4} beschrieben.
+
+Des weiteren bietet pytest auch \gls{mock}ing, so lässt sich beispielsweise mit
+\lstinline{monkeypatch.setattr()} der return Wert einer Funktion ersetzen. Dies wird
+in pytest automatisch am ende der Funktion rückgängig gemacht, wodurch der Entwickler
+sich mehr auf das eigentliche Testen konzentrieren kann.
+\newline
+\\
+Auch hier bietet pytest weitere Möglichkeiten \Glspl{mock} zu verwenden, dazu hat
+\cite{docs.pytest.org:4.4} in Kapitel sieben einige Worte geschrieben.
+
+Ein weiteres sehr praktisches Feature von pytest ist die Gliederung in Fälle. Dies ist bei pytest
+sehr fein einstellbar, so lässt sich wie in den Basis Features bereits beschrieben ein Test mit
+einer oder mehreren Markierungen versehen wodurch eine Gliederung nach Markierung entsteht. Auch
+durch das selektieren bestimmten Wörtern lassen sich Tests nach ihrem Namen gliedern, so entsteht
+einerseits eine Gliederung zur Ausführung der Tests und andererseits eine Gliederung für die
+Entwickler die sie selbst im Code sehen können. Als letzte alternative lassen sich Tests anhand
+ihrer Module ausführen, dies geschieht durch die Angabe der Module. So würde
+\lstinline{test_datei.py::TestKlasse::test_methode} den Test \lstinline{test_methode} der Klasse
+\lstinline{TestKlasse} in der Datei \lstinline{test_datei.py} ausführen.
+\newline
+\\
+Diese Features werden in Kapitel sechs von \cite{docs.pytest.org:4.4} beschrieben.
+
+Selbstverständlich bietet pytest noch weitere Features jedoch sind diese nicht zwangsläufig notwendig
+um TDD zu betreiben und sind mehr ein nice to have Feature als wirklich benötigt. Für eine
+Vollständige Auflistung und Erklärung aller Features kann jederzeit unter
+\url{https://docs.pytest.org/en/latest/} die aktuellste Version der Dokumentation abgefragt werden.
+
+Demnach bietet pytest alles um TDD anwenden zu können und die sieben zusätzlichen Abhängigkeiten
+die ein Entwickler bei der Nutzung von pytest eingeht sollten keinen Entwickler davon abhalten
+pytest und seine Features zu genießen.
+\newline
+\\
+Da pytest, wie bereits erwähnt keine neuen assert Methoden hinzufügt lässt sich sehr schnell und
+einfach ein Test schreiben. Selbst die Nutzung von \Glspl{fixture} ist in pytest sehr einfach, da
+lediglich eine Funktion geschrieben werden muss die mit \lstinline{@pytest.fixture} markiert wurde
+und der Test Funktion oder Methode als Parameter übergeben wird. Den Rest erledigt pytest selbst
+im Hintergrund. Genauso einfach gestaltet sich die Nutzung von \Glspl{mock}.
+
+Die Effizienz, die bei der Nutzung von pytest entsteht ist demnach sehr hoch. Denn der Entwickler
+muss nicht wirklich etwas neues dazu lernen um Tests zu schreiben oder zu präparieren. Genauso
+leicht kann ein Entwickler den Output von pytest auswerten, da dieser erstens, in Farbe ist, was
+die Lesbarkeit deutlich erhöht, zweitens sehr gut gegliedert ist und Wichtige Strukturen klar
+darstellt und drittens nach den Wünschen der Entwickler sich gestalten und verbessern lässt.
+\newline
+\\
+Durch die eben genannten Features im Bezug auf das schreiben von Tests mit assert, sowie
+\Glspl{fixture} und \Glspl{mock} lässt sich sagen das pytest sehr viel Funktionalität bietet
+wobei es trotzdem Struktur im Code bietet und komplexe Features einfach ermöglicht. Demnach
+kann ein Entwickler mit wenig Code viel Testing Funktionalität erstellen.
+\newline
+\\
+Sollten dem Entwickler die Features von pytest nicht ausreichen, so findet man unter
+\url{http://plugincompat.herokuapp.com/} eine Liste von 618 (Stand: 2. April 2019) Erweiterungen
+für \lstinline{pytest 4.3.0}. pytest selbst kann allerdings auch als Erweiterung zu unittest
+genutzt werden, indem ein Entwickler pytest zum ausführen der unittests verwendet. Dadurch bietet
+sich dem Entwickler ein verbesserter Output des Test Ergebnisses.
+\newline
+\\
+Im Listing \ref{listing:pytest:advanced} und \ref{listing:pytest:advanced_output} befindet sich der
+Code und der Output zum Test von dem in Listing \ref{listing:base:my_module} definierten Modul.

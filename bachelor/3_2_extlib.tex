@@ -41,24 +41,17 @@ auch nur eine Erweiterung für bestehende Test Tools, wie zum Beispiel pytest, w
 wie bereits beschrieben nicht aktiv weiter entwickelt wird und es eher dafür gemacht wurde \href{http://www.zope.org/en/latest/}{zope}\footnote{http://www.zope.org/en/latest/}
 Applikationen zu testen und nicht Python Applikationen.
 
-Ein sehr bekanntest Projekt ist \href{https://pypi.org/project/nose/1.3.7/}{nose}\footnote{https://pypi.org/project/nose/1.3.7/}, welches aber
-nicht mehr in Entwicklung ist. Der Nachfolger \href{https://pypi.org/project/nose2/}{nose2}\footnote{https://pypi.org/project/nose2/} allerdings
-ist unter sehr aktiver Entwicklung und auch wenn das Tool nicht von \cite{wiki.python:PythonTestingToolsTaxonomy} erwähnt wird, so wird es doch
-hier mit verglichen werden.
+Der Test-Runner \href{https://pypi.org/project/nose/1.3.7/}{nose}\footnote{https://pypi.org/project/nose/1.3.7/}, der eine Erweiterung
+zu \nameref{python-tools:unittest} bietet ist nicht mehr in Entwicklung, dennoch haben sich ein paar Liebhaber des Tools zusammengeschlossen
+und \href{https://pypi.org/project/nose2/}{nose2}\footlabel{nose2}{https://pypi.org/project/nose2/} geschrieben.
+Da \href{https://pypi.org/project/nose2/}{nose2}\footref{nose2} wie sein Vorfahre eine Erweiterung zu \nameref{python-tools:unittest}
+darstellt wird es hier nicht analysiert.
 
 Auch sehr bekannt ist \href{https://pypi.org/project/testtools/}{testtools}\footnote{https://pypi.org/project/testtools/}, jedoch ist auch
 hier keine wirkliche weitere Entwicklung zu verzeichnen.
-\newline
-\\
-Demnach wäre die liste an Modul Test-Tools folgende:
-\begin{itemize}
-    \item \href{https://github.com/pytest-dev/pytest/}{pytest}\footnote{https://github.com/pytest-dev/pytest/}
-    \item \href{https://pypi.org/project/nose2/}{nose2}\footnote{https://pypi.org/project/nose2/}
-\end{itemize}
 
 Die Quelle aus dem Offiziellen Python Wiki beschreibt sonst keine weiteren Tools.
-Sucht auf Google nach weiteren Tools, so findet man die oben gelisteten wenn man
-nach den gleichen Kriterien Tools heraus filtert.
+Auch die suche auf einschlägigen Suchmaschinen liefert sonst keine relevanten Tools.
 \newline
 \\
 Als weitere Kategorie werden \Gls{mock}-Tools geführt. Auch wenn fast alle
@@ -79,6 +72,7 @@ Als letzte Kategorie werden hier die \Gls{fuzz} Tools behandelt, da diese eine
 gute Möglichkeit bieten Code ausgiebig zu testen. Das wohl umfangreichste und nach den obigen Kriterien
 einzige Tool ist \href{https://github.com/HypothesisWorks/hypothesis}{hypothesis}\footnote{https://github.com/HypothesisWorks/hypothesis}.
 
-\input{bachelor/3_2_1_1_py.test}
+%\input{bachelor/3_2_1_unit}
+\input{bachelor/3_2_1_py.test}
 \input{bachelor/3_2_2_mock}
 \input{bachelor/3_2_3_fuzz}
