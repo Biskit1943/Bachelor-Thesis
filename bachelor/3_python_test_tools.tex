@@ -6,6 +6,21 @@ sowie denen aus externen Paketen.
 Diese werden unter \ref{python-tools:stdlib} und \ref{python-tools:extlib}
 zusammengefasst, wobei diese unterteilt sind in unit-testing -,
 \gls{mock}-testing - und \gls{fuzz} Tools.
+
+Die unit-testing Tools sind Tools die Funktionalität zum testen bereitstellen.
+Jedoch wird für TDD weit mehr als nur Tests benötigt, aus diesem Grund werden
+\gls{mock}-testing - und \gls{fuzz} Tools zusätzlich behandelt. Dabei soll aber
+zwischen einer reinen Erweiterung eines Tools und der Erweiterung von allen Tools
+unterschieden werden.
+Ist zum Beispiel ein Tool nur zusammen mit einem anderen Tool, das die Funktionalität
+bereit stellt Tests aus zu führen, so ist dieses Tool als Erweiterung zu sehen. Bietet
+ein Tool allerdings Code zum Erweitern von verschiedenen Test Tools zur Verfügung, so
+wird es hier zur Analyse verwendet.
+Diese Unterscheidung wird verwendet um Duplikationen in den einzelnen vergleichen zu
+vermeiden, des weiteren gibt es Tools mit x Erweiterungen, diese alle zu vergleichen würde
+den Rahmen dieser Arbeit bei weitem sprengen.
+Sollten sich für ein Tool besonders interessante Erweiterungen finden, so werden diese
+in der Analyse des jeweiligen Tools erwähnt und verlinkt.
 \newline
 \\
 Jedes Tool wird anhand folgender Aspekte untersucht:
