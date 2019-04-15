@@ -1,4 +1,75 @@
 % !TeX root = ../bachelor.tex
 \paragraph{stubble}\label{python-tools:stubble}\mbox{}
 \newline
-Blubb
+Stubble zählt zwar zu den \gls{mock}ing Tools, jedoch werden hier \Glspl{stub} gegeben.
+So lässt sich ein Objekt durch ein selbst geschriebenes Objekt ersetzen.
+
+Angenommen man hat ein Objekt \lstinline{class Original} welches eine Abhängigkeit
+zu dem zu testenden Objekt darstellt, so lässt sich mit stubble ein Objekt \lstinline{class Fake}
+erstellen welches einen \gls{decorator} besitzt \lstinline{@stubclass(Original)}. Dadurch
+wird überprüft, dass alle Methoden aus \lstinline{class Fake} der Signatur derer aus
+\lstinline{class Original} entsprechen. Wenn \lstinline{class Fake} von \lstinline{class Original}
+erbt, werden nur die Funktionen überschrieben die in \lstinline{class Fake} definiert wurden.
+
+Um allerdings kleine Helfer zu \lstinline{class Fake} hinzu zu fügen, müssen diese mit
+\lstinline{@exempt} annotiert werden. Ist das objekt von \lstinline{class Original} bereits
+initialisiert, so lässt es sich an \lstinline{class Fake} übergeben, wenn diese von
+\lstinline{reahl.stubble.Delegate} erbt, so lässt sich zur Laufzeit ein Objekt durch
+einen \Gls{stub} ersetzen. Als letztes Hauptfeature wird die Möglichkeit geboten
+\Glspl{stub} mit setuptools zu verwenden.
+\newline
+\\
+Die Hauptfeatures von stubble sind jedoch die vorgefertigten \Glspl{stub}. So werden
+dem Entwickler folgende \Glspl{stub} geboten:
+\begin{itemize}
+    \item \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#systemoutstub}{SystemOutStub}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#systemoutstub}
+    \subitem Ein Stub, der den Standard Out ersetzt
+    \item \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#callmonitor}{CallMonitor}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#callmonitor}
+    \subitem Ein Stub, zum überprüfen welche Methoden wann, wie und wie oft aufgerufen wurde
+\end{itemize}
+
+Diese \Glspl{stub} lassen sich als \glspl{context} einsetzen, wie auch ein weiteres Feature von stubble.
+\lstinline{replaced} lässt den Entwickler eine Methode oder Funktion durch eine andere ersetzen,
+solange der \glspl{context} aktiv ist.
+
+Des weiteren bietet stubble einige Experimentelle Features die, nach \cite{reahl.stubble:4.0} eher
+weniger für den praktischen Einsatz geeignet sind, aber dennoch interessante Features darstellen.
+So ist es möglich \lstinline{class Fake} von \lstinline{reahl.stubble.Impostor} erben zu lassen,
+wodurch jede Instanz von \lstinline{class Fake} eine Instanz von \lstinline{class Original} wäre,
+wie in Listing \ref{listing:reahl.stubble:impostor} zu erkennen ist.
+Ein weiteres experimentelles Feature ist das ersetzen eines bereits bestehenden Objekts
+(\lstinline{Delegation}). Dies wurde bereits in den Hauptfeatures beschrieben, da es als sehr
+praktisch an zu sehen ist. Lediglich die Instanz Variablen eines Objektes machen hierbei Probleme, da
+diese nicht mit einem \Gls{stub} ersetzt werden können. So werden auch Objekt variablen die von
+Originalen Methoden gesetzt oder verändert werden nicht im \Gls{stub} gesetzt.
+Aus diesem Grund wird \lstinline{Delegation} als Experimentelles Features gesehen, da ein Bug, der
+durch dieses Feature entstanden ist schwer zu finden ist.
+
+Zusammenfassend ist stubble ein stabiles Tool, das dem Entwickler diverse Möglichkeiten an die Hand
+gibt Objekte vor ihrer Instanziierung als auch danach durch einen \Gls{stub} zu ersetzen.
+
+Im Bezug auf die Anwendbarkeit für TDD ist stubble demnach ein Tool das durchaus in Betracht gezogen
+werden kann, auch die Abhängigkeiten halten sich mit einer
+(\href{https://github.com/benjaminp/six}{six}\footnote{https://github.com/benjaminp/six}) in grenzen.
+
+Die Effizienz mit der ein Entwickler stubble einsetzen kann ist hoch, denn abgesehen von einem
+\gls{decorator} benötigt der Entwickler nichts weiter um Objekte zu ersetzen.
+
+Lediglich die Komplexität von stubble ist nicht sehr hoch, zwar wird dem Entwickler alles geboten um
+ein Objekt zu ersetzen, jedoch aber auch nicht mehr. Zusätzlich bietet stubble mit seinen
+vorgefertigten \Glspl{stub} eine gute schnelle Möglichkeit den Stdout zu ersetzen oder ein Objekt
+zu Monitoren. Um jedoch selbst ein Objekt zu ersetzen wird vergleichsweise viel Code benötigt, da
+nicht einfach nur der Return Wert neu gesetzt wird sondern die Methode neu geschrieben werden muss.
+Dies kann allerdings bei Komplexeren Anforderungen wiederum zu Vorteil werden weshalb sich das ganze
+wiederum ausgleicht.
+
+Der Code für den Vergleichstest von stubble ist in Listing \ref{listing:reahl.stubble:example} zu finden.
+Mit stubble alleine lässt sich der in Listing \ref{listing:base:my_mock_module} definierte Code nicht
+zu 100\% optimal testen. So ist die nicht existierende Methode \lstinline{Helper.help(self)} nicht einfach
+zu ersetzen, lediglich wenn man in der \Gls{stub} Klasse die Methode \lstinline{help(self)} schreibt und
+sie mit \lstinline{@exempt} annotiert. Jedoch verliert man dadurch die Funktionalität von stubble, welche
+überprüft ob die Signatur der Funktionen übereinstimmen. Alternativ hätte man auch einfach eine Klasse
+nehmen können die ohne \lstinline{@stubclass} auskommt. Ansonsten Zeigt der Code wie ein recht simples
+Tool viel erreichen kann, wenn auch mit viel Code abseits der Tests. Dennoch ging das überschreiben von
+\lstinline{os.path.abspath(path)} sehr einfach durch \lstinline{reahl.stubble.replaced}. Sehr einfach
+ging auch das abfangen des STDOUTs mithilfe der vorgefertigten \Glspl{stub}.

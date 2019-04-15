@@ -10,10 +10,17 @@
 }
 \newglossaryentry{mock}{
     name={mock},
-    description={Etwas mocken bedeutet, ein Objekt durch ein falsches Objekt, den
-    Mock zu ersetzen, das genau so aussieht, wie das erwartete Objekt, aber nicht das
-    Gleiche ist. So ist es möglich eine Funktion zu mocken, wodurch nicht die Funktion,
-    sondern der Mock aufgerufen wird und das eingestellte ergebnis liefert}
+    description={Ein Mock (zu Detusch: Attrappe) ist ein Objekt, dass von dem zu
+    mockenden Objekt abstammt. Das heißt es besitzt alle eigenschaften des originals,
+    jedoch fügt es noch weitere Methoden hizu. Diese ermöglichen das prüfen, welche
+    weiteren Methoden und Funktionen mit welchen Parametern ausgeführt wurden}
+}
+\newglossaryentry{stub}{
+    name={mock},
+    description={Ein Stub (zu Deutsch: Stumpf) ist, ähnlich wie ein Mock, eine Attrappe.
+    Jedoch werden hier nicht weitere Methoden hinzugefügt, sondern jediglich die vorhandenen
+    Methoden werden ersetzt. Dabei wird allerdings keine Logik implementiert, sondern es
+    wird ein Wert gesetzt den die Methode zurück gibt}
 }
 \newglossaryentry{commit}{
     name={commit},

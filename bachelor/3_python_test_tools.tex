@@ -29,6 +29,10 @@ Jedes Tool wird anhand folgender Aspekte untersucht:
     Bietet das Tool alles, um TDD betreiben zu können? (\Glspl{fixture} und \Glspl{mock})
     Mit wie vielen Paketen muss das Tool betrieben werden? (Mehr Abhängigkeiten führen zu
     mehr externe Entwicklern auf die man sich verlassen muss.)
+    \begin{itemize}
+        \item Bei \gls{mock}-testing- und \gls{fuzz}-testing-Tools wird hier auf die
+        Features die das jeweilige Tool bietet geprüft.
+    \end{itemize}
     
     \item \underline{Effizienz}:\newline
     Wie viel lässt sich mit diesem Tool möglichst einfach und
@@ -37,7 +41,7 @@ Jedes Tool wird anhand folgender Aspekte untersucht:
     werden?
     \newline
     Genauso stellt sich die Frage, wie Effizient der Entwickler die Tests
-    auswerten kann.
+    auswerten kann (Nur bei Tools mit test-runner).
     
     \item \underline{Komplexität}:\newline
     Wie komplex ist das Tool? Das heißt, wie viel Funktionalität
@@ -49,12 +53,21 @@ Jedes Tool wird anhand folgender Aspekte untersucht:
     Wie leicht lässt sich das Tool mit anderen Tools erweitern?
     Gibt es vielleicht Erweiterungen der Community für dieses Tool, die sehr
     hilfreich sind?
+    \begin{itemize}
+        \item Dieser Punkt wird bei \gls{mock}-testing - und \gls{fuzz}-testing Tools ignoriert,
+        da diese selbst Erweiterungen darstellen.
+    \end{itemize}
 \end{itemize}
+\noindent
+Zum Vergleich der einzelnen unit-testing Tools untereinander werden sie auf den in Listing
+\ref{listing:base:my_module} abgebildeten Code angewandt, da sich diese Arbeit auch mit
+\gls{mock}-testing - und \gls{fuzz}-testing Tools beschäftigt wurden auch für diese
+Code geschrieben der zu testen ist. Der Code für die \gls{mock}-testing Tools befindet sich
+in Listing \ref{listing:base:my_mock_module} und der für \gls{fuzz}-testing in Listing
+\ref{listing:base:my_fuzz_module}. Dadurch lassen sich die unterschiedlichen Anforderungen
+zwischen den Arten der Tools besser vergleichen.
 
-Diese Aspekte eines jeden Tools, werden mithilfe von dem in Listing \ref{listing:base:my_module}
-abgebildeten Code auf gezeigt. Dieser Code dient als das zu testende Modul.
-
-Das Modul enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
+Das Modul für unit-testing enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
 welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die Komplexität
 zu erhöhen wurde eine in-memory Datenbank implementiert, welche Items enthält. Jedes Item 
 hat eine ID (\lstinline|id|), einen Namen (\lstinline|name|), einen Lager Platz
@@ -62,6 +75,23 @@ hat eine ID (\lstinline|id|), einen Namen (\lstinline|name|), einen Lager Platz
 Jedes Item besitzt zudem eine Methode \lstinline|do_something()| welche eine externe
 Funktion/Methode aufruft, die jedoch noch nicht existiert
 \lstinline|do_something_which_does_not_exist()|.
+
+Für die \gls{mock}-testing Tools wurde eine Klasse geschrieben, welche Funktionen besitzt
+die in ihrem Namen ausdrücken welche Methode sie ausführen, jedoch macht nicht jede Methode
+das was sie soll. Die \gls{mock}-testing Tools sollen hier die Methoden so \gls{mock}en, dass
+sie das jeweilige ausführen. Selbstverständlich ist realer Code viel komplexer als in diesem
+Listing (\ref{listing:base:my_mock_module}) dargestellt, jedoch reicht dieser Code aus um viele
+Tools an Ihre grenzen zu bringen. So muss in \lstinline{call_internal_functin_n_times} überprüft
+werden ob sie \lstinline{n} mal aufgerufen wurde, auch \lstinline{call_helper_help} wird nicht
+ohne weiteres funktionieren, da die Klasse \lstinline{Helper} noch nicht implementiert wurde
+(Was in TDD sehr oft der Fall sein wird). Auch die Methode \lstinline{return_false_filepath}
+bringt das ein oder andere Tool zum schwitzen, da eine externe Methode aus der STDLIB ersetzt
+werden muss, wobei dies nicht global geschehen darf.
+
+TODO fuzzetsting
+
+Verfügt ein Tool über keinen test-runner, so wird der von der STDLIB gestellte runner
+\lstinline{unittest} verwendet.
 
 \input{bachelor/3_1_stdlib}
 \input{bachelor/3_2_extlib}
