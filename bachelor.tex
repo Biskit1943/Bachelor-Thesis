@@ -39,6 +39,20 @@
 % Für Glossar
 \usepackage{glossaries}
 
+% Ermöglicht das Fußnotenverzeichnis
+\usepackage[titles]{tocloft}
+
+%% Fußnotenverzeichnis von https://stackoverflow.com/a/6914775/8339179
+\newcommand{\listfootnotesname}{Fußnotenverzeichnis}     % 'List of Footnotes' title 
+\newlistof[chapter]{footnotes}{fnt}{\listfootnotesname}  % New 'List of...' for footnotes 
+\let\oldfootnote\footnote                                % Save the old \footnote{...} command 
+\renewcommand\footnote[1]{                               % Redefine the new footnote to also add 'List of Footnote' entries. 
+    \refstepcounter{footnotes}                           % Add and step a reference to the footnote/counter. 
+    \oldfootnote{#1}                                     % Make a regular footnote. 
+    \addcontentsline{fnt}{footnotes}{\protect 
+        \numberline{\thefootnotes}#1}                    % Add the 'List of...' entry. 
+}
+
 % Ermöglicht mehr als 3 punkte tiefe -> 1.2.3.4
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -90,8 +104,6 @@
     captionpos=b
 }
 
-% Indexerstellung
-\makeindex
 
 % Abkürzungsverzeichnis
 \usepackage[german]{nomencl}
@@ -116,33 +128,34 @@
 \hypersetup{colorlinks, citecolor=red, linkcolor=blue, urlcolor=blue}
 
 % neue Kopfzeilen mit fancypaket
-\usepackage{fancyhdr} %Paket laden
-\pagestyle{fancy} %eigener Seitenstil
-\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
-\fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
-\fancyhead[C]{} %zentrierte Kopfzeile
-\fancyhead[R]{\thepage} %Kopfzeile rechts
-\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
-\fancyfoot[C]{\thepage} %Seitennummer
-\renewcommand{\footrulewidth}{0.4pt} %untere Trennlinie
+\usepackage{fancyhdr}                  % Paket laden
+\pagestyle{fancy}                      % eigener Seitenstil
+\fancyhf{}                             % alle Kopf- und Fußzeilenfelder bereinigen
+\fancyhead[L]{\nouppercase{\leftmark}} % Kopfzeile links
+\fancyhead[C]{}                        % zentrierte Kopfzeile
+\fancyhead[R]{\thepage}                % Kopfzeile rechts
+\renewcommand{\headrulewidth}{0.4pt}   % obere Trennlinie
+\fancyfoot[C]{\thepage}                % Seitennummer
+\renewcommand{\footrulewidth}{0.4pt}   % untere Trennlinie
 
 % Bibliothek hinzufuegen
 \addbibresource{bachelor.bib}
 
 \begin{document}
     % Leere Seite am Anfang
-    \newpage
     \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
     \section*{ }
+    
+    \newpage
 
     % Titelseite
-    \include{latex_einstellungen/deckblatt}
+    \input{latex_einstellungen/deckblatt}
 
     % 1.5 facher Zeilenabstand
     \onehalfspacing
 
     % Einleitung / Abstract
-    \include{bachelor/1_abstract}
+    \input{bachelor/1_abstract}
 
     % einfacher Zeilenabstand
     \singlespacing
@@ -152,49 +165,35 @@
     \tableofcontents
 
     % das Abbildungsverzeichnis
-    \newpage
+    %\newpage
     % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-    \addcontentsline{toc}{section}{Abbildungsverzeichnis}
-    % Abbildungsverzeichnis endgueltig anzeigen
-    \listoffigures
+    %\phantomsection
+    %\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+    % \fancyhead[L]{Abbildungsverzeichnis} % Kopfzeile links
+    % Abbildungsverzeichnis endgültig anzeigen
+    %\listoffigures
 
     % das Tabellenverzeichnis
     %\newpage
     % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+    %\phantomsection
     %\addcontentsline{toc}{section}{Tabellenverzeichnis}
-    % \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
+    % \fancyhead[L]{Tabellenverzeichnis} % Kopfzeile links
     % Abbildungsverzeichnis endgueltig anzeigen
     %\listoftables
 
     % das Listingverzeichnis
-    \newpage
-    % Listingverzeichnis soll im Inhaltsverzeichnis auftauchen
-    \addcontentsline{toc}{section}{Listingverzeichnis}
-    \fancyhead[L]{Listingverzeichnis} %Kopfzeile links
-    \renewcommand{\lstlistlistingname}{Listingverzeichnis}
-    \lstlistoflistings
+    \input{latex_einstellungen/listingverzeichnis}
     
     % das Glossar
-    \newpage
-    % Glossar soll im Inhaltsverzeichnis auftauchen
-    \addcontentsline{toc}{section}{Glossar}
-    % das Abkürzungsverzeichnis entgültige Ausgeben
-    \fancyhead[L]{Glossar} %Kopfzeile links
     \input{latex_einstellungen/glossar}
-    \printglossaries
 
     % das Abkürzungsverzeichnis
-    \newpage
-    % Abkürzungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-    \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
-    % das Abkürzungsverzeichnis entgültige Ausgeben
-    \fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
     \input{latex_einstellungen/abkuezungen/abkuerzungen}
-    \printnomenclature
 
     %%%%% Beginn Dokument %%%%%
     \newpage
-    \fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
+    \fancyhead[L]{\nouppercase{\leftmark}} % Kopfzeile links
 
     % 1,5 facher Zeilenabstand
     \onehalfspacing
@@ -214,29 +213,21 @@
     % einfacher Zeilenabstand
     \singlespacing
 
-    % Literaturliste soll im Inhaltsverzeichnis auftauchen
-    \newpage
-    \addcontentsline{toc}{section}{Literaturverzeichnis}
-
-    % Literaturverzeichnis anzeigen
-    \renewcommand\refname{Literaturverzeichnis}
-    \printbibliography
+    % Literaturverzeichnis
+    \input{latex_einstellungen/literaturverzeichnis}
     
+    % das Fußnotenverzeichnis
+    \input{latex_einstellungen/fussnotenverzeichnis}
     
-    % einfacher Zeilenabstand
-    \singlespacing
-    % leere Abschlussseite
-    \newpage
-    \fancyhead[L]{Listings} %Kopfzeile links
-    \addcontentsline{toc}{section}{Listings}
+    % die Listings
     \input{bachelor/listings}
 
     % 1,5 facher Zeilenabstand
     \onehalfspacing
 
-    \newpage
-
     % Eidesstattliche Erklärung
-    \addcontentsline{toc}{section}{Eidesstattliche Erklärung}
-    \include{erklaerung}
+    \input{erklaerung}
 \end{document}
+
+% Indexerstellung
+\makeindex

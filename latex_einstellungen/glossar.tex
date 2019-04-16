@@ -1,3 +1,4 @@
+% !TeX root = ../bachelor.tex
 \newglossaryentry{Pythonista}{
     name={Pythonista},
     description={Jemand, der Python als seine favorisierte Sprache verwendet}
@@ -85,3 +86,11 @@
     Ein Decorator wird einer anderen Funktion mit \lstinline{@{decorator-funktion}}} über der
     Funktions- oder Methoden-Definition übergeben
 }
+
+\newpage
+% Glossar soll im Inhaltsverzeichnis auftauchen
+\phantomsection
+\addcontentsline{toc}{section}{Glossar}
+\fancyhead[L]{Glossar} % Kopfzeile links
+% das Abkürzungsverzeichnis entgültige Ausgeben
+\printglossaries
