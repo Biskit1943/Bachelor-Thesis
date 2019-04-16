@@ -88,7 +88,6 @@ class TestStubble(unittest.TestCase):
         with replaced(my_os.path.abspath, self.fake_os_path_abspath, on=my_os.path):
             self.assertEqual("/foo/bar/baz.py", self.mock.return_false_filepath())
         self.assertNotEqual("/foo/bar/baz.py", self.mock.return_false_filepath())
-        self.assertNotEqual("/foo/bar/baz.py", self.mock.return_false_filepath())
 
 
 if __name__ == '__main__':

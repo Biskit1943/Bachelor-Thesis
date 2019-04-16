@@ -1,4 +1,73 @@
 % !TeX root = ../bachelor.tex
 \paragraph{mocktest}\label{python-tools:mocktest}\mbox{}
 \newline
-Blubb
+\lstinline{mocktest} ist nach \cite{mocktest:doc} ein \gls{mock}ing Tool, das von
+\href{http://rspec.info/}{\lstinline{rspec}}\footlabel{rspec}{http://rspec.info/} inspiriert wurde, dabei soll
+\lstinline{mocktest} kein Port von \lstinline{rspec}\footref{rspec} sein, sondern eine kleine leichtere Version in Python.
+Da sich zum \lstinline{mocktest} derzeit in der Version \lstinline{0.7.3} (Stand 16. April 2019) befindet sind
+noch nicht alle Features vollkommen entwickelt und ausgereift, dennoch lässt sich das Tool bereits Produktiv einsetzen,
+da das sehr Nützliche Feature \lstinline{sohould_receive()} von \lstinline{rspec}\footref{rspec} für \lstinline{mocktest} implementiert wurde.
+
+Das Hauptfeature von \lstinline{mocktest} ist die Test Isolation, die verhindert das \glspl{mock} Objekte außerhalb eines
+Test Falles verändern und so andere Tests beeinflussen. Demnach werden Tests immer innerhalb einer \lstinline{mocktest.MockTransaction} ausgeführt, sofern diese ein oder mehrere Objekte \gls{mock}en sollen.
+
+Innerhalb dieses Kontextes stehen dem Entwickler verschiedene Möglichkeiten zur Verfügung Tests aus zu führen. So lässt
+sich Beispielsweise überprüfen ob eine Funkion oder Methode aufgerufen wurde, dabei spiel es keine Rolle ob es sich hierbei
+um ein Globales Objekt handelt oder ein Lokales. Des weiteren lassen sich auch \Glspl{stub} nutzen, mit deren Hilfe
+Funktionen und Methoden präpariert werden können, wie auch beim überprüfen des Aufrufs spielt es hier keine Rolle ob es
+sich um ein Lokales oder Globales Objekt handelt. Die Präparation lässt sich nach bedarf auch anpassen, so kann der
+Entwickler beispielsweise festlegen, dass nur bei einem bestimmten Aufruf mit bestimmten Parametern das \Gls{mock} Objekt
+aufgerufen wird. Andernfalls wird das Originale Objekt genutzt.
+
+Mocktest nutzt \lstinline{unittest} als Basis für seine Testumgebung, \lstinline{mocktest.TestCase} erbt von
+\lstinline{unittest.TestCase}, wodurch die gesamt Funktionalität von \lstinline{unittest} gegeben wird. \lstinline{mocktest.TestCase} führt dabei in seiner \lstinline{setUp()} und \lstinline{tearDown()} methode Code aus, der
+benötigt wird um \lstinline{mocktest} Nutzen zu können, möchte man jedoch nicht unittest verwenden, so ist es möglich
+\lstinline{mocktest.MockTransaction} als Kontextmanager mit \lstinline{with MockTransaction:} zu nutzen. Zusätzlich wird
+mit mocktest unittest um eine \lstinline{assert} Methode erweitert, \lstinline{assertRaises()} verfügt über verbesserte Funktionalität zum überprüfen auf Exceptions.
+
+Zum überprüfen von \Glspl{mock} kann entweder \lstinline{when(obj)} oder \lstinline{expect(obj)} verwendet werden. Der
+unterschied hier ist lediglich, dass \lstinline{when(obj)} nicht überprüft ob eine Methode aufgerufen wurde oder nicht.
+Legt man hingegen Beispielsweise fest dass, \lstinline{expect(os).system} dann wird ein Fehler geworfen, wenn
+\lstinline{os.system} nicht aufgerufen wurde, was bei \lstinline{when(os).system} nicht der Fall ist. Möchte man später
+überprüfen wie oft und mit was ein Objekt aufgerufen wurde, ist es möglich \lstinline{received_calls} ab zu prüfen, dies
+ist eine Liste von allen getätigten aufrufen und Ihren Parametern.
+\noindent
+Hier ist eine Liste von allen weiteren Features von \lstinline{mocktest}:
+\begin{itemize}
+    \item Ergebnisvariation mit \lstinline{.and_return(erg1, erg2, ergX)}, alternativ ist \lstinline{.then_return()} die gleiche Methode.
+    \item Mit \lstinline{.at_least(n)}, \lstinline{.at_most(n))}, \lstinline{.between(a, b)} und \lstinline{.exact(n)} lässt sich festlegen
+        wie viele aufrufe erfolgt sein müssen.
+    \begin{itemize}
+        \item Als alias wird \lstinline{.never()} und \lstinline{.once()} geboten für nie und einmal aufgerufen.
+    \end{itemize}
+    \item Durch \lstinline{.then_call(func)} wird die Funktion oder Methode \lstinline{func} ausgeführt anstatt der eigentlichen.
+    \item Properties lassen sich mit \lstinline{.with_children(**kwargs)} setzen, wobei \lstinline{mock('mein_mock').with_children(x=1)}
+        den Wert \lstinline{x}  für \lstinline{mein_mock} gleich \lstinline{1} setzt.
+    \item Das gleiche ist mit \lstinline{.with_method(**kwargs)} möglich, nur für Methoden anstatt Properties.
+\end{itemize}
+
+Um TDD zu betreiben bietet \lstinline{mocktest} alles was ein Entwickler zum \gls{mock}en benötigt. So ist es möglich
+bestehende Objekte gänzlich oder Teilweise zu ersetzen, oder neue Objekte zu erstellen die, die Signatur eines anderen
+Objektes haben. Dabei kann selbstverständlich geprüft werden wie und wie oft etwas aufgerufen wurde. Auch Globale Objekte
+lassen sich für den Zeitraum eines Tests ersetzen, dadurch ist alles an Funktionalität geboten, was ein \gls{mock}-testing
+Tool bieten muss.
+
+Bezüglich der Effizienz ist mocktest äußerst gut, da quasi kein Vorwissen von Nöten ist um Objekte zu \gls{mock}en. Die
+Vorarbeit die geleistet werden muss hält sich je nach Anwendungsfall sehr in grenzen oder ist fast nicht existent. Nutzt
+man die von \lstinline{mocktest} zur Verfügung gestellte Klasse \lstinline{mocktest.TestCase} für einen Testfall, so ist
+bereits alles fertig und direkt einsetzbar. Selbstverständlich kann \lstinline{mocktest.TestCase} nach den Bedürfnissen
+um Funktionalität erweitert werden, jedoch sollte sich dies als sehr leicht gestalten. Entscheidet man sich gegen
+\lstinline{unittest}, so ist mit dem Kontextmanager \lstinline{mocktest.MockTransaction} schnell eine \Gls{mock}
+Umgebung aufgesetzt und Nutzbar.
+
+\lstinline{mocktest} lässt den Entwickler Code schreiben der sich wie gesprochen liest. Durch die Methoden
+\lstinline{when(obj)} und \lstinline{expect(obj)} lässt sich ein \Gls{mock} erstellen der mit Methoden angepasst werden
+kann, die wenn man sie aneinander reiht wie beschrieben lesen. Dies ist zum einen durch die verschiedenen Aliase möglich,
+wie zum Beispiel \lstinline{.once()} welches \lstinline{.exact(1)} ausführt. auch \lstinline{.then_return()} ist sehr
+leicht zu lesen und vereinfacht das verstehen des Codes enorm. Abseits der eigentlichen Funktionalität die mit
+\lstinline{mocktest} gesetzt wird fällt quasi kein Code an der geschrieben werden muss.
+
+Um auch hier eine Analyse erstellen zu können, wurde der Code aus Listing \ref{listing:base:my_mock_module} mit
+\lstinline{mocktest} getestet. Dieser Code ist in Listing \ref{listing:mocktest:example} zu finden.
+
+\textbf{analyse des Beispiels}
