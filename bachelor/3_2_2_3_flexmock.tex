@@ -3,14 +3,14 @@
 \newline
 \lstinline{flexmock} ist ein weiteres Tool, dass von der Ruby Community inspiriert wurde.
 Dabei diente das gleichnamige Tool
-\href{https://github.com/jimweirich/flexmock}{felxmock}\footnote{https://github.com/jimweirich/flexmock}
+\href{https://github.com/jimweirich/flexmock}{flexmock}\footnote{https://github.com/jimweirich/flexmock}
 als Inspiration.
 "`[...]. Es ist jedoch nicht das Ziel von Python flexmock, ein Klon der
 Ruby-Version zu sein. Stattdessen liegt der Schwerpunkt auf der vollständigen Unterstützung
 beim Testen von Python-Programmen und der möglichst unauffälligen Erstellung von gefälschten
-Objekten."'\footnote{Übersetzt aus dem Englischen} (\cite{felxmock:docs:0.10.3}).
+Objekten."'\footnote{Übersetzt aus dem Englischen} (\cite{flexmock:docs:0.10.3}).
 
-Die Features von \lstinline{felxmock} sind denen von \nameref{python-tools:mocktest} sehr ähnlich.
+Die Features von \lstinline{flexmock} sind denen von \nameref{python-tools:mocktest} sehr ähnlich.
 So bildet \lstinline{flexmock} seine Tests, \glspl{stub} und \glspl{mock} wie ausgesprochen dar,
 ein Feature aus der Ruby Welt, dass anscheinend sehr viel anklang findet bei Python Entwicklern.
 
@@ -39,7 +39,7 @@ Int hat, als zweiten einen String und als drittes None, dabei kann selbstverstä
 jede beliebige Instanz überprüft werden, auch auf eigene Klassen. Dies ist allerdings nur
 möglich bei \lstinline{.should_call()} nicht bei \lstinline{.should_receive()}.
 
-Das letzte in der von \cite{felxmock:docs:0.10.3} erwähnte Feature ist das ersetzen von
+Das letzte in der von \cite{flexmock:docs:0.10.3} erwähnte Feature ist das ersetzen von
 Klassen noch vor ihrer Instanziierung. Dabei gibt es mehrere Ansätze die allerdings auch
 verschiedene Ausgänge haben, der erste ist auf Modul Level, dabei wird im Modul die Klasse
 mit einem Objekt ersetzt, dass entweder ein \lstinline{flexmock} sein kann oder ein Beliebig
@@ -71,10 +71,11 @@ wird dadurch der Code nicht mehr als er im laufe der Zeit sowieso werden würde,
 \lstinline{flexmock} dabei die Übersicht länger zu wahren.
 
 Der Code zu Listing \ref{listing:base:my_mock_module} wurde mithilfe des Codes aus Listing
-\ref{listing:felxmock:example} getestet, dabei ergaben sich die eben aufgelisteten Aspekte von 
+\ref{listing:flexmock:example} getestet, dabei ergaben sich die eben aufgelisteten Aspekte von 
 \lstinline{flexmock}. \lstinline{flexmock} überzeugt dabei mit der Einfachheit
 mit der es aufgesetzt werden muss. In der \lstinline{setUp()} wird global im Modul
 \lstinline{my_package.my_mock_module} die Klasse \lstinline{NotMocked} ersetzt. Dadurch ist
 ex möglich in jedem Test Fall eine Annahme auf zu stellen, die dann auf alle Objekte
 der Klasse \lstinline{NotMocked} zutreffen. Der aufwand diesen Code zu schreiben war demnach
 sehr gering.
+\textbf{EXAMPLE funktioniert noch nicht, siehe github}

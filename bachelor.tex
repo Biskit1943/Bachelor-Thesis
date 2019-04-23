@@ -64,12 +64,15 @@
 
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\noindent}
 
-% Von https://tex.stackexchange.com/a/10110
+% Von https://tex.stackexchange.com/a/10110 mit additions aus https://stackoverflow.com/a/6914775/8339179
 \newcommand{\footlabel}[2]{%
+    \refstepcounter{footnotes}%
+    \addcontentsline{fnt}{footnotes}{\protect 
+        \numberline{\thefootnotes}#2}%
     \addtocounter{footnote}{1}%
     \footnotetext[\thefootnote]{%
         \addtocounter{footnote}{-1}%
-        \refstepcounter{footnote}\label{#1}%
+        \refstepcounter{footnote}\label{#1}
         #2%
     }%
     $^{\ref{#1}}$%

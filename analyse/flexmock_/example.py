@@ -17,8 +17,7 @@ class TestFlexmock(unittest.TestCase):
         self.mock.should_receive('print_foo').replace_with(lambda: print('foo'))
         self.not_mocked.print_foo()  # print_foo wurde ersetzt
 
-        output = sys.stdout.getvalue().strip()  # stdout von unittest
-        self.assertEquals(output,'foo')
+        self.assertEquals(sys.stdout.getvalue(),'foo\n')
 
     def test_return_42(self):
         self.mock.should_receive('return_42').and_return(42)

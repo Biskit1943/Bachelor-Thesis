@@ -69,5 +69,8 @@ leicht zu lesen und vereinfacht das verstehen des Codes enorm. Abseits der eigen
 
 Um auch hier eine Analyse erstellen zu können, wurde der Code aus Listing \ref{listing:base:my_mock_module} mit
 \lstinline{mocktest} getestet. Dieser Code ist in Listing \ref{listing:mocktest:example} zu finden.
-
-\textbf{analyse des Beispiels}
+Der Code dazu ist recht einfach zu implementieren gewesen. Da \lstinline{mocktest} keine
+\lstinline{setUp()} Methode benötigt um zu funktionieren spart man sich hier bereits viel Code. Durch
+\lstinline{expect()} und \lstinline{when()} ist es möglich jedes beliebige Objekt zu nehmen und zu
+ersetzen.Dabei gab es keine Probleme hinsichtlich der implementierung der \Glspl{mock} oder
+\Glspl{stub}.
