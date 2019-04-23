@@ -12,10 +12,7 @@ class TestMocktest(TestCase):
         self.not_mocked = NotMocked()
 
     def test_print_foo(self):
-        def new_print_foo():
-            print('foo')
-
-        expect(self.not_mocked).print_foo().then_return(new_print_foo())
+        expect(self.not_mocked).print_foo().then_return(lambda: print('foo'))
         self.not_mocked.print_foo()
 
         self.assertEqual(sys.stdout.getvalue(), 'foo\n')
