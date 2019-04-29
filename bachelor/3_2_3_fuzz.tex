@@ -1,6 +1,42 @@
 % !TeX root = ../bachelor.tex
 \subsubsection{Fuzz-testing Tools}\label{python-tools:extlib:fuzz}
 
-Blubb
+Zusätzlich zu den hier behandelten Test runnern und den \gls{mock}ing Tools werden
+zusätzlich noch Fuzz-testing Tools behandelt. Unter Fuzz-testing versteht man das
+Testen eines Programms oder einem Modul mit zufälligen Werten. Diese Werte können
+komplett zufällig sein, aber auch einem gewissen Format entsprechen oder einem Typ.
+
+Fuzz-testing funktioniert dabei anders als die gewohnten Methoden des Testens. Der
+Normale Flow ist, dass Test Daten präpariert werden, dann werden Tests mit diesen
+Daten aus geführt und danach validiert, dass das Ergebnis richtig ist. Mit
+Fuzz-testing sieht das ganze etwas anders aus, zuerst wird festgelegt, welchem
+Schema die Daten entsprechen müssen (Beispiel: Es wird eine IP erwartet,
+\lstinline|[1-9]{1,3}.[1-9]{1,3}.[1-9]{1,3}.[1-9]{1,3}|), danach wird mit den Daten
+der Test ausgeführt und danach validiert (\cite{hypothesis:doc:4.18.0}).
+
+Der unterschied ist nun, das der Entwickler selbst sich nicht Daten ausdenken muss.
+Im genannten Beispiel müsste der Entwickler sich verschiedene IP Adressen ausdenken,
+die entweder richtig oder Falsch sind und danach diese überprüfen. Fuzz-testing
+übernimmt das ausdenken der Daten und sorgt dafür, dass diese der Spezifikation
+entsprechen. So kann eine viel größere Anzahl an Tests mit erheblich weniger aufwand
+auf einem Modul oder Programm ausgeführt werden.
+
+Das ist aber noch nicht alles, schlägt ein Test fehl, mit Daten die per Spezifikation
+richtig sind, so wird der Wert der Daten für später gespeichert und sofern möglich
+wird versucht mit ähnlichen Daten dieser Fehler zu erreichen. Dadurch hat ein
+Entwickler am Ende der Tests Daten die fehlgeschlagen sind. Mit diesen kann er dann
+die Weiteren Tests befüllen um so zu verhindern, dass diese Daten zu Fehlern führen.
+Im Normalfall übernimmt dies allerdings das Tool, wodurch der Entwickler sich nur
+darum kümmern muss, dass die Tests erfolgreich verlaufen.
+
+Von Zeit zu Zeit entsteht dadurch ein Katalog an Daten für verschiedene Tests, der
+vorgibt bei welchen Daten ein Test fehl geschlagen ist. Dadurch wird verhindert,
+dass beim ändern des Codes dieser Fehler wieder auftritt. Führt man dies über den
+gesamten Entwicklungsprozess hinweg durch, so erhält man am Ende ein sehr ausgiebig
+getestetes Programm.
+
+Diese Methode des Testens ist auch "`property based testing"', also Eigenschafts-
+basierte Tests genannt. In dieser Arbeit, wird allerdings weiterhin der Englische
+Begriff Fuzz-testing genutzt.
 
 \input{bachelor/3_2_3_hypothesis}
