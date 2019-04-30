@@ -34,8 +34,8 @@ Funktionsumfang temporär erweitert werden können.
 
 Ein besonders interessantes Feature ist, dass überprüfen des Ergebnisses nach Typ. Dabei
 wird \lstinline{.and_return()} nur der Typ mitgegeben, der erwartet wird. So würde
-\lstinline{.and_return((int, str, None)} jedes Tuple zulassen, dass als ersten Wert einen
-Int hat, als zweiten einen String und als drittes None, dabei kann selbstverständlich auf
+\lstinline{.and_return((int, str, None)} jedes \lstinline{Tuple} zulassen, dass als ersten Wert einen
+\lstinline{int} hat, als zweiten einen String und als drittes None, dabei kann selbstverständlich auf
 jede beliebige Instanz überprüft werden, auch auf eigene Klassen. Dies ist allerdings nur
 möglich bei \lstinline{.should_call()} nicht bei \lstinline{.should_receive()}.
 
@@ -77,5 +77,7 @@ mit der es aufgesetzt werden muss. In der \lstinline{setUp()} wird global im Mod
 \lstinline{my_package.my_mock_module} die Klasse \lstinline{NotMocked} ersetzt. Dadurch ist
 ex möglich in jedem Test Fall eine Annahme auf zu stellen, die dann auf alle Objekte
 der Klasse \lstinline{NotMocked} zutreffen. Der aufwand diesen Code zu schreiben war demnach
-sehr gering.
-\textbf{EXAMPLE funktioniert noch nicht, siehe github}
+sehr gering. Lediglich das erstellen einer Methode die im Originalen Objekt nicht existiert
+war nicht möglich, aus diesem Grund ist der Code in \lstinline{test_call_helper_help()} nicht
+korrekt und wirft eine Exception, diese kann in Listing \ref{listing:flexmock:exception}
+eingesehen werden.

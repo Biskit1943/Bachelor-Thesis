@@ -1,0 +1,20 @@
+E.......
+======================================================================
+ERROR: test_call_helper_help (__main__.TestFlexmock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "example.py", line 40, in test_call_helper_help
+    helper_mock.should_receive('help').replace_with(lambda: True)
+  File "flexmock_/venv/lib/python3.7/site-packages/flexmock.py", line 731,
+    in should_receive
+    _ensure_object_has_named_attribute(obj, name)
+  File "flexmock_/venv/lib/python3.7/site-packages/flexmock.py", line 1150,
+    in _ensure_object_has_named_attribute
+    raise FlexmockError(exc_msg)
+flexmock.FlexmockError: <my_package.my_mock_module.Helper object at
+    0x7f0e0c18a6a0> does not have attribute help
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+FAILED (errors=1)

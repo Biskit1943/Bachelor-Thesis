@@ -38,7 +38,7 @@ class TestFlexmock(unittest.TestCase):
     def test_call_helper_help(self):
         helper_mock = flexmock(Helper())
         helper_mock.should_receive('help').replace_with(lambda: True)
-        #helper_mock.should_call('help').once()  # Check ob help aufgerufen wurde
+        helper_mock.should_call('help').once()  # Check ob help aufgerufen wurde
 
         self.not_mocked.call_helper_help(helper_mock)
 

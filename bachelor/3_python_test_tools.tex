@@ -61,11 +61,9 @@ Jedes Tool wird anhand folgender Aspekte untersucht:
 \noindent
 Zum Vergleich der einzelnen unit-testing Tools untereinander werden sie auf den in Listing
 \ref{listing:base:my_module} abgebildeten Code angewandt, da sich diese Arbeit auch mit
-\gls{mock}-testing - und \gls{fuzz}-testing Tools beschäftigt wurden auch für diese
-Code geschrieben der zu testen ist. Der Code für die \gls{mock}-testing Tools befindet sich
-in Listing \ref{listing:base:my_mock_module} und der für \gls{fuzz}-testing in Listing
-\ref{listing:base:my_fuzz_module}. Dadurch lassen sich die unterschiedlichen Anforderungen
-zwischen den Arten der Tools besser vergleichen.
+\gls{mock}-testing Tools beschäftigt wurde auch für diese Code geschrieben der zu testen ist.
+Der Code dazu befindet sich in Listing \ref{listing:base:my_mock_module}. Durch diesen Code
+lassen sich die unterschiedlichen Anforderungen zwischen den Arten der Tools besser vergleichen.
 
 Das Modul für unit-testing enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
 welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die Komplexität
@@ -88,11 +86,17 @@ ohne weiteres funktionieren, da die Klasse \lstinline{Helper} noch nicht impleme
 bringt das ein oder andere Tool zum schwitzen, da eine externe Methode aus der STDLIB ersetzt
 werden muss, wobei dies nicht global geschehen darf.
 
-TODO fuzzetsting
+Für die Fuzz-testing Tools werden keine Beispiele geschrieben werden, da diese meist auf Komplexen
+Beispielen basieren um Sinn zu ergeben, stattdessen werden im jeweiligen Kapitel kleinere Beispiel
+genannt, wie das Tool ein zu setzen ist oder es wird auf Beispiele aus der jeweiligen Dokumentation
+verwiesen.
 
 Verfügt ein Tool über keinen test-runner, so wird der von der STDLIB gestellte runner
 \lstinline{unittest} verwendet.
 
 \input{bachelor/3_1_stdlib}
 \input{bachelor/3_2_extlib}
+\input{bachelor/4_zusammenfassung}
+\input{bachelor/5_vergleich}
+\input{bachelor/6_kombination}
 
