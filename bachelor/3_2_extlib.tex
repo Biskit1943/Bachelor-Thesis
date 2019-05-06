@@ -5,10 +5,10 @@ Vorteil gegenüber der STDLIB ist. Diese werden unter diesem Punkt aufgeführt.
 \newline
 \\
 Auf \url{https://wiki.python.org/moin/PythonTestingToolsTaxonomy} werden viele
-externe Tools gelistet, jedoch scheinen viele inaktiv zu sein da ihre \glspl{commit}
-teilweise mehr als ein Jahr zurück liegen. Dies ist weder für eine Bibliothek noch
-für ein Tool ein gutes Zeichen, da sich die Anforderungen stetig ändern und niemals
-alle Bugs gefixt sind.
+externe Tools gelistet, jedoch scheinen viele inaktiv zu sein da ihre
+\glspl{commit} teilweise mehr als ein Jahr zurück liegen. Dies ist weder für
+eine Bibliothek noch für ein Tool ein gutes Zeichen, da sich die Anforderungen
+stetig ändern und niemals alle Bugs gefixt sind.
 \newline
 \\
 Manche der dort aufgelisteten Tools sind bereits oder werden gerade in andere Tools
@@ -20,15 +20,17 @@ andere Gründe dafür verantwortlich, jedoch war dies der Grund bei zum Beispiel
 von Yelp \footnote{https://github.com/Yelp/Testify/}.
 \newline
 \\
-Da sowohl Software als auch Programmiersprachen sich stetig weiter entwickeln werden in
-dieser Arbeit nur jene Tools behandelt die sich diesen Entwicklungen Anpassen, sei dies
-durch das unterstützen der aktuellsten Version von Python als auch durch neue Innovationen,
-sowie \Gls{bug}-fixes. Aus diesem Grund werden Tools deren letzter \Gls{commit} weiter
-als ein Jahr zurück liegt hier nicht behandelt.
+Da sowohl Software als auch Programmiersprachen sich stetig weiter entwickeln
+werden in dieser Arbeit nur jene Tools behandelt die sich diesen Entwicklungen
+Anpassen, sei dies durch das unterstützen der aktuellsten Version von Python als
+auch durch neue Innovationen, sowie \Gls{bug}-fixes. Aus diesem Grund werden
+Tools deren letzter \Gls{commit} weiter als ein Jahr zurück liegt hier nicht
+behandelt.
 \newline
 \\
-Lässt man zusätzlich die Erweiterungen von Tool zunächst außen vor, so bleiben nach
-\cite{wiki.python:PythonTestingToolsTaxonomy} folgende Modul Test-Tools zur Verfügung:
+Lässt man zusätzlich die Erweiterungen von Tool zunächst außen vor, so bleiben
+folgende Modul Test-Tools zur Verfügung
+(\cite{wiki.python:PythonTestingToolsTaxonomy}):
 \begin{itemize}
     \item \href{https://github.com/pytest-dev/pytest/}{pytest}\footnote{https://github.com/pytest-dev/pytest/}
 \end{itemize}
@@ -47,17 +49,18 @@ und \href{https://pypi.org/project/nose2/}{nose2}\footlabel{nose2}{https://pypi.
 Da \href{https://pypi.org/project/nose2/}{nose2}\footref{nose2} wie sein Vorfahre eine Erweiterung zu \nameref{python-tools:unittest}
 darstellt wird es hier nicht analysiert.
 
-Auch sehr bekannt ist \href{https://pypi.org/project/testtools/}{testtools}\footnote{https://pypi.org/project/testtools/}, welches jedoch als
+Auch sehr bekannt ist \href{https://pypi.org/project/testtools/}{testtools}\footnote{https://pypi.org/project/testtools/}, welches jedoch auch als
 Erweiterung zu \nameref{python-tools:unittest} gesehen werden muss. Jedoch findet dort auch keine wirkliche weiter Entwicklung statt.
 
-Die Quelle aus dem Offiziellen Python Wiki beschreibt sonst keine weiteren Tools.
-Auch die suche auf einschlägigen Suchmaschinen liefert sonst keine relevanten Tools.
+Die Quelle aus dem Offiziellen Python Wiki beschreibt sonst keine weiteren
+Tools. Auch die suche auf einschlägigen Suchmaschinen liefert sonst keine
+weiteren relevanten Tools.
 \newline
 \\
 Als weitere Kategorie werden \Gls{mock}-Tools geführt. Auch wenn fast alle
 unittest-Tools integriertes \gls{mock}ing haben, so lässt sich mit diesen
-Tools meist mehr erreichen. Es wurden die gleichen Filter-Kriterien verwendet wie bei den
-Test-Tools oben.
+Tools meist mehr erreichen. Es wurden die gleichen Filter-Kriterien verwendet
+wie bei den unit-testing Tools(\cite{wiki.python:PythonTestingToolsTaxonomy}).
 \begin{itemize}
     \item \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}{stubble}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}
     \item \href{https://github.com/timbertson/mocktest/tree/master}{mocktest}\footnote{https://github.com/timbertson/mocktest/tree/master}
@@ -65,14 +68,13 @@ Test-Tools oben.
     \item \href{https://bitbucket.org/DavidVilla/python-doublex}{python-doublex}\footnote{https://bitbucket.org/DavidVilla/python-doublex}
     \item \href{https://github.com/ionelmc/python-aspectlib}{python-aspectlib}\footnote{https://github.com/ionelmc/python-aspectlib}
 \end{itemize}
-Auch hier finden sich sonst keine weiteren Tools die Open-source sind.
+Auch hier lassen sich sonst keine weiteren relevanten Tools finden.
 \newline
 \\
 Als letzte Kategorie werden hier die \Gls{fuzz} Tools behandelt, da diese eine
 gute Möglichkeit bieten Code ausgiebig zu testen. Das wohl umfangreichste und nach den obigen Kriterien
-einzige Tool ist \href{https://github.com/HypothesisWorks/hypothesis}{hypothesis}\footnote{https://github.com/HypothesisWorks/hypothesis}.
+einzige Tool ist \href{https://github.com/HypothesisWorks/hypothesis}{hypothesis}\footnote{https://github.com/HypothesisWorks/hypothesis} (\cite{wiki.python:PythonTestingToolsTaxonomy}).
 
-%\input{bachelor/3_2_1_unit}
 \input{bachelor/3_2_1_py.test}
 \input{bachelor/3_2_2_mock}
 \input{bachelor/3_2_3_fuzz}

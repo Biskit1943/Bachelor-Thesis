@@ -12,15 +12,15 @@ Jedoch wird für TDD weit mehr als nur Tests benötigt, aus diesem Grund werden
 \gls{mock}-testing - und \gls{fuzz} Tools zusätzlich behandelt. Dabei soll aber
 zwischen einer reinen Erweiterung eines Tools und der Erweiterung von allen Tools
 unterschieden werden.
-Ist zum Beispiel ein Tool nur zusammen mit einem anderen Tool, das die Funktionalität
-bereit stellt Tests aus zu führen, so ist dieses Tool als Erweiterung zu sehen. Bietet
-ein Tool allerdings Code zum Erweitern von verschiedenen Test Tools zur Verfügung, so
-wird es hier zur Analyse verwendet.
-Diese Unterscheidung wird verwendet um Duplikationen in den einzelnen vergleichen zu
-vermeiden, des weiteren gibt es Tools mit x Erweiterungen, diese alle zu vergleichen würde
-den Rahmen dieser Arbeit bei weitem sprengen.
-Sollten sich für ein Tool besonders interessante Erweiterungen finden, so werden diese
-in der Analyse des jeweiligen Tools erwähnt und verlinkt.
+Ist zum Beispiel ein Tool nur zusammen mit einem anderen Tool, das die
+Funktionalität bereit stellt Tests aus zu führen, so ist dieses Tool als
+Erweiterung zu sehen und wird nicht Analysiert. Bietet ein Tool allerdings
+Funktionalität zum erweitern von verschiedenen Test Tools, so wird es 
+hier zur Analyse verwendet. Diese Unterscheidung wird verwendet um Duplikationen
+in den einzelnen vergleichen zu vermeiden und verhindert, dass Tools mit sehr
+vielen Erweiterungen den Rahmen dieser Arbeit sprengen.Sollten sich für ein Tool
+besonders interessante Erweiterungen finden, so werden diese in der Analyse des
+jeweiligen Tools erwähnt und verlinkt.
 \newline
 \\
 Jedes Tool wird anhand folgender Aspekte untersucht:
@@ -59,30 +59,30 @@ Jedes Tool wird anhand folgender Aspekte untersucht:
     \end{itemize}
 \end{itemize}
 \noindent
-Zum Vergleich der einzelnen unit-testing Tools untereinander werden sie auf den in Listing
+Zum Vergleich der einzelnen unit-testing Tools untereinander werden diese auf den in Listing
 \ref{listing:base:my_module} abgebildeten Code angewandt, da sich diese Arbeit auch mit
-\gls{mock}-testing Tools beschäftigt wurde auch für diese Code geschrieben der zu testen ist.
+\gls{mock}-testing Tools beschäftigt, wurde auch für diese Code geschrieben der zu testen ist.
 Der Code dazu befindet sich in Listing \ref{listing:base:my_mock_module}. Durch diesen Code
 lassen sich die unterschiedlichen Anforderungen zwischen den Arten der Tools besser vergleichen.
 
-Das Modul für unit-testing enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
-welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die Komplexität
-zu erhöhen wurde eine in-memory Datenbank implementiert, welche Items enthält. Jedes Item 
-hat eine ID (\lstinline|id|), einen Namen (\lstinline|name|), einen Lager Platz
-(\lstinline|storage_location|) und eine Anzahl der vorrätigen Items \lstinline|amount|.
-Jedes Item besitzt zudem eine Methode \lstinline|do_something()| welche eine externe
-Funktion/Methode aufruft, die jedoch noch nicht existiert
-\lstinline|do_something_which_does_not_exist()|.
+Das Modul aus Listing \ref{listing:base:my_module} für die unit-testing Tools
+enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
+welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die
+Komplexität zu erhöhen wurde eine in-memory Datenbank implementiert, welche
+eine Items Tabelle enthält. Jedes Item hat eine ID (\lstinline|id|), einen Namen
+(\lstinline|name|), einen Lager Platz (\lstinline|storage_location|) und eine
+Anzahl der vorrätigen Items \lstinline|amount|. Dazu besitzt jedes Item eine
+Methode \lstinline|do_something()| welche eine externe Funktion/Methode aufruft,
+die jedoch noch nicht existiert \lstinline|do_something_which_does_not_exist()|.
 
 Für die \gls{mock}-testing Tools wurde eine Klasse geschrieben, welche Funktionen besitzt
-die in ihrem Namen ausdrücken welche Methode sie ausführen, jedoch macht nicht jede Methode
-das was sie soll. Die \gls{mock}-testing Tools sollen hier die Methoden so \gls{mock}en, dass
+die in ihrem Namen ausdrücken welche Aktion sie ausführen, jedoch führt nicht jede Methode
+das gewünschte aus. Die \gls{mock}-testing Tools sollen hier die Methoden so \gls{mock}en, dass
 sie das jeweilige ausführen. Selbstverständlich ist realer Code viel komplexer als in diesem
 Listing (\ref{listing:base:my_mock_module}) dargestellt, jedoch reicht dieser Code aus um viele
 Tools an Ihre grenzen zu bringen. So muss in \lstinline{call_internal_functin_n_times} überprüft
 werden ob sie \lstinline{n} mal aufgerufen wurde, auch \lstinline{call_helper_help} wird nicht
-ohne weiteres funktionieren, da die Klasse \lstinline{Helper} noch nicht implementiert wurde
-(Was in TDD sehr oft der Fall sein wird). Auch die Methode \lstinline{return_false_filepath}
+ohne weiteres funktionieren, da die Methode der Klasse \lstinline{Helper} noch nicht implementiert wurde. Auch die Methode \lstinline{return_false_filepath}
 bringt das ein oder andere Tool zum schwitzen, da eine externe Methode aus der STDLIB ersetzt
 werden muss, wobei dies nicht global geschehen darf.
 

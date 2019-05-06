@@ -13,62 +13,70 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {footnotes}{\numberline {7}https://launchpad.net/testtools}{18}{footnotes.7}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {8}https://github.com/Yelp/Testify/}{20}{footnotes.8}% 
+\contentsline {footnotes}{\numberline {8}\IeC {\"U}bersetzt aus dem Englischen}{18}{footnotes.8}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {9}https://github.com/pytest-dev/pytest/}{20}{footnotes.9}% 
+\contentsline {footnotes}{\numberline {9}\blxmkbibnote {foot}{\blxciteicmd {footcite}{}{}{docs.python:doctest}{}}}{20}{footnotes.9}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {10}https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{21}{footnotes.10}% 
+\contentsline {footnotes}{\numberline {10}\blxmkbibnote {foot}{\blxciteicmd {footcite}{}{}{docs.pytest.org:4.4}{}}}{20}{footnotes.10}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {11}https://pypi.org/project/zope.testing/}{21}{footnotes.11}% 
+\contentsline {footnotes}{\numberline {11}https://github.com/Yelp/Testify/}{21}{footnotes.11}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {12}http://www.zope.org/en/latest/}{21}{footnotes.12}% 
+\contentsline {footnotes}{\numberline {12}https://github.com/pytest-dev/pytest/}{21}{footnotes.12}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {13}https://pypi.org/project/nose/1.3.7/}{21}{footnotes.13}% 
+\contentsline {footnotes}{\numberline {13}https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{21}{footnotes.13}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {14}https://pypi.org/project/nose2/}{21}{footnotes.14}% 
+\contentsline {footnotes}{\numberline {14}https://pypi.org/project/zope.testing/}{21}{footnotes.14}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {15}https://pypi.org/project/testtools/}{21}{footnotes.15}% 
+\contentsline {footnotes}{\numberline {15}http://www.zope.org/en/latest/}{21}{footnotes.15}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {16}https://www.reahl.org/docs/4.0/devtools/stubble.d.html}{21}{footnotes.16}% 
+\contentsline {footnotes}{\numberline {16}https://pypi.org/project/nose/1.3.7/}{21}{footnotes.16}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {17}https://github.com/timbertson/mocktest/tree/master}{21}{footnotes.17}% 
+\contentsline {footnotes}{\numberline {17}https://pypi.org/project/nose2/}{21}{footnotes.17}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {18}https://github.com/bkabrda/flexmock}{21}{footnotes.18}% 
+\contentsline {footnotes}{\numberline {18}https://pypi.org/project/testtools/}{21}{footnotes.18}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {19}https://bitbucket.org/DavidVilla/python-doublex}{21}{footnotes.19}% 
+\contentsline {footnotes}{\numberline {19}https://www.reahl.org/docs/4.0/devtools/stubble.d.html}{22}{footnotes.19}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {20}https://github.com/ionelmc/python-aspectlib}{21}{footnotes.20}% 
+\contentsline {footnotes}{\numberline {20}https://github.com/timbertson/mocktest/tree/master}{22}{footnotes.20}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {21}https://github.com/HypothesisWorks/hypothesis}{22}{footnotes.21}% 
+\contentsline {footnotes}{\numberline {21}https://github.com/bkabrda/flexmock}{22}{footnotes.21}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {22}https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#systemoutstub}{25}{footnotes.22}% 
+\contentsline {footnotes}{\numberline {22}https://bitbucket.org/DavidVilla/python-doublex}{22}{footnotes.22}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {23}https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#callmonitor}{25}{footnotes.23}% 
+\contentsline {footnotes}{\numberline {23}https://github.com/ionelmc/python-aspectlib}{22}{footnotes.23}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {24}https://github.com/benjaminp/six}{26}{footnotes.24}% 
+\contentsline {footnotes}{\numberline {24}https://github.com/HypothesisWorks/hypothesis}{22}{footnotes.24}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {25}http://rspec.info/}{27}{footnotes.25}% 
+\contentsline {footnotes}{\numberline {25}https://github.com/pytest-dev/pytest/releases/tag/1.0.0}{22}{footnotes.25}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {26}https://github.com/jimweirich/flexmock}{29}{footnotes.26}% 
+\contentsline {footnotes}{\numberline {26}https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#systemoutstub}{26}{footnotes.26}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {27}\IeC {\"U}bersetzt aus dem Englischen}{29}{footnotes.27}% 
+\contentsline {footnotes}{\numberline {27}https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#callmonitor}{26}{footnotes.27}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {28}\cite {doublex:docs:1.8.1}}{31}{footnotes.28}% 
+\contentsline {footnotes}{\numberline {28}https://github.com/benjaminp/six}{26}{footnotes.28}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {29}\IeC {\"U}bersetzt aus dem Englischen}{31}{footnotes.29}% 
+\contentsline {footnotes}{\numberline {29}http://rspec.info/}{27}{footnotes.29}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {30}https://hypothesis.readthedocs.io/en/latest/data.html}{35}{footnotes.30}% 
+\contentsline {footnotes}{\numberline {30}https://github.com/jimweirich/flexmock}{29}{footnotes.30}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {31}https://hypothesis.readthedocs.io/en/latest/data.html}{37}{footnotes.31}% 
+\contentsline {footnotes}{\numberline {31}\IeC {\"U}bersetzt aus dem Englischen}{29}{footnotes.31}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {32}https://hypothesis.readthedocs.io/en/latest/extras.html}{37}{footnotes.32}% 
+\contentsline {footnotes}{\numberline {32}\cite {doublex:docs:1.8.1}}{31}{footnotes.32}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {33}https://hypothesis.readthedocs.io/en/latest/django.html}{37}{footnotes.33}% 
+\contentsline {footnotes}{\numberline {33}\IeC {\"U}bersetzt aus dem Englischen}{31}{footnotes.33}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {34}https://hypothesis.readthedocs.io/en/latest/numpy.html}{37}{footnotes.34}% 
+\contentsline {footnotes}{\numberline {34}https://hypothesis.readthedocs.io/en/latest/data.html}{36}{footnotes.34}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {35}https://hypothesis.readthedocs.io/en/latest/strategies.html}{37}{footnotes.35}% 
+\contentsline {footnotes}{\numberline {35}https://hypothesis.readthedocs.io/en/latest/data.html}{37}{footnotes.35}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {36}https://hypothesis.readthedocs.io/en/latest/quickstart.html}{37}{footnotes.36}% 
+\contentsline {footnotes}{\numberline {36}https://hypothesis.readthedocs.io/en/latest/extras.html}{37}{footnotes.36}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {footnotes}{\numberline {37}https://hypothesis.readthedocs.io/en/latest/examples.html}{37}{footnotes.37}% 
+\contentsline {footnotes}{\numberline {37}https://hypothesis.readthedocs.io/en/latest/django.html}{38}{footnotes.37}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {footnotes}{\numberline {38}https://hypothesis.readthedocs.io/en/latest/numpy.html}{38}{footnotes.38}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {footnotes}{\numberline {39}https://hypothesis.readthedocs.io/en/latest/strategies.html}{38}{footnotes.39}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {footnotes}{\numberline {40}https://hypothesis.readthedocs.io/en/latest/quickstart.html}{38}{footnotes.40}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {footnotes}{\numberline {41}https://hypothesis.readthedocs.io/en/latest/examples.html}{38}{footnotes.41}% 

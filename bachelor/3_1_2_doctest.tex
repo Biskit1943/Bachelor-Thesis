@@ -1,57 +1,87 @@
 % !TeX root = ../bachelor.tex
 \subsubsection{doctest}\label{python-tools:doctest}
 
-"`Das doctest Modul sucht nach Textstücken, die wie interaktive Python-Sitzungen aussehen, und führt diese Sitzungen dann aus, um sicherzustellen, dass sie genau wie gezeigt funktionieren."' (\cite{docs.python:doctest}). Diese Textstücke müssen sich in Kommentaren befinden, da sie
-sonst von Python als Code interpretiert werden.
+"`Das doctest Modul sucht nach Textstücken, die wie interaktive Python-Sitzungen
+aussehen, und führt diese Sitzungen dann aus, um sicherzustellen, dass sie genau
+wie gezeigt funktionieren."'\footnote{Übersetzt aus dem Englischen}
+(\cite{docs.python:doctest}). Diese Textstücke müssen sich in Kommentaren
+befinden, da sie sonst von Python als Code interpretiert werden.
 
-Wie \nameref{python-tools:unittest}, ist auch doctest in der STDLIB, wodurch keine externen
-Abhängigkeiten geladen werden müssen.
+\lstinline{doctest} bietet dem Nutzer eine Möglichkeit mithilfe von einem Test
+den Code zu dokumentieren. Da \lstinline{doctest} lediglich Code ausführt wie in
+einer interaktiven Python-Sitzung, ist auch nur das möglich aus zu führen was im
+Code geschrieben ist. Test Fälle oder gar \Glspl{mock} sind hierbei nur bedingt
+realisierbar, \Glspl{fixture} hingegen sind teilweise realisierbar in Form von
+Code der vor dem Test ausgeführt wird.
 
-Doctest bietet dem Nutzer eine Möglichkeit mithilfe von einem Test den Code zu dokumentieren.
-Da doctest lediglich Code ausführt wie in einer interaktiven Python-Sitzung, ist auch nur
-das möglich aus zu führen was im Code geschrieben ist. Test Fälle oder gar \Glspl{mock} sind 
-hierbei nicht möglich, \Glspl{fixture} hingegen sind teilweise realisierbar in Form von Code der
-vor dem Test ausgeführt wird.
+\lstinline{doctest} selbst nutzt keine Assert Funktionen oder Methoden,
+stattdessen wird der Output eines Befehls überprüft. So ergibt eine Funktion
+\lstinline{return_3(s=None, i=None)} bei \lstinline{s=True} eine \lstinline{'3'}
+und bei \lstinline{i=True} eine \lstinline{3}. Dieses Beispiel ist in Listing
+\ref{listing:doctest:example} zu sehen, um einen Output zu erzeugen wurde noch
+ein fehlerhafter Test hinzu gefügt. Dieser Output ist in Listing
+\ref{listing:doctest:example_output} zu sehen.
 
-Doctest selbst nutzt keine Assert Funktionen oder Methoden, stattdessen wird der Output eines
-Befehls überprüft. Dabei spielt der Typ auch eine Rolle, so ergibt eine Funktion
-\lstinline{return_3(s=None, i=None)} bei \lstinline{s=True} eine \lstinline{'3'} und bei
-\lstinline{i=True} eine \lstinline{3}. Dieses Beispiel ist in Listing \ref{listing:doctest:example}
-zu sehen, um einen Output zu erzeugen wurde noch ein fehlerhafter Test hinzu gefügt. Dieser Output
-ist in Listing \ref{listing:doctest:example_output} zu sehen.
+Möchte der Entwickler einen etwas größeren Test schreiben, so kann er sich einer
+Funktionalität von \lstinline{doctest} bedienen, die es Ihm ermöglicht Tests in
+eine externe Datei zu verlagern. Dabei wird die Datei als ein \Gls{docstring}
+behandelt, wodurch sie keine \lstinline{"""} benötigt. Um jedoch Code in diese
+Datei ausführen zu können muss das zu testende Modul importiert werden.
 
-Möchte der Entwickler einen etwas größeren Test schreiben, so kann er sich einer Funktionalität
-von doctest bedienen, die es Ihm ermöglicht Tests in eine externe Datei zu verlagern. Dabei
-wird die Datei als ein \Gls{docstring} behandelt, wodurch sie keine \lstinline{""""} benötigt.
-Um jedoch Code in diese Datei ausführen zu können muss das zu testende Modul importiert werden.
+Durch das schreiben der Tests in den \Glspl{docstring} werden die Module in
+denen Tests geschrieben wurden schnell sehr unübersichtlich und lang, wenn der
+Entwickler große Tests schreibt. Zwar wird durch externe Textdateien Abhilfe
+geschaffen, dennoch sind zu lange und komplexe doctests schwer zu lesen und
+nach zu vollziehen.
+\newline
 
-Durch das schreiben der Tests in den \Glspl{docstring} werden die Module in denen Tests geschrieben
-wurden schnell sehr unübersichtlich und lang, wenn der Entwickler große Tests schreibt. Zwar wird
-durch externe Textdateien Abhilfe geschaffen, dennoch sind doctests wenn sie länger werden
-schwer zu lesen und nach zu vollziehen.
+Das Listing \ref{listing:doctest:advanced} zeigt den Code aus
+\ref{listing:base:my_module} mit \Glspl{docstring} versehen. Dieser Test wurde
+mithilfe der \lstinline{main} Funktion von Python ausgeführt. Der in Listing
+\ref{listing:doctest:advanced_text} ausgelagerte Test, wurde mithilfe des CLIs
+von \lstinline{doctest} ausgeführt. Da beide Test keine Fehler werfen existiert
+auch kein Output für diese Tests.
+Die einzige Möglichkeit hier einen Output zu bekommen wäre mit \lstinline{-v} im
+CLI oder \lstinline{verbose=True} im Funktionsaufruf. Die dort dargestellten
+Informationen sind lediglich welche Kommandos ausgeführt wurden, was erwartet
+wurde und das, dass erwartete eingetroffen ist. Ein kleines Beispiel ist in
+Listing \ref{listing:doctest:output} zu sehen.
 
-Die Komplexität als auch die Anforderungen für doctest sind sehr gering. Das testen geschieht
-mithilfe der interaktiven Python-Sitzung, welche jedem Python Entwickler bekannt ist. Die
-Tests selbst sind aufrufe der geschriebenen Funktionen und Methoden und ein Abgleich des
-Outputs mit dem Erwarteten Wert.
+Da \lstinline{doctest} selbst keine Test Fälle unterstützt besitzt
+\nameref{python-tools:unittest} eine Integration für \lstinline{doctest},
+diese ermöglicht es Tests aus Kommentaren sowie Textdateien in unittest zu
+integrieren und zu gliedern. Wie \nameref{python-tools:unittest}, ist auch
+doctest in der STDLIB, wodurch keine externen Abhängigkeiten geladen werden
+müssen.
+\newline
 
-Das Listing \ref{listing:doctest:advanced} zeigt den Code aus \ref{listing:base:my_module} mit
-\Glspl{docstring} versehen. Dieser Test wurde mithilfe der \lstinline{main} Funktion von Python
-ausgeführt. Der in Listing \ref{listing:doctest:advanced_text} ausgelagerte Test, wurde mithilfe
-des CLIs von doctest ausgeführt. Da beide Test keine Fehler werfen existiert auch kein Output
-für diese Tests.
+Im Bezug auf die Anwendbarkeit von \lstinline{unittest} lässt sich sagen, dass
+nicht alles zur Verfügung steht um TDD zu betreiben. Tests können nicht vor der
+eigentlichen Funktionalität geschrieben werden und  \Glspl{fixture} und
+\Glspl{mock} werden nicht unterstützt.
 
-Die einzige Möglichkeit hier einen Output zu bekommen wäre mit \lstinline{-v} im CLI oder
-\lstinline{verbose=True} im Funktionsaufruf. Die dort dargestellten Informationen sind
-lediglich welche Kommandos ausgeführt wurden, was erwartet wurde und das, dass erwartete
-eingetroffen ist. Ein kleines Beispiel ist in Listing \ref{listing:doctest:output} zu sehen.
+Die Anforderungen für \lstinline{doctest} sind sehr gering. Das testen geschieht
+mithilfe der interaktiven Python-Sitzung, welche jedem Python Entwickler bekannt
+ist. Die Tests selbst sind aufrufe der geschriebenen Funktionen und Methoden und
+ein Abgleich des Outputs mit dem Erwarteten Wert. Demnach kann ein Entwickler
+sehr Effizient mit \lstinline{doctest} umgehen ohne viel wissen zu benötigen.
 
-Da doctest selbst keine Test Fälle unterstützt besitzt \nameref{python-tools:unittest} eine
-Integration für doctest, diese ermöglicht es Tests aus Kommentaren sowie Textdateien in
-unittest zu integrieren und zu gliedern.
+\lstinline{doctest} selbst bietet keinerlei Komplexität von sich aus,
+stattdessen ist die Komplexität die möglich ist vom Entwickler abhängig, da
+dieser die Tests komplett selber schreiben muss. Je nach zu testender
+Funktion/Methode kann dies abhängig des Test Aufwands schnell unübersichtlich
+werden, wenn viel Code abseits des eigentlichen Tests benötigt wird.
 
-Da sich mit Doctest leider Funktionen nicht präparieren lassen, ist dieses Test Modul für die
-alleinige Anwendung in TDD nicht nutzbar. Das Tool bietet keine Möglichkeiten Objekte zu \gls{mock}en
-wodurch Tests an nicht implementieren Methoden und Funktionen scheitern. Auch \Glspl{fixture} sind
-nur bedingt realisierbar und benötigen viel Code der dupliziert werden muss, da dieser vor und nach
-jedem Test geschrieben werden muss.
+Als Erweiterung bestehen lediglich die Integration in
+\lstinline{unittest}\footcite{docs.python:doctest} sowie
+\lstinline{pytest}\footcite{docs.pytest.org:4.4}.
+\newline
+\newline
+\\
+\textbf{Muss nach Zusammenfassung}
+Da sich mit Doctest leider Funktionen nicht präparieren lassen, ist dieses
+Test Modul für die alleinige Anwendung in TDD nicht nutzbar. Das Tool bietet
+keine Möglichkeiten Objekte zu \gls{mock}en wodurch Tests an nicht
+implementieren Methoden und Funktionen scheitern. Auch \Glspl{fixture} sind nur
+bedingt realisierbar und benötigen viel Code der dupliziert werden muss, da
+dieser vor und nach jedem Test geschrieben werden muss.
