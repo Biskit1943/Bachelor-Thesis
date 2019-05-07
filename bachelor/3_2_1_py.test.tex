@@ -37,73 +37,87 @@ eines \glspl{decorator} markiert und den Test Funktionen als Parameter
 übergeben. Um die \lstinline{setUp} und \lstinline{tearDown} Funktionalität zu
 bekommen muss lediglich das keyword \lstinline{yield} verwendet werden, die
 \Gls{fixture} wird dann den Code bis zum \lstinline{yield} ausführen und nach
-der Funktion den Rest nach \lstinline{yield} ausführen.
+der Funktion den Rest nach \lstinline{yield} ausführen. Ein Beispiel dazu ist in
+Listing \ref{listing:pytest:yield} zu finden, der dazugehörige Output ist in
+Listing \ref{listing:pytest:yield_output}.
+Diese lassen sich durch zusätzliche Parameter weiter anpassen. Die dazugehörigen
+Dokumentation ist in Kapitel Fünf der Dokumentation
+beschrieben(\cite{docs.pytest.org:4.4}).
 \newline
-\\
-Diese lassen sich durch zusätzliche Parameter weiter anpassen. Diese
-Funktionen sind in Kapitel fünf nach \cite{docs.pytest.org:4.4} beschrieben.
 
-Des weiteren bietet \lstinline{pytest} auch \gls{mock}ing, so lässt sich beispielsweise mit
-\lstinline{monkeypatch.setattr()} der return Wert einer Funktion ersetzen. Dies wird
-in \lstinline{pytest} automatisch am ende der Funktion rückgängig gemacht, wodurch der Entwickler
-sich mehr auf das eigentliche Testen konzentrieren kann.
+Des weiteren bietet \lstinline{pytest} auch \gls{mock}ing, so lässt sich
+beispielsweise mit \lstinline{monkeypatch.setattr()} der return Wert einer
+Funktion ersetzen. Dies wird in \lstinline{pytest} automatisch am ende der
+Funktion rückgängig gemacht, wodurch der Entwickler sich mehr auf das
+eigentliche Testen konzentrieren kann und weniger um das aufräumen nach dem
+Testen.
+Auch hier bietet \lstinline{pytest} weitere Möglichkeiten \Glspl{mock} zu
+verwenden, die dazugehörige Dokumentation ist in Kapitel Sieben zu
+finden(\cite{docs.pytest.org:4.4}).
 \newline
-\\
-Auch hier bietet \lstinline{pytest} weitere Möglichkeiten \Glspl{mock} zu verwenden, dazu hat
-\cite{docs.pytest.org:4.4} in Kapitel sieben einige Worte geschrieben.
 
-Ein weiteres sehr praktisches Feature von \lstinline{pytest} ist die Gliederung in Fälle. Dies ist bei \lstinline{pytest}
-sehr fein einstellbar, so lässt sich wie in den Basis Features bereits beschrieben ein Test mit
-einer oder mehreren Markierungen versehen wodurch eine Gliederung nach Markierung entsteht. Auch
-durch das selektieren bestimmten Wörtern lassen sich Tests nach ihrem Namen gliedern, so entsteht
-einerseits eine Gliederung zur Ausführung der Tests und andererseits eine Gliederung für die
-Entwickler die sie selbst im Code sehen können. Als letzte alternative lassen sich Tests anhand
+Ein weiteres Feature von \lstinline{pytest} ist die Gliederung in Test-Fälle.
+Diese lassen sich vom Entwickler mit vielen Einstellungsmöglichkeiten
+verfeinern, so lässt sich, wie in den Basis Features bereits beschrieben, ein
+Test mit einer oder mehreren Markierungen versehen, wodurch eine Gliederung nach
+Markierung entsteht. Auch durch das selektieren bestimmten Wörtern lassen sich
+Tests nach ihrem Namen gliedern, so entsteht einerseits eine Gliederung zur
+Ausführung der Tests und andererseits eine Gliederung für die Entwickler die sie
+selbst im Code sehen können. Als letzte alternative lassen sich Tests anhand
 ihrer Module ausführen, dies geschieht durch die Angabe der Module. So würde
-\lstinline{test_datei.py::TestKlasse::test_methode} den Test \lstinline{test_methode} der Klasse
-\lstinline{TestKlasse} in der Datei \lstinline{test_datei.py} ausführen.
+\lstinline{test_datei.py::TestKlasse::test_methode} den Test
+\lstinline{test_methode} der Klasse \lstinline{TestKlasse} in der Datei
+\lstinline{test_datei.py} ausführen.
+Diese Features sind in Kapitel Sechs notiert(\cite{docs.pytest.org:4.4}).
 \newline
-\\
-Diese Features werden in Kapitel sechs von \cite{docs.pytest.org:4.4} beschrieben.
 
-Selbstverständlich bietet \lstinline{pytest} noch weitere Features jedoch sind diese nicht zwangsläufig notwendig
-um TDD zu betreiben und sind mehr ein nice to have Feature als wirklich benötigt. Für eine
-Vollständige Auflistung und Erklärung aller Features kann jederzeit unter
-\url{https://docs.pytest.org/en/latest/} die aktuellste Version der Dokumentation abgefragt werden.
+Selbstverständlich bietet \lstinline{pytest} noch weitere Features jedoch sind
+diese nicht zwangsläufig notwendig um TDD zu betreiben und sind mehr ein nice to
+have Feature als wirklich benötigt. Für eine Vollständige Auflistung und
+Erklärung aller Features kann jederzeit unter
+\url{https://docs.pytest.org/en/latest/} die aktuellste Version der
+Dokumentation abgefragt werden.
+\newline
 
-Da \lstinline{pytest} nicht in der STDLIB ist, muss es mit einem \Gls{paket} installiert werden.
-Dabei werden für \lstinline{pytest 4.4.0} die in Listing \ref{listing:pytest:requirements}
-gezeigten Abhängigkeiten installiert. Demnach benötigt \lstinline{pytest} sechs externe Abhängigkeiten
-zusätzlich zu sich selbst.
-Demnach bietet \lstinline{pytest} alles um TDD anwenden zu können und die sieben zusätzlichen Abhängigkeiten
-die ein Entwickler bei der Nutzung von \lstinline{pytest} eingeht sollten keinen Entwickler davon abhalten
-\lstinline{pytest} und seine Features zu genießen.
-\newline
-\\
-Da \lstinline{pytest}, wie bereits erwähnt keine neuen assert Methoden hinzufügt lässt sich sehr schnell und
-einfach ein Test schreiben. Selbst die Nutzung von \Glspl{fixture} ist in \lstinline{pytest} sehr einfach, da
-lediglich eine Funktion geschrieben werden muss die mit \lstinline{@pytest.fixture} markiert wurde
-und der Test Funktion oder Methode als Parameter übergeben wird. Den Rest erledigt \lstinline{pytest} selbst
-im Hintergrund. Genauso einfach gestaltet sich die Nutzung von \Glspl{mock}.
+Das Testen des in Listing \ref{listing:base:my_module} definierten Moduls
+gestaltete sich mit \lstinline{pytest} ohne Probleme. Der Code dazu kann in
+Listing \ref{listing:pytest:advanced} gelesen werden. Der dazugehörige Output
+findet sich in Listing \ref{listing:pytest:advanced_output}. Da beim Testen
+keine Probleme gefunden wurde, wird hier nicht weiter auf den Test eingegangen.
 
-Die Effizienz, die bei der Nutzung von \lstinline{pytest} entsteht ist demnach sehr hoch. Denn der Entwickler
-muss nicht wirklich etwas neues dazu lernen um Tests zu schreiben oder zu präparieren. Genauso
-leicht kann ein Entwickler den Output von \lstinline{pytest} auswerten, da dieser erstens, in Farbe ist, was
-die Lesbarkeit deutlich erhöht, zweitens sehr gut gegliedert ist und Wichtige Strukturen klar
-darstellt und drittens nach den Wünschen der Entwickler sich gestalten und verbessern lässt.
-\newline
-\\
-Durch die eben genannten Features im Bezug auf das schreiben von Tests mit assert, sowie
-\Glspl{fixture} und \Glspl{mock} lässt sich sagen das \lstinline{pytest} sehr viel Funktionalität bietet
-wobei es trotzdem Struktur im Code bietet und komplexe Features einfach ermöglicht. Demnach
-kann ein Entwickler mit wenig Code viel Testing Funktionalität erstellen.
-\newline
-\\
-Sollten dem Entwickler die Features von \lstinline{pytest} nicht ausreichen, so findet man unter
-\url{http://plugincompat.herokuapp.com/} eine Liste von 618 (Stand: 2. April 2019) Erweiterungen
-für \lstinline{pytest 4.3.0}. \lstinline{pytest} selbst kann allerdings auch als Erweiterung zu unittest
-genutzt werden, indem ein Entwickler \lstinline{pytest} zum ausführen der unittests verwendet. Dadurch bietet
-sich dem Entwickler ein verbesserter Output des Test Ergebnisses.
-\newline
-\\
-Im Listing \ref{listing:pytest:advanced} und \ref{listing:pytest:advanced_output} befindet sich der
-Code und der Output zum Test von dem in Listing \ref{listing:base:my_module} definierten Modul.
+Im Aspekt der Anwendbarkeit bietet \lstinline{pytest} alles um TDD effektiv
+anwenden zu können, da sowohl \gls{mock}ing als auch \Glspl{fixture} ohne
+Erweiterungen möglich sind und dazu noch im Umfang einiges zusätzlich zur
+Basis Funktionalität dazu bieten.
+Da \lstinline{pytest} nicht in der STDLIB ist, muss es aus externen Quellen
+installiert werden. Dabei werden für \lstinline{pytest 4.4.0} die in Listing
+\ref{listing:pytest:requirements} gezeigten Abhängigkeiten installiert. Demnach
+benötigt \lstinline{pytest} sechs externe Abhängigkeiten zusätzlich zu sich
+selbst.
+
+Da \lstinline{pytest} keine neuen \lstinline{assert} Methoden hinzufügt lässt
+sich ein Test ohne großen Zeitaufwand und Komplikationen schreiben. Mit
+\lstinline{pytest} ist es dem Entwickler möglich mit einem geringen Aufwand
+\Glspl{fixture} und \Glspl{mock} zu nutzen.
+
+Die Effizienz, mit der \lstinline{pytest} verwendet werden kann ist hoch, denn
+der Entwickler muss keine neuen Konstrukte lernen um Tests zu schreiben. Die
+Auswertung der Tests erfolgt auf der Konsole in Farbigen Output und lesbarer
+Gliederung, wie in Listing \ref{listing:pytest:advanced_output} zu sehen ist
+(Abgesehen von der Farbe). Demnach ist es dem Entwickler möglich ohne großen
+Zeitaufwand die Ergebnisse der Test effizient aus zu werten.
+
+Die Features von \lstinline{pytest} sind äußerst umfassend und bieten dem Nutzer
+nahezu alles an Funktionalitäten die gewünscht sein könnten. Durch die
+unkomplizierte Verwendung von \lstinline{pytest} ist es Entwicklern möglich
+übersichtlichen und gut lesbaren Code zu schrieben. Dieser wird auch mit
+steigender Komplexität, dank der Strukturen von \lstinline{pytest} nicht weniger
+lesbar.
+
+Sollten dem Nutzer die Features von \lstinline{pytest} nicht genügen, so lässt
+sich unter \url{http://plugincompat.herokuapp.com/} eine Liste von 618
+(Stand: 2. April 2019) Erweiterungen für \lstinline{pytest 4.3.0} finden.
+\lstinline{pytest} selbst kann allerdings auch als Erweiterung zu unittest
+genutzt werden, indem es als Test-runner für diese verwendet wird, dadurch ist
+es dem Entwickler möglich den verbesserten Output von \lstinline{pytest} zu
+verwenden.

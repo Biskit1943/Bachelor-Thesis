@@ -5,6 +5,9 @@
 \addcontentsline{toc}{section}{Listings}
 \fancyhead[L]{Listings} % Kopfzeile links
 
+%=====================================================================%
+% Base Modules
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:base:my_module,
@@ -18,8 +21,10 @@
     caption=Basis Modul zum testen von mocks,
 ]{analyse/my_package/my_mock_module.py}
 \newpage
-%=====================================================================%
 
+%=====================================================================%
+% unittest
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:unittest:example,
@@ -36,7 +41,6 @@
     caption=unittest einfaches Beispiel: Output misslungen
 ]{analyse/unittest_/example_output_failure.txt}
 \newpage
-%=====================================================================%
 
 \lstinputlisting[
     language=Python,
@@ -44,8 +48,10 @@
     caption=unittest my\_module
 ]{analyse/unittest_/advanced_example.py}
 \newpage
-%=====================================================================%
 
+%=====================================================================%
+% doctest
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:doctest:example,
@@ -62,7 +68,6 @@
     caption=doctest verbose Output
 ]{analyse/doctest/output.txt}
 \newpage
-%=====================================================================%
 
 \lstinputlisting[
     language=Python,
@@ -77,12 +82,20 @@
     caption=doctest my\_module: Textdatei
 ]{analyse/doctest/advanced.txt}
 \newpage
+
 %=====================================================================%
+% pytest
+%=====================================================================%
+\lstinputlisting[
+    language=Python,
+    label=listing:pytest:yield,
+    caption=pytest setUp und tearDown
+]{analyse/py.test/yield.py}
 
 \lstinputlisting[
-    label=listing:pytest:requirements,
-    caption=pytest Abhängigkeiten
-]{analyse/py.test/after.requirements}
+    label=listing:pytest:yield_output,
+    caption=pytest setUp und tearDown Output
+]{analyse/py.test/yield.txt}
 
 \lstinputlisting[
     language=Python,
@@ -94,8 +107,15 @@
     label=listing:pytest:advanced_output,
     caption=pytest my\_module: Output
 ]{analyse/py.test/advanced_output.txt}
-%=====================================================================%
 
+\lstinputlisting[
+label=listing:pytest:requirements,
+caption=pytest Abhängigkeiten
+]{analyse/py.test/after.requirements}
+
+%=====================================================================%
+% reahl.stubble
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:reahl.stubble:Impostor,
@@ -108,33 +128,42 @@
     caption=stubble my\_mock\_module
     lastline=91
 ]{analyse/stubble/example.py}
-%=====================================================================%
 
+%=====================================================================%
+% mocktest
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:mocktest:example,
     caption=mocktest my\_mock\_module
 ]{analyse/mocktest_/example.py}
-%=====================================================================%
 
+%=====================================================================%
+% flexmock
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:flexmock:example,
     caption=flexmock my\_mock\_module
 ]{analyse/flexmock_/example.py}
+
 \lstinputlisting[
     label=listing:flexmock:exception,
     caption=flexmock exception
 ]{analyse/flexmock_/exception.txt}
-%=====================================================================%
 
+%=====================================================================%
+% doublex
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:doublex:example,
     caption=python-doublex my\_mock\_module
 ]{analyse/python-doublex/example.py}
-%=====================================================================%
 
+%=====================================================================%
+% hypothesis
+%=====================================================================%
 \lstinputlisting[
     language=Python,
     label=listing:hypothesis:given,

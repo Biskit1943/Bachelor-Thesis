@@ -1,119 +1,165 @@
 % !TeX root = ../bachelor.tex
-\paragraph{python-doublex}\label{python-tools:doublex}\mbox{}
+\paragraph{doublex}\label{python-tools:doublex}\mbox{}
 \newline
-Mit \lstinline{python-doublex} wird dem Entwickler ein Tool an die Hand gelegt,
-dessen Funktionalität sich voll und ganz um doubles dreht. Ein double ist je nach
-Anwendung ein \Gls{mock}, ein \Gls{stub} oder ein Spy(Spion), der eine Klasse oder
-ein Objekt imitiert.
+Mit \lstinline{doublex} wird dem Entwickler ein Tool an die Hand gelegt,
+dessen Funktionalität sich voll und ganz um doubles dreht. Ein double ist je
+nach Anwendung ein \Gls{mock}, ein \Gls{stub} oder ein Spy(Spion), der eine
+Klasse oder ein Objekt imitiert (\cite{doublex:docs:1.8.1}).
+\newline
 
-\lstinline{python-doublex} bietet drei Verschiedene Interfaces (vier zählt man die
-Unterklasse von Spy dazu), Stub, Spy (und ProxySpy) und Mock. Da die Dokumentation
+\lstinline{doublex} bietet drei Verschiedene Interfaces (vier zählt man die
+Unterklasse von Spy dazu), \Gls{stub}, Spy (, ProxySpy) und Mock. Da die Dokumentation
 hier sehr schöne und treffende Beschreibungen nimmt, werden diese nun hier zitiert.
 \begin{itemize}
-    \item "`Stubs sagen dir was du hören willst."'\footlabel{doublex:doc:cite}{\cite{doublex:docs:1.8.1}} \footlabel{doublex:doc:trans}{Übersetzt aus dem Englischen}
-    \item "`Spies erinnern sich an alles was Ihnen passiert."'\footref{doublex:doc:cite} \footref{doublex:doc:trans}
-    \item "`Proxy spies leiten aufrufe an Ihre originale Instanz weiter."'\footref{doublex:doc:cite} \footref{doublex:doc:trans}
-    \item "`Mock erzwingt das vordefinierte Skript."'\footref{doublex:doc:cite} \footref{doublex:doc:trans}
+    \item "`\Glspl{stub} sagen dir was du hören willst."'\footlabel{doublex:doc:trans}{Übersetzt aus dem Englischen} \footlabel{doublex:doc:cite}{\cite{doublex:docs:1.8.1}}
+    \item "`Spies erinnern sich an alles was Ihnen passiert."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}
+    \item "`Proxy spies leiten aufrufe an Ihre originale Instanz weiter."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}
+    \item "`Mock erzwingt das vordefinierte Skript."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}
 \end{itemize}
+\noindent
+Mit diesen Beschreibungen der einzelnen Interfaces kann ein Entwickler bereits
+entscheiden welches der Objekte relevant für die zu erledigende Arbeit ist, ohne
+den Code dazu kennen zu müssen. Um dennoch einen erweiterten Einblick zu
+schaffen werden die einzelnen Funktionen nun genauer beschrieben.
 
-Mit diesen Beschreibungen der einzelnen Interfaces kann ein Entwickler bereits entscheiden
-welches von Ihnen für Ihn in Frage kommt, ohne den Code dazu kennen zu müssen. Um dennoch
-einen erweiterten Einblick zu schaffen werden die einzelnen Funktionen hier noch ein mal
-genauer beschrieben. Wichtig ist hierbei zu beachten, dass \lstinline{python-doublex}
-lediglich doubles, also Duplikate anbietet, die das gleiche Interface wie eine Klasse habe,
-jedoch keine Instanz dieser Klasse sind. Dadurch bleiben manche Möglichkeiten dem
-Entwickler verwehrt, wie zum Beispiel das Nutzen einer implementierten Methode aus
-der original Klasse. Die Duplikate sollen als Ersatz gelten für nicht implementierte
-Methoden, deren Funktionalität und deswegen der Rückgabe Wert bekannt ist.
+Wichtig ist hierbei zu beachten, dass \lstinline{doublex} lediglich
+doubles, also Duplikate anbietet, die das gleiche Interface wie eine Klasse
+haben, jedoch keine Instanz dieser Klasse sind. Dadurch bleiben manche
+Möglichkeiten dem Entwickler verwehrt, wie zum Beispiel das Nutzen einer
+implementierten Methode aus der original Klasse.
+Die Duplikate sollen als Ersatz gelten für Objekte die in einer Bestimmten
+Umgebung ausgeführt werden müssen oder änderungen vornehmen, die während
+einem Test nicht gewünscht sind.
+\newline
 
-Das Stub Interface ist, wie der Name bereits vermuten lässt, ein \Gls{stub}
-mit dem es dem Entwickler möglich ist Rückgabe Wert von Funktionen zu setzen oder ähnliche
-Aktionen fest zu definieren. Dazu ist es dem Entwickler möglich zwischen verschiedenen
-Parametern zu unterscheiden oder gar auf alle aufrufe zu prüfen. Das Interface bietet auch
-die Möglichkeit Parameter von einem Objekt zu ändern um den ausgang von Methoden zu verändern.
-Das Interface unterscheiden zwischen einem Stub und einem "`free"' Stub. Ersterer nimmt eine
-Klasse als Parameter und ersetzt diese, zweiterer nimmt keine Parameter und fungiert als
-generelles Objekt. Dabei ist der wichtigste unterschied, dass der normale Stub nur 
-Methoden ab ändern kann die, die originale Klasse auch besitzt, der "`free"' Stub 
-ist in dieser Hinsicht ungebunden und kann alles sein was der Entwickler Ihm zuweist,
-also ist er frei.
+Das \Gls{stub} Interface ist, wie der Name bereits vermuten lässt, ein
+\Gls{stub} mit dem es dem Entwickler möglich ist Rückgabe Werte von Funktionen
+zu setzen oder ähnliche Aktionen fest zu definieren. Dabei ist es dem Entwickler
+möglich zwischen verschiedenen Parametern zu unterscheiden oder gar auf alle
+aufrufe zu prüfen.
 
-Als zweites Interface wird von \cite{doublex:docs:1.8.1} in der Dokumentation das Spy Interface
-erwähnt. Dieses bietet dem Nutzer die Möglichkeit Klassen zu überwachen, dabei legt der Entwickler
-fest welche Methode wie oft und mit welchen Parametern aufgerufen werden muss. Werden die 
-Erwartungen nicht getroffen wird eine Exception geworfen. Das überprüfen der Parameter ist dabei
-möglich mithilfe des exakten wertes, einer Regex oder mit dem von \lstinline{python-doublex}
-definierten Schlüsselwort \lstinline{ANY_ARG}, welches, wie der Name sagt, jedes Argument
-validiert. Zum Spy gibt es auch wieder einen "`free"' Spy, welcher von keiner Klasse
-abhängig ist. Dadurch ist es möglich jede beliebige Methode auf diesem aus zu führen ohne
-dass dies zu einer Exception führen würde, danach kann dann überprüft werden mit welchen
-Parametern und wie oft der Spy aufgerufen wurde.
+Das Interface bietet auch die Möglichkeit Parameter von einem Objekt zu ändern
+um den Ausgang von Methoden zu verändern. Hierbei wird zwischen einem \Gls{stub}
+und einem "`free"' \Gls{stub} unterschieden. Ersterer nimmt eine Klasse als
+Parameter und ersetzt diese, zweiterer nimmt keine Parameter und fungiert als
+generelles Objekt. Dabei ist der wichtigste unterschied, dass der normale
+\Gls{stub} nur Methoden ab ändern kann, die die originale Klasse auch besitzt,
+der "`free"' \Gls{stub} hingegen ist in dieser Hinsicht ungebunden und kann
+alles sein was der Entwickler programmiert, er ist also frei.
+\newline
 
-Zusätzlich zum Spy gibt es noch einen \lstinline{ProxySpy}, welcher das zu überwachende
-Objekt aufruft und nicht ersetzt. Aus diesem Grund erhält der \lstinline{ProxySpy} ein
-Objekt als Parameter und kein Klasseninterface. Sämtliche Methoden werden auf das originale
-Objekt ausgeführt wodurch keine Veränderung an diesem Vorgenommen werden kann, in Form von
-einem \Gls{stub}.
+Als zweites Interface wird in der Dokumentation das Spy Interface erwähnt
+(\cite{doublex:docs:1.8.1}). Dieses bietet dem Nutzer die Möglichkeit Klassen zu
+überwachen, dabei legt der Entwickler fest welche Methode wie oft und mit
+welchen Parametern aufgerufen werden muss. Werden die Erwartungen nicht
+getroffen wird eine Exception geworfen. Das überprüfen der Parameter ist dabei
+möglich, mithilfe des exakten wertes, einer Regex oder mit dem von
+\lstinline{doublex} definierten Schlüsselwort \lstinline{ANY_ARG}, welches, wie
+der Name sagt, jedes Argument validiert.
 
-Das letzte Interface, ist das Mock Interface. Mit diesem lässt sich vor dem Test festlegen
-welche Methode wann und wie aufgerufen werden muss, damit der Test erfolgreich wird. Die
-Reihenfolge spielt dabei eine Rolle, außer man nutzt \lstinline{any_order_verify()}.
-Das Mock Objekt lässt sich dabei wie jedes andere Objekt verändern und wie ein Stub
-präparieren. Auch der "`free"' Mock ist wie bei den anderen Interfaces verfügbar und
-bietet die gleichen Möglichkeiten der freien Gestaltung des Objekts.
+Zusätzlich gibt es auch hier einen "`free"' Spy, welcher von keiner
+Klasse abhängig ist. Hierdurch ist es möglich ist jede beliebige Methode auf
+diesem aus zu führen, ohne dass dies zu einer Exception führen würde. Ansonsten
+fungiert der freie Spy wie der normale auch.
+\newline
 
-Zusammenfassen lässt sich sagen, das jedes Interface die Möglichkeit bietet eine Klasse
-zu verändern ausgenommen, der \lstinline{ProxySpy} der nur auf einer Instanz arbeiten kann.
-Zu jedem Interface ist ein freies Interface verfügbar, welches mit beliebigen Methoden
-aufgerufen werden kann ohne Fehler zu werfen. Zum Abschluss lässt sich auch noch sagen, dass
-jedes Interface, die Möglichkeit bietet stubbing zu betreiben, wobei nur das Stub Interface
-sonst keine weitere Funktionalität bietet.
+Zusätzlich zum Spy und "`free"' Spy, gibt es noch einen \lstinline{ProxySpy},
+welcher das zu überwachende Objekt aufruft und nicht ersetzt. Aus diesem Grund
+erhält der \lstinline{ProxySpy} ein Objekt als Parameter und kein
+Klasseninterface. Sämtliche Methoden werden auf das originale Objekt ausgeführt
+wodurch keine Veränderung an diesem Vorgenommen werden kann.
+\newline
 
+Das letzte Interface, ist das Mock Interface. Mit diesem lässt sich vor dem Test
+festlegen welche Methode wann und wie aufgerufen werden muss, damit der Test
+erfolgreich ist. Die Reihenfolge spielt dabei eine wichtige Rolle, außer es wird
+\lstinline{any_order_verify()} genutzt. Das Mock Objekt lässt sich dabei wie
+jedes andere Objekt verändern und wie ein \Gls{stub} präparieren.
 
-\lstinline{python-doublex} bietet dem Entwickler viel, aber nicht alles für effizientes TDD.
-Wie der Name des Tools bereits vermuten lässt handelt es sich um Duplikate von Objekten, deren
-Funktionalität aber vom Entwickler festgelegt werden muss. So würde eine Klasse mit einer Methode
-\lstinline{return_input(input)} die den übergebenen Parameter zurück gibt standardmäßig
-\lstinline{None} zurück geben, solange nichts anderes im Duplikat festgelegt wurde. Lediglich
-die Signartur des Aufrufs wird überprüft, so würde \lstinline{stub.reuturn_input()} eine Exception
-werfen. Zwar lässt sich das standardverhalten von \lstinline{python-doublex} verändern, jedoch
-kann man hier nur einen festen Wert setzen der für alle nicht ersetzten Methoden gilt. Auch
-wenn man Globale Objekte oder Module ersetzen möchte ist dies nicht möglich. Hinzu kommt das,
-dass Tool drei Abhängigkeiten benötigt und selbst nicht in stabilem Zustand ist. Währen der
-Analyse sind zwei \lstinline{DeprecationWarning}s aufgetaucht, wovon eine bereits mit Python 3.0
-ausgelaufen ist. Dies weißt auf eine nicht sehr aktive Entwicklung des Tools hin. Selbstverständlich
-wurde die Fehler auf GitHub gemeldet, sodass man sich darum kümmern kann. (Stand 23. April 2019)
+Auch der "`free"' Mock ist wie bei den anderen Interfaces verfügbar und bietet
+die gleichen Möglichkeiten der freien Gestaltung des Objekts.
+\newline
 
-Auch die Effizienz lässt etwas zu wünschen übrig. Dadurch, dass das Duplikat nicht die originalen
-Methoden aufruft, sofern verfügbar, muss jede Methode mit einem Return Wert überschrieben werden.
-Dies mag für manche Tests vollkommen ausreichen, macht aber die Entwicklung mit TDD sehr schwer,
-da Tests von Zeit zu Zeit ausgeführt werden müssen und dort die Teil Implementierung selbst
-verständlich genutzt werden soll. Hat man allerdings eine Externe Klasse auf die kein Einfluss ist
+Zusammenfassen lässt sich sagen, das jedes Interface die Möglichkeit bietet eine
+Klasse zu verändern, ausgenommen der \lstinline{ProxySpy}, der nur auf einer
+Instanz arbeiten kann.
+
+Zu jedem Interface ist ein freies Interface verfügbar, welches mit beliebigen
+Methoden aufgerufen werden kann ohne Fehler zu werfen. Abschließend lässt sich
+zusätzlich noch sagen, dass jedes Interface, die Möglichkeit bietet
+\gls{stub}ing zu betreiben, wobei nur das \Gls{stub} Interface sonst keine
+weitere Funktionalität bietet.
+\newline
+
+Die Features von \lstinline{doublex} wurden auf den in Listing
+\ref{listing:base:my_mock_module} definierten Code angewandt. Der daraus
+entstandene Code befindet sich in Listing \ref{listing:doublex:example}.
+
+Wie dort zu erkennen ist, konnte nicht jeder Test ohne Probleme validiert
+werden. So war es zwar möglich die ersten drei Tests erfolgreich zu validieren,
+jedoch ist es fraglich ob, dieser Code wirklich etwas bringt, da die getesteten
+Objekte einfach nur zurück geben, was erwartet ist und dabei nicht einmal das
+originale Objekt sind.
+
+Bei dem Test, der eine interne Methode aufrufen soll kommt das Spy Interface an
+seine grenzen, denn es kann nicht überprüfen ob die interne Methode aufgerufen
+wurde oder nicht. Stadessen wird eine Exception geworfen, welche in einem
+Kommentar in der Test Methode festgehalten wurde.
+
+Das Testen ob \lstinline{Helper.help()} aufgerufen wurde, war teilweise
+erfolgreich, da es dank des Duplikates ein Objekt mit dem Richtigen Interface
+bekommen hat, jedoch nicht vortäuschen konnte die gewünschte Klasse zu sein.
+Auch hier wurde der Fehler in einem Kommentar festgehalten.
+
+Zuletzt sollte getestet werden ob das \lstinline{os} Modul ausgetauscht werden
+kann, jedoch ist dies mit \lstinline{doublex} leider nicht möglich. Der Fehler
+dazu wurde in einem Kommentar innerhalb der Funktion festgehalten, sowie eine
+mögliche, wenn auch umständliche Lösung.
+Diese würde das \lstinline{os} Objekt duplizieren und der Methode als
+Parameter übergeben, was im Praktischen Einsatz aber nicht gemacht werden
+sollte, da dazu das Interface der Methode geändert werden muss.
+\newline
+
+\lstinline{doublex} bietet dem Entwickler viel, aber nicht alles für effizientes
+TDD. Wie der Name des Tools verrät, handelt es sich um Duplikate von Objekten,
+deren Funktionalität aber vom Entwickler festgelegt werden muss. So würde eine
+Klasse mit einer Methode \lstinline{return_input(input)} die den übergebenen
+Parameter zurück gibt standardmäßig \lstinline{None} zurück geben, solange
+nichts anderes im Duplikat festgelegt wurde. Lediglich die Signatur des Aufrufs
+wird überprüft, so würde \lstinline{stub.reuturn_input()} eine Exception
+werfen.
+
+Zwar lässt sich das Standardverhalten von \lstinline{doublex} verändern, jedoch
+kann man hier nur einen festen Wert setzen der für alle nicht ersetzten Methoden
+gilt. Auch Globale Objekte oder Module lassen sich nicht ersetzen. Hinzu kommt
+das, dass Tool drei Abhängigkeiten benötigt und selbst noch nicht in stabilem
+Zustand ist. Währen der Analyse sind zwei \lstinline{DeprecationWarning}s
+aufgetaucht, wovon eine bereits mit Python 3.0 ausgelaufen ist. Dies weißt auf
+eine nicht sehr aktive Entwicklung des Tools hin.
+
+Selbstverständlich wurde die Fehler auf GitHub gemeldet, sodass der Entwickler
+sich in Zukunft darum kümmern kann. (Stand 23. April 2019)
+
+Auch die Effizienz ist nicht optimal. Dadurch, dass das Duplikat nicht die
+originalen Methoden aufruft, muss jede Methode mit einem Return Wert
+überschrieben werden. Dies mag für manche Tests vollkommen ausreichen, macht
+aber die Entwicklung mit TDD sehr schwer, da Tests von Zeit zu Zeit ausgeführt
+werden müssen und dort die original Implementierung selbst verständlich genutzt
+werden soll. Hat man allerdings eine Externe Klasse auf die kein Einfluss ist
 kann dieses Tool durchaus nützlich werden.
 
-An Komplexität fehlt es \lstinline{python-doublex} etwas, so kann der \Gls{stub} lediglich festlegen
-welche Funktion ausgeführt, welcher Rückgabewert zurück gegeben oder welche Exception geworfen wird.
-Das Spy Interface hingegen ist leicht zu nutzen und bietet fast alles was ein Entwickler brauchen
-kann um zu überprüfen ob und wie etwas aufgerufen wurde. Jedoch scheitert es hier auch an der
-Implementieren von echten Objekten, so fungiert der ProxySpy zwar als Spy auf einem Objekt, jedoch
-kann er nur verzeichnen welche Methode auf Ihm aufgerufen wurde. So würde \lstinline{spy.call_other()}
-nicht \lstinline{obj.other()} registrieren, wodurch es nicht möglich ist zu überprüfen ob
-\lstinline{other()} nun aufgerufen wurde oder nicht. Das gleiche gilt mit Mock, lediglich Methoden
-die auf dem Mock-Objekt aufgerufen werden werden registriert. Aus diesem Grund ist es auch hier nicht
-optimal nutzbar für TDD.
+An Komplexität fehlt es \lstinline{doublex} ein wenig, so kann der \Gls{stub}
+lediglich festlegen welche Funktion ausgeführt, welcher Rückgabewert zurück
+gegeben oder welche Exception geworfen wird.
 
-Auch hier wurde der Code aus Listing \ref{listing:base:my_mock_module} mit \lstinline{python-doublex}
-getestet. Der Code dazu befindet sich in Listing \ref{listing:doublex:example}. Wie dort zu erkennen
-ist, konnte nicht jeder Test ohne Probleme validiert werden. So war es zwar möglich die ersten drei
-Tests erfolgreich zu validieren, jedoch fragt man sich dort ob es wirklich etwas bringt ein Objekt
-zu testen welches einfach das zurück gibt was man erwartet. Beim Test, der eine interne Methode
-aufrufen soll kommt das Spy Interface an seine grenzen, da es nicht überprüfen kann ob die
-interne Methode aufgerufen wurde. Der Error wurde in einem Kommentar in der Teste Methode
-festgehalten. Das Testen ob \lstinline{Helper.help()} aufgerufen wurde, war teilweise erfolgreich,
-da es dank des Duplikates ein Objekt mit dem Richtigen Interface bekommen hat, dennoch ist es leider
-mit \lstinline{python-doublex} nicht möglich vor zu täuschen eine andere Klasse zu sein. Auch hier
-wurde der Fehler in einem Kommentar festgehalten. Zuletzt sollte getestet werden ob das \lstinline{os}
-Modul ausgetauscht werden kann, jedoch ist dies mit \lstinline{python-doublex} leider nicht möglich.
-Der Fehler dazu wurde in einem Kommentar innerhalb der Funktion festgehalten, sowie eine mögliche,
-wenn auch umständliche Lösung. Die würde das \lstinline{os} Objekt duplizieren und der Methode als
-Parameter übergeben, was im Praktischen Einsatz aber nicht gemacht werden sollte.
+Das Spy Interface hingegen ist leicht zu nutzen und bietet fast alles was ein
+Entwickler brauchen kann um zu überprüfen ob und wie etwas aufgerufen wurde.
+Jedoch scheitert es hier auch an der Implementieren von echten Objekten, so
+fungiert der ProxySpy zwar als Spy auf einem Objekt, jedoch kann er nur
+verzeichnen welche Methode auf Ihm aufgerufen wurde.
+
+\lstinline{spy.call_other()} würde nicht \lstinline{obj.other()} registrieren,
+wodurch es nicht möglich ist zu überprüfen ob \lstinline{other()} nun aufgerufen
+wurde oder nicht. Das gleiche gilt für \Gls{mock}, lediglich Methoden die auf
+dem Mock-Objekt aufgerufen werden, werden registriert. Aus diesem Grund ist es
+auch hier nicht optimal nutzbar für TDD.
