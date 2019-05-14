@@ -1,5 +1,192 @@
 % !TeX root = ../bachelor.tex
 \subsection{Zusammenfassung}\label{zusammenfassung}
 
-Hier werden in kurzen Punkten die Vor- und Nachteile der einzelnen Tools zusammengefasst,
-um dem Leser einen schnellen Überblick zur Verfügung zu stellen.
+Um einen schnellen gesamt Überblick zu schaffen, werden unter diesem Punkt die
+einzelnen Vor- und Nachteile der Tools noch einmal zusammengefasst. Dabei wird
+auf die in Kapitel \nameref{python-tools} genannten Aspekte referenziert.
+
+Die Zusammenfassende Wertung wird mit einem Wert zwischen Eins und Zehn
+bestimmt, wobei Eins der schlechteste Wert ist und Zehn der Beste. Diese Wertung
+erfolgt aus den Analysen des jeweiligen Tools in den vorherigen Kapiteln. Um die
+Zusammenfassung besser zu gliedern werden die Tools nicht mehr zwischen STDLIB
+und externe Pakete unterschieden, sondern nach Funktionalität gegliedert (unit-,
+mock- und fuzz-testing Tools). Zu jeder Wertung erfolgt eine kleine
+Zusammenfassung der Analyse, um die Wertung nachvollziehbar zu gestalten.
+
+%===============================================================================
+% Unit-testing Tools
+%===============================================================================
+\subsubsection{Unit-testing Tools}\label{zusammenfassung:unit}
+
+\paragraph{unittest}\label{zusammenfassung:unit:unittest}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (10/10):\newline
+    \lstinline{unittest} bietet dank dem submodul \lstinline{unittest.mock}
+    alles an Funktionalität um TDD einsetzen zu können. Da es in der STDLIB ist,
+    werden keine externen Abhängigkeiten benötigt.
+    
+    \item \underline{Effizienz} (7/10):\newline
+    Die Vorarbeit, die benötigt ist um Testen zu können hält sich in grenzen.
+    Jedoch ist die Auswertung der Tests durch den Monochromen Output nicht
+    sehr gut lesbar und bei vielen Fehlern unübersichtlich.
+    
+    \item \underline{Komplexität} (8/10):\newline
+    Die von \lstinline{unittest} bereit gestellten \lstinline{assert} Methoden
+    bieten dem Entwickler eine Methode für jede mögliche Behauptung. Abseits
+    davon bietet \lstinline{unittest} viel Funktionalität zum aufsetzen einer
+    Test Umgebung, wobei der geschriebene Code viel seiner Übersichtlichkeit
+    bewahrt.
+    
+    \item \underline{Erweiterbarkeit} (10/10):\newline
+    Viele Tools basieren oder erweitern \lstinline{unittest}, wodurch es möglich
+    ist neue Funktionalität zu \lstinline{unittest} hinzu zu fügen. Die Tools,
+    die \lstinline{unittest} erweitern bieten meist einen erheblichen Mehrwert
+    weshalb hier 10 Punkte vergeben werden.
+\end{itemize}
+
+\paragraph{doctest}\label{zusammenfassung:unit:doctest}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (3/10):\newline
+    Doctest bietet für sich alleine nicht genug Funktionalität um TDD betreiben
+    zu können.
+    
+    \item \underline{Effizienz} (3/10):\newline
+    Ein Entwickler der Python beherrscht, sollte keine Probleme haben
+    \lstinline{doctest} anwenden zu können. Der Code der allerdings abseits
+    der Test benötigt wird kann sehr groß ausfallen, wenn \Glspl{fixture}
+    gewünscht sind. Auch der Output ist schnell unübersichtlich.
+    
+    \item \underline{Komplexität} (1/10):\newline
+    Abgesehen der \lstinline{Option Flags} bietet \lstinline{unittest} keine
+    Funktionalität um Tests zu schreiben, der Entwickler kann sich hier
+    lediglich der STDLIB oder allen anderen Paketen bedienen die importiert
+    werden können.
+    
+    \item \underline{Erweiterbarkeit} (5/10):\newline
+    \lstinline{doctest} selbst ist nicht erweiterbar, kann jedoch als
+    Erweiterung für andere Test Tools genutzt werden. So wird von Haus aus
+    eine \lstinline{unittest} Integration bereit gestellt. Aus diesem Grund
+    werden hier 5 Punkte vergeben, da das Einsatzgebiet von \lstinline{doctest}
+    eher als Erweiterung gesehen werden sollte und nicht als Tool für TDD.
+\end{itemize}
+
+\paragraph{pytest}\label{zusammenfassung:unit:pytest}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (9/10):\newline
+    \lstinline{pytest} bietet alles um TDD betreiben zu können, lediglich die
+    der Fakt, dass es ein Externes Paket mit Sechs Abhängigkeiten ist gibt einen
+    Punkt Abzug.
+    
+    \item \underline{Effizienz} (10/10):\newline
+    Der Einstieg in \lstinline{pytest} erfolgt ohne Probleme und große
+    Vorarbeit. Der Output ist gegliedert und in Farbe, wodurch er leicht zu
+    lesen und zu verstehen ist.
+    
+    \item \underline{Komplexität} (10/10):\newline
+    Durch die umfassenden Features von \lstinline{pytest} ist es dem Entwickler
+    möglich viel aus seinen Tests heraus zu holen ohne neue Konstrukte lernen zu
+    müssen. Der dabei entstehende Code bewahrt auch bei viel Code ein gewisses
+    Maß an Lesbarkeit.
+    
+    \item \underline{Erweiterbarkeit} (10/10):\newline
+    Die 618 (Stand 2. April 2019) verfügbaren Erweiterung rechtfertigen die Zehn
+    erhaltenen Punkte.
+\end{itemize}
+
+%===============================================================================
+% Mock-testing Tools
+%===============================================================================
+\subsubsection{Mock-testing Tools}\label{zusammenfassung:mock}
+
+\paragraph{stubble}\label{zusammenfassung:mock:stubble}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (9/10):\newline
+    Die Funktionalität, die zum \gls{stub}en benötigt wird ist mit
+    \lstinline{stubble} fast komplett gegeben und die Abhängigkeiten belaufen
+    sich auf nur Eine.
+    
+    \item \underline{Effizienz} (10/10):\newline
+    Vorarbeit und viel Code werden mit \lstinline{stubble} nicht benötigt.
+    
+    \item \underline{Komplexität} (7/10):\newline
+    \lstinline{stubble} bietet lediglich die Möglichkeit Objekte zu ersetzen,
+    jedoch nicht mehr. Die Vorgefertigten \Glspl{stub} sind allerdings sehr
+    nützlich. Da, keine \gls{mock}ing Funktionalität geboten wird gibt es hier
+    Punktabzug.
+\end{itemize}
+
+\paragraph{mocktest}\label{zusammenfassung:mock:mocktest}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (9/10):\newline
+    \lstinline{mocktest} bietet seinem Nutzer alles um Objekte zu \gls{mock}en
+    oder zu \gls{stub}en. Zusätzlich erweitert \lstinline{mocktest} unittest
+    wodurch es möglich ist Test Umgebungen zu erschaffen. Zusätzlich zu sich
+    selbst wird Eine Abhängigkeit benötigt, für die es einen Punkt Abzug gibt.
+    
+    \item \underline{Effizienz} (10/10):\newline
+    Da \lstinline{mocktest} deskriptiv ist, kann es ohne großen Aufwand
+    verwendet werden. Der Code der dazu benötigt wird beschränkt sich auf
+    ein Minimum.
+    
+    \item \underline{Komplexität} (10/10):\newline
+    An Funktionalität fehlt es dem Tool nicht.
+
+\end{itemize}
+
+\paragraph{flexmock}\label{zusammenfassung:mock:flexmock}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (9/10):\newline
+    Im Bezug zu TDD wird dem Anwender fast alles geboten, was benötigt wird und
+    das mit nur einer Abhängigkeit, das Paket selbst.
+    
+    \item \underline{Effizienz} (10/10):\newline
+    Die Anwendung von \lstinline{flexmock} ist deskriptiv, weshalb es für einen
+    ohne größere Vorkenntnisse anwendbar ist. Der dabei zu schreibende Code ist
+    Minimal.
+    
+    \item \underline{Komplexität} (9/10):\newline
+    Das Interface von \lstinline{flexmock} ermöglicht sauberen und
+    übersichtlichen Code zu schreiben und bietet dabei einiges an Funktionalität
+    um zu \gls{mock}en und zu \gls{stub}en. Punktabzug gab es für die fehlende
+    Möglichkeit nicht existierende Funktionen und Methoden zu erstellen.
+\end{itemize}
+
+\paragraph{doublex}\label{zusammenfassung:mock:doublex}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (X/10):\newline
+    TBD.
+    
+    \item \underline{Effizienz} (X/10):\newline
+    TBD.
+    
+    \item \underline{Komplexität} (X/10):\newline
+    TBD.
+\end{itemize}
+
+%===============================================================================
+% Fuzz-testing Tools
+%===============================================================================
+\subsubsection{Fuzz-testing Tools}\label{zusammenfassung:fuzz}
+
+\paragraph{hypothesis}\label{zusammenfassung:fuzz:hypothesis}\mbox{}
+\newline
+\begin{itemize}
+    \item \underline{Anwendbarkeit} (X/10):\newline
+    TBD.
+    
+    \item \underline{Effizienz} (X/10):\newline
+    TBD.
+    
+    \item \underline{Komplexität} (X/10):\newline
+    TBD.
+    
+    \item \underline{Erweiterbarkeit} (X/10):\newline
+    TBD.
+\end{itemize}

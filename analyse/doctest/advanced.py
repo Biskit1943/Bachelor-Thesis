@@ -35,6 +35,7 @@ class Item(Base):
     Da Doctest keine Fixtures unterstuetzt muss hier der setUp Code stehen:
     >>> Base.metadata.create_all(engine)
     >>> item = Item(id_=1, name='name', storage_location=1, amount=1)
+    >>> session = Session()
     >>> session.add(item)
     >>> session.commit()
 

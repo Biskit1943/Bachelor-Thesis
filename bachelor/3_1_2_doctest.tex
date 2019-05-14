@@ -63,22 +63,31 @@ eigentlichen Funktionalität geschrieben werden und  \Glspl{fixture} und
 Die Anforderungen für \lstinline{doctest} sind sehr gering. Das testen geschieht
 mithilfe der interaktiven Python-Sitzung, welche jedem Python Entwickler bekannt
 ist. Die Tests selbst sind aufrufe der geschriebenen Funktionen und Methoden und
-ein Abgleich des Outputs mit dem Erwarteten Wert. Demnach kann ein Entwickler
-sehr Effizient mit \lstinline{doctest} umgehen ohne viel wissen zu benötigen.
+ein Abgleich des Outputs mit dem Erwarteten Wert. Sollten allerdings
+Glspl{fixture} gewünscht sein, so ist dies nur mit einer menge an Vorarbeit
+möglich, da diese jedes mal an der benötigten stelle geschrieben werden müssen.
+Der Output von \lstinline{doctest} gleicht dem von \lstinline{unittest} und
+verfügt über die gleichen schwächen. Bei vielen Fehlern und langem
+\gls{stacktrace} wird der Output schwer lesbar im Terminal.
+Die Effizienz mit der \lstinline{doctest} genutzt werden kann ist demnach
+mittelmäßig, zum einen ist es einfach Tests zu schreiben und zum anderen ist
+viel Code nötig oder Funktionalität wie das \gls{mock}en fehlen.
 
-\lstinline{doctest} selbst bietet keinerlei Komplexität von sich aus,
+\lstinline{doctest} selbst bietet wenig Komplexität von sich aus,
 stattdessen ist die Komplexität die möglich ist vom Entwickler abhängig, da
 dieser die Tests komplett selber schreiben muss. Je nach zu testender
 Funktion/Methode kann dies abhängig des Test Aufwands schnell unübersichtlich
 werden, wenn viel Code abseits des eigentlichen Tests benötigt wird.
-
+\lstinline{doctest} stellt dem Entwickler lediglich ein paar Möglichkeiten
+Optionen zu aktivieren, die den Test beeinflussen können. Diese sind in der
+Dokumentation unter dem Punkt \lstinline{Option Flags} zu
+finden\footnote{https://docs.python.org/3.7/library/doctest.html\#option-flags}.
+\\
 Als Erweiterung bestehen lediglich die Integration in
 \lstinline{unittest}\footcite{docs.python:doctest} sowie
 \lstinline{pytest}\footcite{docs.pytest.org:4.4}.
 \newline
-\newline
-\\
-\textbf{Muss nach Zusammenfassung}
+
 Da sich mit Doctest leider Funktionen nicht präparieren lassen, ist dieses
 Test Modul für die alleinige Anwendung in TDD nicht nutzbar. Das Tool bietet
 keine Möglichkeiten Objekte zu \gls{mock}en wodurch Tests an nicht

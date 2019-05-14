@@ -1,11 +1,12 @@
 % !TeX root = ../bachelor.tex
 \subsubsection{unittest}\label{python-tools:unittest}
 
-Das von JUnit inspirierte (\cite{docs.python:unittest}) Tool \lstinline|unittest|, ist bestand
-der Python Standardbibliothek und bietet seit jeher seinen Nutzern ein umfangreiches
-Repertoire an Funktionen zum testen von Python Code.
+Das von JUnit inspirierte (\cite{docs.python:unittest}) Tool
+\lstinline{unittest}, ist bestand der Python Standardbibliothek und bietet seit
+jeher seinen Nutzern ein umfangreiches Repertoire an Funktionen zum testen von
+Python Code.
 \noindent
-Die Funktionen von unittest lassen sich unter folgenden Punkten beschreiben:
+Die Funktionalität von unittest lässt sich mit folgenden Punkten beschreiben:
 \begin{itemize}
     \item \Gls{fixture}, zum präparieren der Tests.
     \item Test Fälle, zum gliedern einzelner Tests.
@@ -13,61 +14,65 @@ Die Funktionen von unittest lassen sich unter folgenden Punkten beschreiben:
     \item Test runner, zum ausführen von Testumgebungen oder Test Fällen.
 \end{itemize}
 \noindent
-Mithilfe der genannten Punkte ist es dem Entwickler möglich eine Stabile Test Umgebung
-auf zu bauen. Jedoch bietet \lstinline{unittest} alleine nicht alles um TDD betreiben zu können.
+Diese Funktionalität von \lstinline{unittest} ermöglicht es Anwendern eine
+komplette Test Umgebung zu erstellen und zu nutzen.
 
-Bei TDD werden zuerst die Tests und dann die Funktionalitäten geschrieben, daher
-muss es möglich sein andere Module(units) zu \gls{mock}en auf denen ein Test basiert.
-Durch die \Glspl{fixture} ist es bereits möglich den Test oder die Tests so vor zu
+Dazu wird eins der Hauptfeatures von \lstinline{unittest} verwendet, die Test
+Umgebung, mit denen es möglich ist Tests in Logische Klassen zu gliedern. Es ist
+auch möglich ohne diese \lstinline{unittest} ein zu setzen, jedoch ermöglichen
+sie eine Strukturierte Arbeitsumgebung sowie die Verwendung von \Glspl{fixture}.
+
+Jede Test Umgebung verfügt über Test Fälle, welche einen Test repräsentieren.
+Ist eine \lstinline{setUp()} und/oder \lstinline{tearDown()} Methode für eine
+Test Umgebung definiert, so werden diese vor und nach jedem Test ausgeführt.
+Alternativ kann dies aber auch nur beim initialisieren der Test Umgebung und
+beim verlassen der Test Umgebung geschehen, allerdings sind die Tests dann nicht
+mehr untereinander unabhängig, weshalb sie dann Integration Tests genannt
+werden.
+
+Test Fälle bestehen aus den jeweiligen Tests, die mit Hilfe der verschiedenen
+\lstinline{assert} Methoden von \lstinline{unittest} geprüft werden. Eine
+\lstinline{assert} Methode stellt eine Behauptung auf die getroffen werden muss.
+Die von \lstinline{unittest} bereit gestellten Methoden unterscheiden sich ein
+wenig von der \lstinline{assert} Methode aus der STDLIB. Eine Überprüfung auf
+\lstinline{True} würde mit der aus der STDLIB stammenden Funktion so aussehen
+\lstinline{assert xy is True} währen \lstinline{unittest} eine Methode bereit
+stellt mit der es etwas kürzer und leichter zu lesen ist,
+\lstinline{assertTrue(xy))}. \lstinline{unittest} stellt noch viele weitere
+dieser Methoden zur Verfügung, die Dokumentation verweist auf diese
+\footnote{https://docs.python.org/3/library/unittest.html}.
+
+Ein kleines Beispiel zu den \lstinline{assert} Methoden ist in Listing
+\ref{listing:unittest:example} zu finden. Dabei wurde die Funktion
+\lstinline{my_pow()} aus \lstinline{my_module} (Listing
+\ref{listing:base:my_module}) getestet. Dabei ist gut zu erkennen wie problemlos
+es möglich ist eine Funktion auf einen Wert zu prüfen. Dies geschieht
+einerseits anhand eines selbst errechneten Wertes und andererseits anhand der
+Quadrat Funktion aus der STDLIB.
+
+Um mit TDD Units unabhängig testen zu können müssen abhängige Units mit einem
+\Gls{mock} oder einem \Gls{stub} ersetzt werden. Durch die \Glspl{fixture} ist
+es bereits möglich den Test oder die Tests so vor zu
 bereiten, dass diese funktionieren, jedoch bieten \Glspl{mock} einfachere und
 schnellere Möglichkeiten Funktionen, Methoden, Klassen usw. zu imitieren.
 
 Jedoch gibt es in der STDLIB eine Erweiterung zu unittest mit dem Namen
-\lstinline|unittest.mock| welche unter eben diesem importiert werden kann um die 
-\gls{mock}ing Funktionalität zu bekommen. Diese Erweiterung, auch als \lstinline|submodule|
-bezeichnet ist Teil der STDLIB seit Python 3.3 wie in PEP417
-definiert wurde (\cite{python.org:PEP417}).
+\lstinline{unittest.mock} welche unter eben diesem importiert werden kann um die
+\gls{mock}ing Funktionalität zu bekommen. Diese Erweiterung, auch als
+\lstinline{submodule} bezeichnet ist Teil der STDLIB seit Python 3.3 wie in
+PEP417 definiert wurde (\cite{python.org:PEP417}).
 
-Das Tool bietet des weiteren ein CLI, mit welchem es dem Benutzer möglich ist
+\lstinline{unittest} bietet des weiteren ein CLI, mit welchem es dem Benutzer möglich ist
 seine Tests gebündelt aus zu führen und aus zu werten. Mit dem CLI ist es auch
 auch möglich automatisch Tests in einem Ordner zu "`entdecken"'(discover) und
 aus zu führen. Dadurch ist es sehr leicht neue Tests in ein bestehendes Test
 System ein zu führen und diese ohne Veränderungen am bestehenden System aus zu
 führen.
 
-Im Aspekt Anwendbarkeit bietet \lstinline|unittest| alles um als Tool für TDD in
-Frage zu kommen, jedoch nur unter Einbezug der Erweiterung \lstinline|unittest.mock|.
-\newline
-\\
-Mit Hilfe von unittest lässt sich sehr einfach und schnell ein Test schreiben,
-so würde das der Code aus Listing \ref{listing:unittest:example} bereits unsere 
-selbst geschriebene quadrat-Funktion aus Listing \ref{listing:base:my_module} testen,
-einmal mit unserem selbst berechneten Wert und einmal gegen den wert der quadrat-Funktion
-aus der STDLIB.
-
-Mit \lstinline{self.assertEqual} wird überprüft ob der erste Wert dem zweiten Wert
-gleicht. Im ersten \lstinline{assert} wird auf einen im Kopf ausgerechneten Wert
-geprüft und im zweiten wird die von Python gegebene Methode zum überprüfen verwendet.
-
-Die basis-Funktionalität von unittest ist schnell verstanden und setzt sich
-eigentlich nur aus \lstinline|self.assert{irgendwas}(...)| zusammen. Hat man die
-richtige assert Funktion gefunden lässt sich jede Funktion-Methode testen.
-
-Soll vor den Tests etwas vorbereiten oder präparieren so lässt sich dies mit
-\lstinline|setUp()| und \lstinline|tearDown()| realisieren, diese zwei Methoden
-überschreiben die Methoden aus \lstinline|unittest.TestCase| und werden vor
-jeder Funktion ausgeführt. Das Gleiche gibt es auch für den Test Fall, bei dem
-\lstinline|setUp()| und \lstinline|tearDown()| allerdings nur beim eintritt der
-Klasse und beim austritt ausgeführt werden. Diese Methoden sind die sogenannten
-\Glspl{fixture}.
-
-Sind weitere Features gewünscht kann sich der Dokumentation bedient werden,
-welche unter \url{https://docs.python.org/3/library/unittest.html} zu finden
-ist, diese umfasst, konvertiert zu einer PDF 58, Seiten.
-
 Die folgenden Listings \ref{listing:unittest:example_output_success} und
 \ref{listing:unittest:example_output_failure} zeigen wie ein Erfolgreicher Test
-und wie ein Misslungener Test aussehen können.
+und wie ein Misslungener Test aussehen können. Beide Outputs stammen aus dem Test
+der \lstinline{my_pow()} Funktion aus Listing \ref{listing:base:my_module}.
 In beiden Listings ist gut zu erkennen ob und was schief gegangen ist bei einem Test.
 Der erfolgreiche Test zeigt dem Nutzer sofort wie viele Test in wie vielen Sekunden gelaufen
 sind und ist dies erwünscht kann der Nutzer mit \lstinline|--verbose| sich noch mehr
@@ -77,22 +82,48 @@ bis zur Wurzel zurück verfolgen zu können. Auch der Fehler selbst wird in den 
 wie in Zeile 8 in Listing \ref{listing:unittest:example_output_failure} zu erkennen ist. Am
 Ende wird auch noch einmal angezeigt wie viele Tests schief gelaufen sind.
 
-Die Effizienz Tests aus zu werten ist demnach sehr hoch, jedoch wird der Output
-bei Mehreren Fehlern und langem \gls{stacktrace} sehr schnell sehr
-unübersichtlich für das Terminal. Ein Farbiger Output würde hier Abhilfe
-schaffen.
+Um einen Vergleich zwischen den Unit-testing Tools zu schaffen wurde die in
+Listing \ref{listing:base:my_module} definierte Klasse \lstinline{Item} mit
+\lstinline{unittest} getestet. Der Code dazu ist in Listing
+\ref{listing:unittest:advanced} zu finden.
+Die Tests wurde in einer Test Umgebung gegliedert und verfügen über eine
+\lstinline{setUp()} und \lstinline{tearDown()} \Gls{fixture}. Die
+\lstinline{setUp()} Methode startet eine Datenbank \lstinline{session} auf der
+gearbeitet werden kann, sowie ein Objekt \lstinline{self.item} mit welchem in
+den jeweiligen Tests gearbeitet wird, während die
+\lstinline{tearDow()} Methode dafür sorgt, dass die Datenbank nach jedem Test
+geschlossen wird, um sicher zu stellen, dass nicht ungenutzte Datenbank Sessions
+offen sind.
+Im ersten Test wird überprüft, ob ein der Datenbank hinzugefügtes Objekt auch
+wirklich in der Datenbank ist und im zweiten Test wird überprüft ob es möglich
+ist, eine nicht existierende externe Funktion zu ersetzen, sodass die Tests
+erfolgreich verlaufen.
+\newline
 
-Um die Komplexität von \lstinline{unittest} dar zu stellen wurde mithilfe des in Listing \ref{listing:base:my_module} definierten Codes ein Fortgeschrittener Test
-geschrieben, welcher die Basis Features von \lstinline{unittest} umfasst. Dieser Code
-befindet sich in Listing \ref{listing:unittest:advanced}.
+Im Aspekt Anwendbarkeit bietet \lstinline|unittest| alles um als Tool für TDD in
+Frage zu kommen, jedoch nur unter Einbezug der Erweiterung
+\lstinline|unittest.mock|. Da sich das Tool in der STDLIB befindet, sind keine
+weiteren Pakete zum verwenden von \lstinline{unittest} nötig.
 
-\lstinline{unittest} bietet seinem Nutzer ein hohes Potential an Anwendbarkeit,
-es ist Standardmäßig möglich Fixtures zu erstellen und unter Einbezug der
-Erweiterung auch zu mocken. Da das Tool in der STDLIB ist, werden keine
-Abhängigkeiten benötigt um \lstinline{unittest} zu verwenden.
+Die Effizienz Tests aus zu werten ist hoch. Ein Entwickler kann mit ein paar
+Zeilen Code eine Test Umgebung aufsetzen, die \Glspl{fixture} besitzt, sowie
+verschiedene Test Fälle, die von ihnen abhängig sind. Der Code der vor den
+eigentlichen Tests geschrieben werden muss hält sich also in grenzen. Die
+Effizienz mit der ein Entwickler Tests auswerten kann hingegen ist nicht optimal.
+Bei mehreren Fehlern und langem \gls{stacktrace} wird der Output sehr schnell
+sehr unübersichtlich für das Terminal, ein Farbiger Output würde hier ein wenig
+Abhilfe schaffen.
 
-Unittest verfügt über einige interessante Erweiterungen, welche das Tools mit neuen Funktionalitäten auffrischen.
-Die folgende Auflistung zeigt ein paar dieser Erweiterungen.
+\lstinline{unittest} bietet einiges an Funktionalität zum schreiben von Tests.
+Durch die verschiedenen \lstinline{assert} Methoden die bereit gestellt werden,
+ist es möglich Übersichtliche und lesbare Tests zu schreiben, die dennoch Ihre
+Funktion erfüllen. Die gebotene Funktionalität sollte für die Meisten Nutzer
+ausreichend sein, abgesehen von ein paar Edge cases, bei denen Spezielle
+Anforderungen  gestellt sind.
+
+Unittest verfügt über einige interessante Erweiterungen, welche das Tools mit
+neuen Funktionalitäten auffrischen. Die folgende Auflistung zeigt ein paar
+dieser Erweiterungen.
 \begin{itemize}
     \item \href{https://github.com/nose-devs/nose}{nose}\footnote{https://github.com/nose-devs/nose}(veraltet)
     \item \href{https://github.com/nose-devs/nose2}{nose2}\footnote{https://github.com/nose-devs/nose2}
