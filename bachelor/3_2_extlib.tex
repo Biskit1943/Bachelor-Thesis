@@ -5,75 +5,80 @@ Vorteil gegenüber der STDLIB ist. Diese werden unter diesem Punkt aufgeführt.
 \newline
 \\
 Auf \url{https://wiki.python.org/moin/PythonTestingToolsTaxonomy} werden viele
-externe Tools gelistet, jedoch scheinen viele inaktiv zu sein da ihre
+externe Tools gelistet. Jedoch scheinen viele inaktiv zu sein, da ihre
 \glspl{commit} teilweise mehr als ein Jahr zurück liegen. Dies ist weder für
 eine Bibliothek noch für ein Tool ein gutes Zeichen, da sich die Anforderungen
-stetig ändern und niemals alle Bugs gefixt sind.
+stetig ändern und niemals alle Fehler behoben und Features implementiert sein
+können.
 \newline
 \\
-Manche der dort aufgelisteten Tools sind bereits oder werden gerade in andere Tools
-integriert. Dies kann zum einem sein, da ein Tool eine Erweiterung für ein anderes
-war und die Entwickler die Änderungen angenommen haben und zum anderen um die Tools
-zu verbessern und mehr Entwickler zur Verfügung zu haben. Eventuell sind auch
-andere Gründe dafür verantwortlich, jedoch war dies der Grund bei zum Beispiel
-\href{https://github.com/Yelp/Testify/}{Testify}
-von Yelp \footnote{https://github.com/Yelp/Testify/}.
+Manche der dort aufgelisteten Tools sind bereits oder werden gerade in andere
+Tools integriert. Dies ist nötig, da ein Tool eine Erweiterung für ein anderes
+war und die Entwickler die Änderungen angenommen haben oder um die Tools zu
+verbessern und mehr Entwickler zur Verfügung zu haben. Selbstverständlich
+können auch andere Gründe dafür verantwortlich sein.
 \newline
 \\
-Da sowohl Software als auch Programmiersprachen sich stetig weiter entwickeln
-werden in dieser Arbeit nur jene Tools behandelt die sich diesen Entwicklungen
-Anpassen, sei dies durch das unterstützen der aktuellsten Version von Python als
-auch durch neue Innovationen, sowie \Gls{bug}-fixes. Aus diesem Grund werden
-Tools deren letzter \Gls{commit} weiter als ein Jahr zurück liegt hier nicht
-behandelt.
+Da sowohl Software als auch Programmiersprachen sich stetig weiter entwickeln,
+werden in dieser Arbeit nur jene Tools behandelt, die sich diesen Entwicklungen
+anpassen. Diese Anpassung zeigt sich durch die Unterstützung der aktuellsten
+Version von Python oder durch neue Innovationen, sowie \Gls{bug}-fixes. Aus
+diesem Grund werden Tools, deren letzter \Gls{commit} weiter als ein Jahr
+zurück liegt, hier nicht behandelt.
 \newline
 \\
-Lässt man zusätzlich die Erweiterungen von Tool zunächst außen vor, so bleiben
-folgende Modul Test-Tools zur Verfügung
-(\cite{wiki.python:PythonTestingToolsTaxonomy}):
-\begin{itemize}
-    \item \href{https://github.com/pytest-dev/pytest/}{pytest}\footnote{https://github.com/pytest-dev/pytest/}
-\end{itemize}
-Tools wie \href{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{reahl.tofu}\footlabel{reahl.tofu}{https://www.reahl.org/docs/4.0/devtools/tofu.d.html} oder
-\href{https://pypi.org/project/zope.testing/}{zope.testing}\footlabel{zope.testing}{https://pypi.org/project/zope.testing/} sind zwar mehr oder weniger aktiv, da sie
-beide auf die neusten Python Versionen patchen, jedoch bieten sie sonst keinen Mehrwert in ihren Updates.
-\href{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{reahl.tofu}\footref{reahl.tofu} selbst ist
-auch nur eine Erweiterung für bestehende Test Tools, wie zum Beispiel pytest, weshalb es hier nicht behandelt wird. So wird
-\href{https://pypi.org/project/zope.testing/}{zope.testing}\footref{zope.testing} auch nicht behandelt, da dieses Tool
-wie bereits beschrieben nicht aktiv weiter entwickelt wird und es eher dafür gemacht wurde \href{http://www.zope.org/en/latest/}{zope}\footnote{http://www.zope.org/en/latest/}
-Applikationen zu testen und nicht Python Applikationen.
+Lässt man zusätzlich die Erweiterungen von Tool zunächst außen vor, so bleibt
+lediglich
+\href{https://github.com/pytest-dev/pytest/}{pytest}\footnote{https://github.com/pytest-dev/pytest/}
+übrig (\cite{wiki.python:PythonTestingToolsTaxonomy}).
+Tools, wie
+\href{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{reahl.tofu}\footlabel{reahl.tofu}{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}
+oder
+\href{https://pypi.org/project/zope.testing/}{zope.testing}\footlabel{zope.testing}{https://pypi.org/project/zope.testing/},
+sind zwar mehr oder weniger aktiv, da sie beide auf die neusten Python
+Versionen patchen, jedoch bieten sie sonst keinen Mehrwert in ihren Updates.
+\href{https://www.reahl.org/docs/4.0/devtools/tofu.d.html}{reahl.tofu}\footref{reahl.tofu}
+selbst ist auch nur eine Erweiterung für bestehende Test Tools, wie zum
+Beispiel lstinline{pytest}, weshalb es hier nicht behandelt wird. So wird
+\href{https://pypi.org/project/zope.testing/}{zope.testing}\footref{zope.testing}
+auch nicht behandelt, da dieses Tool wie bereits beschrieben, nicht aktiv weiter
+entwickelt wird, da es eher,
+\href{http://www.zope.org/en/latest/}{zope}\footnote{http://www.zope.org/en/latest/}
+Applikationen und nicht Python Applikationen testet.
 
-Der Test-Runner \href{https://pypi.org/project/nose/1.3.7/}{nose}\footnote{https://pypi.org/project/nose/1.3.7/}, der eine Erweiterung
-zu \nameref{python-tools:unittest} bietet ist nicht mehr in Entwicklung, dennoch haben sich ein paar Liebhaber des Tools zusammengeschlossen
-und \href{https://pypi.org/project/nose2/}{nose2}\footlabel{nose2}{https://pypi.org/project/nose2/} geschrieben.
-Da \href{https://pypi.org/project/nose2/}{nose2}\footref{nose2} wie sein Vorfahre eine Erweiterung zu \nameref{python-tools:unittest}
-darstellt wird es hier nicht analysiert.
+Der Test-Runner
+\href{https://pypi.org/project/nose/1.3.7/}{nose}\footnote{https://pypi.org/project/nose/1.3.7/},
+der eine Erweiterung zu \nameref{python-tools:unittest} bietet, ist nicht mehr
+in Entwicklung, dennoch haben sich ein paar Liebhaber des Tools
+zusammengeschlossen und
+\href{https://pypi.org/project/nose2/}{nose2}\footlabel{nose2}{https://pypi.org/project/nose2/}
+geschrieben. Da \href{https://pypi.org/project/nose2/}{nose2}\footref{nose2}
+wie sein Vorfahre eine Erweiterung zu \nameref{python-tools:unittest} darstellt,
+wird es hier nicht analysiert.
 
 Auch sehr bekannt ist \href{https://pypi.org/project/testtools/}{testtools}\footnote{https://pypi.org/project/testtools/}, welches jedoch auch als
-Erweiterung zu \nameref{python-tools:unittest} gesehen werden muss. Jedoch findet dort auch keine wirkliche weiter Entwicklung statt.
-
-Die Quelle aus dem Offiziellen Python Wiki beschreibt sonst keine weiteren
-Tools. Auch die suche auf einschlägigen Suchmaschinen liefert sonst keine
-weiteren relevanten Tools.
+Erweiterung zu \nameref{python-tools:unittest} gesehen werden muss. Hier findet
+ebenfalls keine Weitere Entwicklung statt.
 \newline
 \\
 Als weitere Kategorie werden \Gls{mock}-Tools geführt. Auch wenn fast alle
-unittest-Tools integriertes \gls{mock}ing haben, so lässt sich mit diesen
+unittest-Tools integriertes \gls{mock}ing haben, lässt sich mit diesen
 Tools meist mehr erreichen. Es wurden die gleichen Filter-Kriterien verwendet
-wie bei den unit-testing Tools(\cite{wiki.python:PythonTestingToolsTaxonomy}).
-\begin{itemize}
-    \item \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}{stubble}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}
-    \item \href{https://github.com/timbertson/mocktest/tree/master}{mocktest}\footnote{https://github.com/timbertson/mocktest/tree/master}
-    \item \href{https://github.com/bkabrda/flexmock}{flexmock}\footnote{https://github.com/bkabrda/flexmock}
-    \item \href{https://bitbucket.org/DavidVilla/python-doublex}{python-doublex}\footnote{https://bitbucket.org/DavidVilla/python-doublex}
-    \item \href{https://github.com/ionelmc/python-aspectlib}{python-aspectlib}\footnote{https://github.com/ionelmc/python-aspectlib}
-\end{itemize}
-Auch hier lassen sich sonst keine weiteren relevanten Tools finden.
+wie bei den unit-testing Tools (\cite{wiki.python:PythonTestingToolsTaxonomy}).
+Die demnach relevanten Tools sind:
+\href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html}{stubble}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html},
+\href{https://github.com/timbertson/mocktest/tree/master}{mocktest}\footnote{https://github.com/timbertson/mocktest/tree/master},
+\href{https://github.com/bkabrda/flexmock}{flexmock}\footnote{https://github.com/bkabrda/flexmock},
+\href{https://bitbucket.org/DavidVilla/python-doublex}{python-doublex}\footnote{https://bitbucket.org/DavidVilla/python-doublex}
+und 
+\href{https://github.com/ionelmc/python-aspectlib}{python-aspectlib}\footnote{https://github.com/ionelmc/python-aspectlib}.
 \newline
 \\
 Als letzte Kategorie werden hier die \Gls{fuzz} Tools behandelt, da diese eine
-gute Möglichkeit bieten Code ausgiebig zu testen. Das wohl umfangreichste und nach den obigen Kriterien
-einzige Tool ist \href{https://github.com/HypothesisWorks/hypothesis}{hypothesis}\footnote{https://github.com/HypothesisWorks/hypothesis} (\cite{wiki.python:PythonTestingToolsTaxonomy}).
+gute Möglichkeit bieten, Code ausgiebig zu testen. Das wohl umfangreichste und
+nach den obigen Kriterien einzige Tool ist
+\href{https://github.com/HypothesisWorks/hypothesis}{hypothesis}\footnote{https://github.com/HypothesisWorks/hypothesis}
+(\cite{wiki.python:PythonTestingToolsTaxonomy}).
 
 \input{bachelor/3_2_1_py.test}
 \input{bachelor/3_2_2_mock}

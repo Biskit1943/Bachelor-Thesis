@@ -1,98 +1,95 @@
 % !TeX root = ../bachelor.tex
 \section{Python Test-Tools}\label{python-tools}
 
-Dieses Kapitel befasst sich mit den von der STDLIB bereitgestellten Test-Tools
+Dieses Kapitel befasst sich mit den von der STDLIB bereitgestellten Test-Tools,
 sowie denen aus externen Paketen.
 Diese werden unter \ref{python-tools:stdlib} und \ref{python-tools:extlib}
 zusammengefasst, wobei diese unterteilt sind in unit-testing -,
 \gls{mock}-testing - und \gls{fuzz} Tools.
 
-Die unit-testing Tools sind Tools die Funktionalität zum testen bereitstellen.
-Jedoch wird für TDD weit mehr als nur Tests benötigt, aus diesem Grund werden
-\gls{mock}-testing - und \gls{fuzz} Tools zusätzlich behandelt. Dabei soll aber
+Die unit-testing Tools sind Tools, die Funktionalität zum Testen bereitstellen.
+Jedoch wird für TDD weit mehr als nur Tests benötigt. Aus diesem Grund werden
+\gls{mock}-testing - und \gls{fuzz} Tools zusätzlich behandelt. Dabei soll
 zwischen einer reinen Erweiterung eines Tools und der Erweiterung von allen Tools
 unterschieden werden.
-Ist zum Beispiel ein Tool nur zusammen mit einem anderen Tool, das die
+Ist zum Beispiel ein Tool nur zusammen mit einem anderen Tool, welches das die
 Funktionalität bereit stellt Tests aus zu führen, so ist dieses Tool als
-Erweiterung zu sehen und wird nicht Analysiert. Bietet ein Tool allerdings
-Funktionalität zum erweitern von verschiedenen Test Tools, so wird es 
-hier zur Analyse verwendet. Diese Unterscheidung wird verwendet um Duplikationen
-in den einzelnen vergleichen zu vermeiden und verhindert, dass Tools mit sehr
+Erweiterung zu sehen und wird nicht analysiert. Bietet ein Tool allerdings
+Funktionen zum Erweitern von verschiedenen Test Tools, so wird es hier zur 
+Analyse verwendet. Diese Unterscheidung wird genutzt um Duplikationen
+in den einzelnen Vergleichen zu vermeiden und verhindert, dass Tools mit sehr
 vielen Erweiterungen den Rahmen dieser Arbeit sprengen.Sollten sich für ein Tool
 besonders interessante Erweiterungen finden, so werden diese in der Analyse des
 jeweiligen Tools erwähnt und verlinkt.
 \newline
-\\
-Jedes Tool wird anhand folgender Aspekte untersucht:
-\begin{itemize}
-    \item \underline{Anwendbarkeit}:\newline
-    Bietet das Tool alles, um TDD betreiben zu können? (\Glspl{fixture} und \Glspl{mock})
-    Mit wie vielen Paketen muss das Tool betrieben werden? (Mehr Abhängigkeiten führen zu
-    mehr externe Entwicklern auf die man sich verlassen muss.)
-    \begin{itemize}
-        \item Bei \gls{mock}-testing- und \gls{fuzz}-testing-Tools wird hier auf die
-        Features die das jeweilige Tool bietet geprüft.
-    \end{itemize}
-    
-    \item \underline{Effizienz}:\newline
-    Wie viel lässt sich mit diesem Tool möglichst einfach und
-    schnell erreichen? Ist besonders viel Vorarbeit notwendig um die Tests
-    auf zu setzen oder kann sofort mit dem Schreiben der Tests begonnen
-    werden?
-    \newline
-    Genauso stellt sich die Frage, wie Effizient der Entwickler die Tests
-    auswerten kann (Nur bei Tools mit test-runner).
-    
-    \item \underline{Komplexität}:\newline
-    Wie komplex ist das Tool? Das heißt, wie viel Funktionalität
-    bietet das Tool dem Entwickler von Haus aus, aber auch wie schwer
-    ist es einen Code zu schreiben oder wie schnell wird ein Code unübersichtlich, da
-    das Tool viel Code abseits der Tests benötigt.
-    
-    \item \underline{Erweiterbarkeit}:\newline
-    Wie leicht lässt sich das Tool mit anderen Tools erweitern?
-    Gibt es vielleicht Erweiterungen der Community für dieses Tool, die sehr
-    hilfreich sind?
-    \begin{itemize}
-        \item Dieser Punkt wird bei \gls{mock}-testing - und \gls{fuzz}-testing Tools ignoriert,
-        da diese selbst Erweiterungen darstellen.
-    \end{itemize}
-\end{itemize}
-\noindent
-Zum Vergleich der einzelnen unit-testing Tools untereinander werden diese auf den in Listing
-\ref{listing:base:my_module} abgebildeten Code angewandt, da sich diese Arbeit auch mit
-\gls{mock}-testing Tools beschäftigt, wurde auch für diese Code geschrieben der zu testen ist.
-Der Code dazu befindet sich in Listing \ref{listing:base:my_mock_module}. Durch diesen Code
-lassen sich die unterschiedlichen Anforderungen zwischen den Arten der Tools besser vergleichen.
+
+Jedes Tool wird anhand folgender Aspekte untersucht. Anwendbarkeit: Bietet das
+Tool alles, um TDD betreiben zu können? Bei unit-testing Tools beinhaltet dies
+\Glspl{fixture} und \Glspl{mock} gegenüber den verschiedenen Features bei den
+\gls{mock}- und \gls{fuzz}-testing Tools. Dieser Aspekt untersucht unter anderem
+auch die Abhängigkeiten, die ein Paket benötigt um betrieben zu werden. Mehr
+Abhängigkeiten führen dazu, dass mehr Entwicklern vertraut werden muss, dass
+diese Ihre Pakete aktuell und fehlerfrei halten.
+Der zweite Aspekt ist die Effizienz mit der sich ein Tool einsetzen lässt. Dabei
+wird darauf geachtet wie viel Aufwand benötigt wird, das Tool ein zu setzen. Im
+besonderen wird hier auf die Vorarbeit, die benötigt wird um das Tool verwenden
+zu können geachtet. Des weiteren wird in diesem Aspekt bei den unit-testing
+Tools die Effizienz mit der Tests ausgewertet werden können analysiert.
+Als dritter Aspekt wird die Komplexität des Tools bewertet. Dabei wird die
+Komplexität nicht zwangsläufig als Negativ gesehen. Hat ein Tool viel
+Funktionalität neben seiner Basis Features, so hat es in diesem Bezug eine hohe
+Komplexität, die als Positiv zu sehen ist. Hingegen wird viel oder
+unübersichtlicher Code den das Tool produziert als Negativ Komplex gesehen.
+Zuletzt wird bei den unit-testing Tools auf die Erweiterbarkeit geachtet. Diese
+umfasst Erweiterungen der Entwickler als auch der Community. Bei den mock- und
+fuzz-testing Tools, wird dieser Aspekt aus gelassen, da es sich bei diesen Tools
+vorwiegend um Erweiterungen zu den unit-testing Tools handelt.
+\newline
+
+Zum Vergleich der einzelnen unit-testing Tools untereinander werden diese auf
+den in Listing \ref{listing:base:my_module} abgebildeten Code angewendet. Da
+sich diese Arbeit auch mit \gls{mock}-testing Tools beschäftigt, wurde auch für
+diese ein Modul geschrieben das zu testen ist.
+Der Code dazu befindet sich in Listing \ref{listing:base:my_mock_module}. Durch
+das anwenden des jeweiligen Tools auf diesen Code, ist es möglich die Aspekte
+dieser untereinander zu vergleichen.
 
 Das Modul aus Listing \ref{listing:base:my_module} für die unit-testing Tools
 enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
 welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die
 Komplexität zu erhöhen wurde eine in-memory Datenbank implementiert, welche
 eine Items Tabelle enthält. Jedes Item hat eine ID (\lstinline|id|), einen Namen
-(\lstinline|name|), einen Lager Platz (\lstinline|storage_location|) und eine
+(\lstinline|name|), einen Lagerplatz (\lstinline|storage_location|) und eine
 Anzahl der vorrätigen Items \lstinline|amount|. Dazu besitzt jedes Item eine
-Methode \lstinline|do_something()| welche eine externe Funktion/Methode aufruft,
-die jedoch noch nicht existiert \lstinline|do_something_which_does_not_exist()|.
+Methode \lstinline|do_something()| welche eine externe Funktion/Methode,
+die jedoch noch nicht existiert \lstinline|do_something_which_does_not_exist()|,
+aufruft.
 
-Für die \gls{mock}-testing Tools wurde eine Klasse geschrieben, welche Funktionen besitzt
-die in ihrem Namen ausdrücken welche Aktion sie ausführen, jedoch führt nicht jede Methode
-das gewünschte aus. Die \gls{mock}-testing Tools sollen hier die Methoden so \gls{mock}en, dass
-sie das jeweilige ausführen. Selbstverständlich ist realer Code viel komplexer als in diesem
-Listing (\ref{listing:base:my_mock_module}) dargestellt, jedoch reicht dieser Code aus um viele
-Tools an Ihre grenzen zu bringen. So muss in \lstinline{call_internal_functin_n_times} überprüft
-werden ob sie \lstinline{n} mal aufgerufen wurde, auch \lstinline{call_helper_help} wird nicht
-ohne weiteres funktionieren, da die Methode der Klasse \lstinline{Helper} noch nicht implementiert wurde. Auch die Methode \lstinline{return_false_filepath}
-bringt das ein oder andere Tool zum schwitzen, da eine externe Methode aus der STDLIB ersetzt
-werden muss, wobei dies nicht global geschehen darf.
+Für die \gls{mock}-testing Tools wurde eine Klasse geschrieben, welche 
+Funktionen besitzt, durch ihren Namen ausdrücken, welche Aktion sie ausführen 
+sollten.
+Um jedoch testen zu können, ob das jeweilige Tool diese Methode \gls{stub}en
+kann, gibt nicht jede dieser Methoden das gewünschte Ergebnis zurück. Das Tool 
+soll hier dafür sorgen, dass das gewünschte Ergebnis erfolgt.
+Selbstverständlich ist realer Code viel komplexer als in diesem Listing
+(\ref{listing:base:my_mock_module}) dargestellt, jedoch reicht dieser Code aus,
+um viele Tools an die grenzen Ihrer Funktionalität zu bringen. So muss in
+\lstinline{call_internal_functin_n_times} überprüft werden, ob sie \lstinline{n}
+mal aufgerufen wurde. Auch \lstinline{call_helper_help} wird nicht ohne 
+weiteres funktionieren, da die Methode der Klasse \lstinline{Helper} noch nicht 
+implementiert wurde. Auch die Methode \lstinline{return_false_filepath}
+bringt das ein oder andere Tool an die grenzen seiner Funktionalität, da eine 
+externe Methode aus der STDLIB ersetzt werden muss, wobei dies nicht global 
+geschehen darf.
 
-Für die Fuzz-testing Tools werden keine Beispiele geschrieben werden, da diese meist auf Komplexen
-Beispielen basieren um Sinn zu ergeben, stattdessen werden im jeweiligen Kapitel kleinere Beispiel
+Für die Fuzz-testing Tools werden keine Beispiele geschrieben, da diese meist 
+auf komplexen Beispielen basieren um Sinn zu ergeben. Stattdessen werden im 
+jeweiligen Kapitel kleinere Beispiel
 genannt, wie das Tool ein zu setzen ist oder es wird auf Beispiele aus der jeweiligen Dokumentation
 verwiesen.
 
-Verfügt ein Tool über keinen test-runner, so wird der von der STDLIB gestellte runner
-\lstinline{unittest} verwendet.
+Verfügt ein Tool über keinen Test-runner, so wird der von der STDLIB gestellte 
+runner \lstinline{unittest} verwendet.
 
 \input{bachelor/3_1_stdlib}
 \input{bachelor/3_2_extlib}
