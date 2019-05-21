@@ -3,8 +3,8 @@ open:
 	chromium $$tex.pdf
 
 clean:
-	rm -f bachelor.{log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,glg,gls,glsdefs,ist,lol,nlo,nls}
-	rm -f expose.{log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,glg,gls,glsdefs,ist,lol,nlo,nls}
+	rm -f bachelor.{log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,glg,gls,glsdefs,ist,lol,nlo,nls,run.xml,synctex.gz}
+	rm -f expose.{log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,glg,gls,glsdefs,ist,lol,nlo,nls,run.xml,synctex.gz}
 
 ba:
 	pdflatex bachelor && \

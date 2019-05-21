@@ -12,45 +12,50 @@
 \newglossaryentry{mock}{
     name={mock},
     description={Ein Mock (zu Detusch: Attrappe) ist ein Objekt, dass von dem zu
-    mockenden Objekt abstammt. Das heißt es besitzt alle eigenschaften des originals,
-    jedoch fügt es noch weitere Methoden hizu. Diese ermöglichen das prüfen, welche
-    weiteren Methoden und Funktionen mit welchen Parametern ausgeführt wurden}
+    mockenden Objekt abstammt. Das heißt es besitzt alle eigenschaften des
+    originals, jedoch fügt es noch weitere Methoden hizu. Diese ermöglichen das
+    prüfen, welche weiteren Methoden und Funktionen mit welchen Parametern
+    ausgeführt wurden. Je nach implementierung kann es auch sein, dass ein Mock
+    den Rückgabewert einer Funktion/Methode verändert (\cite{fowler:stubs})}
 }
 \newglossaryentry{stub}{
     name={stub},
-    description={Ein Stub (zu Deutsch: Stumpf) ist, ähnlich wie ein Mock, eine Attrappe.
-    Jedoch werden hier nicht weitere Methoden hinzugefügt, sondern jediglich die vorhandenen
-    Methoden werden ersetzt. Dabei wird allerdings keine Logik implementiert, sondern es
-    wird ein Wert gesetzt den die Methode zurück gibt}
+    description={Ein Stub (zu Deutsch: Stumpf) ist, ähnlich wie ein Mock, eine
+    Attrappe. Jedoch werden hier nicht weitere Methoden hinzugefügt, sondern
+    jediglich die vorhandenen Methoden werden ersetzt. Dabei wird allerdings
+    keine Logik implementiert, sondern es wird ein Wert gesetzt den die Methode
+    zurück gibt (\cite{fowler:stubs})}
 }
 \newglossaryentry{commit}{
     name={commit},
-    description={Ein commit ist die Sammlung von änderungen an Dateien, welche 
+    description={Ein commit ist die Sammlung von änderungen an Dateien, welche
     mithilfe eines VCS verwaltet werden},
     plural=commits
 }
 \newglossaryentry{vcs}{
     name={Versions Control System},
-    description={Ein VCS ist ein Dienst, der es seinen Nutzern ermöglicht änderungen
-    an Dateien in einer Chronik zu speichern um später darauf zu zu greifen. Dies
-    dient auch der verteilung von Daten über mehrere Systeme sowie sicherung der
-    Daten vor verlust}
+    description={Ein VCS ist ein Dienst, der es seinen Nutzern ermöglicht
+    änderungen an Dateien in einer Chronik zu speichern um später darauf zu zu
+    greifen. Dies dient auch der verteilung von Daten über mehrere Systeme
+    sowie sicherung der Daten vor verlust}
 }
 \newglossaryentry{fuzz}{
     name={fuzz-testing},
-    description={Beschreibt eine Art von Test,
-    bei dem das zu testende Modul oder Programm mit zufälligen Werten aufgerufen wird. Dabei
-    soll jede mögliche anwendung des Moduls oder Programms dargestellt werden}
+    description={Beschreibt eine Art von Test, bei dem das zu testende Modul
+    oder Programm mit zufälligen Werten aufgerufen wird. Dabei soll jede
+    mögliche anwendung des Moduls oder Programms dargestellt werden}
 }
 \newglossaryentry{bug}{
     name={bug},
-    description={Ein Bug(zu deutsch Käfer) ist ein Fehler in einem Programm oder in einer Software}
+    description={Ein Bug(zu deutsch Käfer) ist ein Fehler in einem Programm
+    oder in einer Software}
 }
 \newglossaryentry{fixture}{
     name={fixture},
-    description={Beschreibt die Präperation von Tests mit festen (fix) Werten, so wird zum Beispiel
-    vor jedem Test eine Variable gesetzt. Dies dient der übersichtlichkeit, da dies dann nicht in
-    jedem Test vorgenommen werden muss und um varianz zwischen Tests und Test läufen zu vermeiden}
+    description={Beschreibt die Präperation von Tests mit festen (fix) Werten,
+    so wird zum Beispiel vor jedem Test eine Variable gesetzt. Dies dient der
+    übersichtlichkeit, da dies dann nicht in jedem Test vorgenommen werden muss
+    und um varianz zwischen Tests und Test läufen zu vermeiden}
 }
 \newglossaryentry{cli}{
     name={Command-line interface},
@@ -58,41 +63,47 @@
 }
 \newglossaryentry{stacktrace}{
     name={StackTrace},
-    description={Der StackTrace ist ein Protokoll der aufgerufenen Funktionen und Methoden die 
-    ineinander verschachtelt sind, bis hin zu der tiefsten Funkion/Methode die einen Fehler
-    geworfen hat}
+    description={Der StackTrace ist ein Protokoll der aufgerufenen Funktionen
+    und Methoden die ineinander verschachtelt sind, bis hin zu der tiefsten
+    Funkion/Methode die einen Fehler geworfen hat}
 }
 \newglossaryentry{docstring}{
     name={docstring},
-    description={Ein Docstring ist ein Block von Text der sich zwischen jeweils drei 
-    Anführungsstrichen befindet. Mit diesem Text wird ein Objekt in Python dokumentiert}
+    description={Ein Docstring ist ein Block von Text der sich zwischen jeweils
+    drei Anführungsstrichen befindet. Mit diesem Text wird ein Objekt in Python
+    dokumentiert}
 }
 \newglossaryentry{context}{
     name={contextmanager},
-    description={Ein Contextmanager in Python ist ein Objekt, dass einen Kontext bietet,
-    in dem gearbeitet werden kann. Dieser Kontext wird mit \lstinline{with {contextmanager} as c}
-    geöffnet und schließt sich selbst beim verlassen des Kontextes. Dadurch stehen dem entwickler
-    der nutzbare Kontext als Variable \lstinline{c} zur Verfügung}
+    description={Ein Contextmanager in Python ist ein Objekt, dass einen
+    Kontext bietet, in dem gearbeitet werden kann. Dieser Kontext wird mit
+    \lstinline{with {contextmanager} as c} geöffnet und schließt sich selbst
+    beim verlassen des Kontextes. Dadurch stehen dem entwickler der nutzbare
+    Kontext als Variable \lstinline{c} zur Verfügung}
 }
 \newglossaryentry{paket}{
     name={Paket-Manager},
-    description={Ein Paket-Manager ist ein Tool zum verwalten von externen Python bibliotheken,
-    mitdessen Hilfe Pakete (bibliotheken) installiert und versioniert werden können}
+    description={Ein Paket-Manager ist ein Tool zum verwalten von externen
+    Python bibliotheken, mitdessen Hilfe Pakete (bibliotheken) installiert und
+    versioniert werden können}
 }
 \newglossaryentry{decorator}{
     name={decorator},
-    description={Ein Decorator ist eine Funktion die eine andere Funktion oder Methode umschließt,
-    wodurch der Code im Decorator vor und/oder nach der Funktion oder Methode ausgeführt werden kann.
-    Ein Decorator wird einer anderen Funktion mit \lstinline{@\{decorator-funktion\}} über der
-    Funktions- oder Methoden-Definition übergeben. Das adjektiv für einen Decorator ist allerdings
-    nicht dekorieren, sondern annotieren}
+    description={Ein Decorator ist eine Funktion die eine andere Funktion oder
+    Methode umschließt, wodurch der Code im Decorator vor und/oder nach der
+    Funktion oder Methode ausgeführt werden kann. Ein Decorator wird einer
+    anderen Funktion mit \lstinline{@\{decorator-funktion\}} über der
+    Funktions- oder Methoden-Definition übergeben. Das adjektiv für einen
+    Decorator ist allerdings nicht dekorieren, sondern annotieren}
 }
 \newglossaryentry{annotation}{
     name={annotation},
-    description={Eine Annotation ist das gleiche wie ein decorator, mit ausnahme, dass eine Annotation
-    über jedem Wert, jeder Funktion und jeder Klasse stehen kann. Eine Annotation wird mit hilfe von
-    \lstinline{@\{name\}} über das zu annotierende Objekt geschrieben. Diese dienen dazu gewisse aktionen aus
-    zu führen oder dem Programm etwas mit zu teilen, wie zum Beispiel, dass eine Methode veraltet ist}
+    description={Eine Annotation ist das gleiche wie ein decorator, mit
+    ausnahme, dass eine Annotation über jedem Wert, jeder Funktion und jeder
+    Klasse stehen kann. Eine Annotation wird mit hilfe von
+    \lstinline{@\{name\}} über das zu annotierende Objekt geschrieben. Diese
+    dienen dazu gewisse aktionen aus zu führen oder dem Programm etwas mit zu
+    teilen, wie zum Beispiel, dass eine Methode veraltet ist}
 }
 \newpage
 % Glossar soll im Inhaltsverzeichnis auftauchen

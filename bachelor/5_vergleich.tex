@@ -1,6 +1,95 @@
 % !TeX root = ../bachelor.tex
 \subsection{Vergleich der Tools}\label{vergleich}
 
-Die in Kapitel \ref{zusammenfassung} aufgeführten Vor- und Nachteile werden hier
-untereinander verglichen. Wodurch eine Ausführung entstehen soll welches Tool
-am besten für Welchen Zweck geeignet ist.
+Die in Kapitel \ref{python-tools:stdlib} und \ref{python-tools:extlib}
+analysierten Tools, werden anhand der Ergebnisse aus der Anwendung des
+jeweiligen Tools in diesem Kapitel verglichen. Der Vergleich wird in unit- und
+\gls{mock} Tools gegliedert. Die \gls{fuzz}-testing Tools werden hier
+nicht verglichen, da nur ein Tool analysiert wurde.
+Am Ende dieses Kapitels wird für die jeweilige Kategorie eine Empfehlung 
+ausgesprochen, die anhand der Ergebnisse des Vergleichs festgelegt wird. Anhand 
+dieser Empfehlungen werden in Kapitel \ref{kombinierung} verschiedene 
+Möglichkeiten aufgezeigt, die Tools untereinander zu kombinieren um mehr 
+Funktionalität für eine mögliche Anwendung zu bekommen.
+
+\paragraph{Unit-testing Tools}\label{vergleich:unit}\mbox{}
+\newline
+Die unit-testing Tools belaufen sich auf drei Tools, \lstinline{unittest},
+\lstinline{doctest} und \lstinline{pytest}. Die ersten beiden Tools sind beide
+in der STDLIB während \lstinline{pytest} mit sechs weiteren Paketen betrieben
+werden muss. Während \lstinline{unittest} und \lstinline{pytest} sich sehr
+ähnlich sind, ist \lstinline{doctest} vorkommen anders im Bezug auf Anwendung
+und gegebener Funktionalität. \lstinline{doctest} unterstützt keine Testfälle
+oder Testumgebungen, stattdessen wird im \gls{docstring} der jeweiligen
+Funktion oder Methode der Test geschrieben. Zwar ist es möglich diesen in eine
+externe Datei aus zu lagern um so einen Zentralen Punkt zu schaffen an dem sich
+alle Tests befinden (Testumgebung/Testfälle), jedoch ist hier die Datei das
+Konstrukt, dass die Gliederung ermöglicht. Sowohl \lstinline{unittest} als auch
+\lstinline{pytest} bieten hier die Möglichkeiten Tests in Testumgebungen
+(Klassen) und Testfällen (Funktionen/Methoden) zu gliedern. \lstinline{pytest}
+bietet zusätzlich auch noch die Möglichkeit diese Tests zu markieren um eine
+noch feinere Gliederung zu schaffen oder um zwischen Testumgebungen, Testfälle
+zu kombinieren. Im Fall der Gliederung und Verwaltung von Tests ist hier
+\lstinline{pytest} sowohl \lstinline{unittest} als auch \lstinline{doctest}
+voraus. Lässt man die \lstinline{unittest} Integration für \lstinline{doctest}
+außen vor, so ist \lstinline{unittest} in diesem Fall der Gewinner. Wird
+allerdings die Anwendung der \lstinline{unittest} Integration von
+\lstinline{doctest} in Betracht gezogen, so sind \lstinline{unittest} und
+\lstinline{doctest} auf einem Level, was die Gliederung und Verwaltung von
+Tests betrifft.
+
+Ein Feature, dass eine Gliederung voraussetzt sind die Fixtures. Da
+\lstinline{doctest} keine Gliederung bietet sind Fixtures für dieses Tool
+nicht als Feature integriert. Es ist zwar möglich Fixtures manuell zu
+schreiben, jedoch ist der aufwand, der dafür betrieben werden muss zu hoch, als
+dass es sich rentieren würde. Die \lstinline{unittest} Integration ermöglicht es
+zwar Fixtures zu nutzen, jedoch wird diese Integration hier wieder außen vor
+gelassen. \lstinline{unittest} und \lstinline{pytest} hingegen unterstützen
+Testfixtures mit ihren \lstinline{setUp()} und \lstinline{tearDown()} Methoden.
+Beide Tools bieten die Möglichkeit die Fixtures sowohl für jedem Testfall, jede
+Testumgebung oder jedes Modul aus zu führen. \lstinline{pytest} bietet
+zusätzlich noch weitere Funktionalität, sowie fertige Fixtures die dem
+Entwickler zur Nutzung zur Verfügung stehen, welche in Kapitel
+\ref{python-tools:pytest} beschrieben wurden und in der
+\href{https://docs.pytest.org/en/latest/fixture.html}{Dokumentation}\footnote{\url{https://docs.pytest.org/en/latest/fixture.html}}
+zu finden sind. Im Bezug auf Testfixtures ist also \lstinline{pytest} das Tool
+mit den meisten Features, gefolgt von \lstinline{unittest}. \lstinline{doctest}
+scheidet bei dieser Kategorie vollkommen aus, da die Funktionalität gänzlich
+fehlt.
+
+Als nächstes integriertes Feature der unit-testing Tools sind \Glspl{mock} und
+\Glspl{stub} zu betrachten. Um für TDD in Frage zu kommen sollte ein
+unit-testing Tool \Glspl{stub} und \Glspl{mock} unterstützen, eine ausführliche
+Erklärung dazu ist in Kapitel \ref{python-tools} zu finden. Wie in Kapitel
+\ref{python-tools:doctest} aus der Analyse von \lstinline{doctest} hervorgeht,
+gibt es weder die Möglichkeit einen \Gls{mock} noch einen \Gls{stub} auf zu
+setzen, weshalb \lstinline{doctest} in dieser Kategorie als unbrauchbar gesehen
+werden kann. \lstinline{unittest} als Modul selbst, besitzt keine \gls{mock}ing
+Funktionalität, jedoch ist es möglich, dass Submodul \lstinline{unittest.mock}
+dafür zu verwenden. \lstinline{unittest.mock} ist zwar eine Erweiterung, jedoch
+in Form eines Submoduls, weshalb es zu \lstinline{unittest} dazu gehört und in
+diesem Vergleich beachtet wird. Damit unterstützt \lstinline{unittest} sowohl
+das \gls{mock}en als auch das \gls{stub}en. \lstinline{pytest} hingegen verfügt
+in seiner Basisausführung lediglich über die Möglichkeit des \gls{stub}ens,
+nicht jedoch über die Möglichkeit ein Objekt zu \gls{mock}en. In diesem Falls
+ist also \lstinline{unittest} der klare Gewinner, gefolgt von
+\lstinline{pytest}.
+
+Im Bezug auf die Effizienz der unit-testing Tools lässt sich folgendes
+feststellen. \lstinline{doctest} ist zwar für jeden Entwickler einfach und
+verständlich anwendbar, jedoch ist die Vorarbeit um Tests auf zu setzen im
+Vergleich zu \lstinline{unittest} und \lstinline{pytest} höher. Sowohl
+\lstinline{unittest} als auch \lstinline{pytest} benötigen das gleiche Maß an
+Vorarbeit um Tests auf zu setzen, wobei der Aufwand das jeweilige Tool ein zu
+setzen bei \lstinline{unittest} etwas höher ist, da es so viele verschiedene
+\lstinline{assert} Methoden zu merken gibt. Die Auswertung der Tests erfolgt
+bei allen drei unit-testing Tools auf dem Terminal. \lstinline{doctest} und
+\lstinline{unittest} haben beide einen Output der voneinander fast nicht zu
+trennen ist. Beide Tools haben den Nachteil gegenüber \lstinline{pytest}, dass
+ihr Output nicht farbig sonder Monochrom ist.  Aus diesem Grund ist 
+\lstinline{pytest}, \lstinline{unittest} und \lstinline{doctest} im Bezug auf
+Effiziente Anwendung vor zu ziehen, wobei \lstinline{unittest} noch etwas 
+besser als \lstinline{doctest} ist.
+\newline
+\\
+TODO: Komplexität und Erweiterbarkeit.

@@ -4,30 +4,37 @@
 Dieses Kapitel befasst sich mit den von der STDLIB bereitgestellten Test-Tools,
 sowie denen aus externen Paketen.
 Diese werden unter \ref{python-tools:stdlib} und \ref{python-tools:extlib}
-zusammengefasst, wobei diese unterteilt sind in unit-testing -,
-\gls{mock}-testing - und \gls{fuzz} Tools.
+zusammengefasst, wobei diese unterteilt sind in unit-,
+\gls{mock}- und \gls{fuzz} Tools.
 
 Die unit-testing Tools sind Tools, die Funktionalität zum Testen bereitstellen.
 Jedoch wird für TDD weit mehr als nur Tests benötigt. Aus diesem Grund werden
 \gls{mock}-testing - und \gls{fuzz} Tools zusätzlich behandelt. Dabei soll
-zwischen einer reinen Erweiterung eines Tools und der Erweiterung von allen Tools
-unterschieden werden.
-Ist zum Beispiel ein Tool nur zusammen mit einem anderen Tool, welches das die
-Funktionalität bereit stellt Tests aus zu führen, so ist dieses Tool als
-Erweiterung zu sehen und wird nicht analysiert. Bietet ein Tool allerdings
-Funktionen zum Erweitern von verschiedenen Test Tools, so wird es hier zur 
-Analyse verwendet. Diese Unterscheidung wird genutzt um Duplikationen
-in den einzelnen Vergleichen zu vermeiden und verhindert, dass Tools mit sehr
-vielen Erweiterungen den Rahmen dieser Arbeit sprengen.Sollten sich für ein Tool
-besonders interessante Erweiterungen finden, so werden diese in der Analyse des
-jeweiligen Tools erwähnt und verlinkt.
+zwischen einer reinen Erweiterung eines Tools und der Erweiterung von allen
+Tools unterschieden werden. Ist zum Beispiel ein Tool nur zusammen mit einem
+anderen Tool, welches das die Funktionalität bereit stellt Tests aus zu führen,
+so ist dieses Tool als Erweiterung zu sehen und wird nicht analysiert. Bietet
+ein Tool allerdings Funktionen zum Erweitern von verschiedenen Test Tools, so
+wird es hier zur  Analyse verwendet. Diese Unterscheidung wird genutzt um
+Duplikationen in den einzelnen Vergleichen zu vermeiden und verhindert, dass
+Tools mit sehr vielen Erweiterungen den Rahmen dieser Arbeit sprengen.Sollten
+sich für ein Tool besonders interessante \textsl{}Erweiterungen finden, so 
+werden diese
+in der Analyse des jeweiligen Tools erwähnt und verlinkt.
 \newline
 
 Jedes Tool wird anhand folgender Aspekte untersucht. Anwendbarkeit: Bietet das
 Tool alles, um TDD betreiben zu können? Bei unit-testing Tools beinhaltet dies
 \Glspl{fixture} und \Glspl{mock} gegenüber den verschiedenen Features bei den
-\gls{mock}- und \gls{fuzz}-testing Tools. Dieser Aspekt untersucht unter anderem
-auch die Abhängigkeiten, die ein Paket benötigt um betrieben zu werden. Mehr
+\gls{mock}- und \gls{fuzz} Tools. Sowohl das \gls{mock}en als auch das
+\gls{stub}en sind für das TDD von großer Bedeutung, einerseits ist es wichtig
+nach zu verfolgen, welches Modul wann und mit welchen Parametern aufgerufen
+wurde und andererseits ist es genau so wichtig Tests ab zu schotten. Dies
+geschieht mithilfe der \Glspl{stub}, welche es ermöglichen externe
+Abhängigkeiten zu ersetzten um Fehler aus anderen Quellen aus zu schließen 
+(\cite{percival:tdd:python}).
+Zusätzlich wird in diesem Aspekt auch die benötigten Abhängigkeiten eines
+Pakets untersucht, die benötigt werden um das Paket betrieben zu können. Mehr
 Abhängigkeiten führen dazu, dass mehr Entwicklern vertraut werden muss, dass
 diese Ihre Pakete aktuell und fehlerfrei halten.
 Der zweite Aspekt ist die Effizienz mit der sich ein Tool einsetzen lässt. Dabei
@@ -93,7 +100,8 @@ runner \lstinline{unittest} verwendet.
 
 \input{bachelor/3_1_stdlib}
 \input{bachelor/3_2_extlib}
-\input{bachelor/4_zusammenfassung}
+%\input{bachelor/4_zusammenfassung}
+% vorerst nicht machen da nur wiederholung aus 2.2
 \input{bachelor/5_vergleich}
 \input{bachelor/6_kombination}
 

@@ -49,13 +49,16 @@ Listing \ref{listing:doctest:output} zu sehen.
 
 Da \lstinline{doctest} selbst keine Testfälle unterstützt, besitzt
 \nameref{python-tools:unittest} eine Integration für \lstinline{doctest}.
-Diese ermöglicht es Tests aus Kommentaren, sowie Textdateien in unittest zu
-integrieren und zu gliedern. Wie \nameref{python-tools:unittest}, ist auch
-doctest in der STDLIB, wodurch keine externen Abhängigkeiten geladen werden
-müssen.
+Diese ermöglicht es Tests aus Kommentaren, sowie Textdateien in
+\lstinline{unittest} zu integrieren und zu gliedern. Wie
+\nameref{python-tools:unittest}, ist auch doctest in der STDLIB, wodurch keine
+externen Abhängigkeiten geladen werden müssen. Für die Analyse wird diese 
+Integration allerdings nicht in Betracht gezogen, da \lstinline{doctest} als 
+Modul selbst analysiert werden soll und nicht die Funktionalität die von 
+\lstinline{unittest} geboten wird.
 \newline
 
-Im Bezug auf die Anwendbarkeit von \lstinline{unittest} lässt sich sagen, dass
+Im Bezug auf die Anwendbarkeit von \lstinline{doctest} lässt sich sagen, dass
 nicht alles zur Verfügung steht um TDD zu betreiben. Tests können nicht vor der
 eigentlichen Funktionalität geschrieben werden. \Glspl{fixture} und 
 \Glspl{mock} werden nicht unterstützt.
