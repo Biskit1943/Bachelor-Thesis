@@ -59,20 +59,20 @@ gesehen, da ein Bug, der durch dieses Feature entstanden ist, schwer zu finden
 ist (\cite{reahl.stubble:4.0}).
 \newline
 
-Der Code für den Vergleichstest von stubble ist in Listing
-\ref{listing:reahl.stubble:example} zu finden. Mit stubble alleine lässt sich
-dieser in Listing \ref{listing:base:my_mock_module} definierte Code nicht zu
-100\% optimal testen. So ist die nicht existierende Methode
-\lstinline{Helper.help(self)} nicht ohne Probleme zu ersetzen. Dies gelingt,
-lediglich, wenn in der \Gls{stub} Klasse die Methode \lstinline{help(self)}
-definiert und sie mit \lstinline{@exempt} annotiert wird. Jedoch verliert man
-dadurch die Funktionalität von stubble, welche überprüft ob die Signatur der
-Funktionen übereinstimmen. Alternativ wäre es möglich eine Klasse zu nehmen,
-die ohne die \lstinline{@stubclass} auskommt. Ansonsten zeigt der Code, wie ein
-recht simples Tool viel erreichen kann, wenn auch mit viel Code abseits der
-Tests. Dabei ließ sich \lstinline{os.path.abspath(path)} ohne Komplikationen
-mit Hilfe von \lstinline{reahl.stubble.replaced} ersetzen. Das Abfangen des
-STDOUTs mit Hilfe der vorgefertigten \Glspl{stub} erwies sich als unkompliziert.
+Mit stubble alleine lässt sich dieser in Listing 
+\ref{listing:base:my_mock_module} definierte Code nicht zu 100\% optimal testen
+(vgl. Listing \ref{listing:reahl.stubble:example}). So ist die nicht
+existierende Methode \lstinline{Helper.help(self)} nicht ohne Probleme zu
+ersetzen. Dies gelingt, lediglich, wenn in der \Gls{stub} Klasse die Methode
+\lstinline{help(self)} definiert und sie mit \lstinline{@exempt} annotiert
+wird. Jedoch verliert man dadurch die Funktionalität von stubble, welche
+überprüft ob die Signatur der Funktionen übereinstimmen. Alternativ wäre es
+möglich eine Klasse zu nehmen, die ohne die \lstinline{@stubclass} auskommt.
+Ansonsten zeigt der Code, wie ein recht simples Tool viel erreichen kann, wenn
+auch mit viel Code abseits der Tests. Dabei ließ sich
+\lstinline{os.path.abspath(path)} ohne Komplikationen mit Hilfe von
+\lstinline{reahl.stubble.replaced} ersetzen. Das Abfangen des STDOUTs mit Hilfe
+der vorgefertigten \Glspl{stub} erwies sich als unkompliziert.
 \newline
 
 Im Bezug auf die Anwendbarkeit für TDD ist stubble demnach ein Tool, das

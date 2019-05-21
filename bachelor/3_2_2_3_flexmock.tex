@@ -64,17 +64,18 @@ gleiche ist, nur ausgeschrieben.
 \newline
 
 Der Code zu Listing \ref{listing:base:my_mock_module} wurde mithilfe des Codes
-aus Listing \ref{listing:flexmock:example} getestet, dabei ergaben sich die eben
-aufgelisteten Aspekte von \lstinline{flexmock}. \lstinline{flexmock} überzeugt
-dabei mit der Einfachheit mit der es aufgesetzt werden muss. In der
-\lstinline{setUp()} wird global im Modul \lstinline{my_package.my_mock_module}
-die Klasse \lstinline{NotMocked} ersetzt. Dadurch ist ex möglich in jedem Test
-Fall eine Annahme auf zu stellen, die dann auf alle Objekte der Klasse
-\lstinline{NotMocked} zutreffen. Der aufwand diesen Code zu schreiben war
-demnach sehr gering. Lediglich das erstellen einer Methode die im Originalen
-Objekt nicht existiert war nicht möglich, aus diesem Grund ist der Code in
-\lstinline{test_call_helper_help()} nicht korrekt und wirft eine Exception,
-diese kann in Listing \ref{listing:flexmock:exception} eingesehen werden.
+von \lstinline{flexmock} getestet, dabei ergaben sich die eben aufgelisteten
+Eigenschaften (vgl. Listing \ref{listing:flexmock:example}).
+\lstinline{flexmock} überzeugt dabei mit der Einfachheit mit der es aufgesetzt
+werden muss. In der \lstinline{setUp()} wird global im Modul
+\lstinline{my_package.my_mock_module} die Klasse \lstinline{NotMocked} ersetzt.
+Dadurch ist ex möglich in jedem Test Fall eine Annahme auf zu stellen, die dann
+auf alle Objekte der Klasse \lstinline{NotMocked} zutreffen. Der aufwand diesen
+Code zu schreiben war demnach sehr gering. Lediglich das erstellen einer
+Methode die im Originalen Objekt nicht existiert war nicht möglich, aus diesem
+Grund ist der Code in \lstinline{test_call_helper_help()} nicht korrekt und
+wirft eine Exception, diese kann in Listing \ref{listing:flexmock:exception}
+eingesehen werden.
 \newline
 
 Die Anwendbarkeit von \lstinline{flexmock} ist ausgezeichnet, da es zunächst

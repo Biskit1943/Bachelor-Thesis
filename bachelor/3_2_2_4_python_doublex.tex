@@ -92,14 +92,12 @@ weitere Funktionalität bietet.
 \newline
 
 Die Features von \lstinline{doublex} wurden auf den in Listing
-\ref{listing:base:my_mock_module} definierten Code angewandt. Der daraus
-entstandene Code befindet sich in Listing \ref{listing:doublex:example}.
-
-Wie dort zu erkennen ist, konnte nicht jeder Test ohne Probleme validiert
-werden. So war es zwar möglich die ersten drei Tests erfolgreich zu validieren,
-jedoch ist es fraglich ob, dieser Code wirklich etwas bringt, da die getesteten
-Objekte einfach nur zurück geben, was erwartet ist und dabei nicht einmal das
-originale Objekt sind.
+\ref{listing:base:my_mock_module} definierten Code angewandt (vgl. Listing
+\ref{listing:doublex:example}). Wie dort zu erkennen ist, konnte nicht jeder
+Test ohne Probleme validiert werden. So war es zwar möglich die ersten drei
+Tests erfolgreich zu validieren, jedoch ist es fraglich ob, dieser Code
+wirklich etwas bringt, da die getesteten Objekte einfach nur zurück geben, was
+erwartet ist und dabei nicht einmal das originale Objekt sind.
 
 Bei dem Test, der eine interne Methode aufrufen soll kommt das Spy Interface an
 seine grenzen, denn es kann nicht überprüfen ob die interne Methode aufgerufen

@@ -172,36 +172,6 @@
     \newpage
     \tableofcontents
 
-    % das Abbildungsverzeichnis
-    %\newpage
-    % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-    %\phantomsection
-    %\addcontentsline{toc}{section}{Abbildungsverzeichnis}
-    % \fancyhead[L]{Abbildungsverzeichnis} % Kopfzeile links
-    % Abbildungsverzeichnis endgültig anzeigen
-    %\listoffigures
-
-    % das Tabellenverzeichnis
-    %\newpage
-    % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-    %\phantomsection
-    %\addcontentsline{toc}{section}{Tabellenverzeichnis}
-    % \fancyhead[L]{Tabellenverzeichnis} % Kopfzeile links
-    % Abbildungsverzeichnis endgueltig anzeigen
-    %\listoftables
-
-    % das Listingverzeichnis
-    \input{latex_einstellungen/listingverzeichnis}
-      
-    % das Fußnotenverzeichnis
-    \input{latex_einstellungen/fussnotenverzeichnis}
-    
-    % das Glossar
-    \input{latex_einstellungen/glossar}
-
-    % das Abkürzungsverzeichnis
-    \input{latex_einstellungen/abkuezungen/abkuerzungen}
-
     %%%%% Beginn Dokument %%%%%
     \newpage
     \fancyhead[L]{\nouppercase{\leftmark}} % Kopfzeile links
@@ -221,8 +191,41 @@
     % einfacher Zeilenabstand
     \singlespacing
 
+    \appendix
+    \addcontentsline{toc}{section}{Anhang}
+    \renewcommand{\thesubsection}{\Alph{subsection}}
     % Literaturverzeichnis
     \input{latex_einstellungen/literaturverzeichnis}
+    
+    % das Abbildungsverzeichnis
+    %\newpage
+    % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+    %\phantomsection
+    %\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+    % \fancyhead[L]{Abbildungsverzeichnis} % Kopfzeile links
+    % Abbildungsverzeichnis endgültig anzeigen
+    %\listoffigures
+    
+    % das Tabellenverzeichnis
+    %\newpage
+    % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+    %\phantomsection
+    %\addcontentsline{toc}{section}{Tabellenverzeichnis}
+    % \fancyhead[L]{Tabellenverzeichnis} % Kopfzeile links
+    % Abbildungsverzeichnis endgueltig anzeigen
+    %\listoftables
+    
+    % das Listingverzeichnis
+    \input{latex_einstellungen/listingverzeichnis}
+    
+    % das Fußnotenverzeichnis
+    \input{latex_einstellungen/fussnotenverzeichnis}
+    
+    % das Glossar
+    \input{latex_einstellungen/glossar}
+    
+    % das Abkürzungsverzeichnis
+    \input{latex_einstellungen/abkuezungen/abkuerzungen}
     
     % die Listings
     \input{bachelor/listings}
