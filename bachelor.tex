@@ -112,6 +112,7 @@
     captionpos=b
 }
 
+\input{latex_einstellungen/glossar}
 
 % Abkürzungsverzeichnis
 \usepackage[german]{nomencl}
@@ -222,7 +223,13 @@
     \input{latex_einstellungen/fussnotenverzeichnis}
     
     % das Glossar
-    \input{latex_einstellungen/glossar}
+    \newpage
+    % Glossar soll im Inhaltsverzeichnis auftauchen
+    \phantomsection
+    \addcontentsline{toc}{subsection}{Glossar}
+    \fancyhead[L]{Glossar} % Kopfzeile links
+    % das Abkürzungsverzeichnis entgültige Ausgeben
+    \printglossaries
     
     % das Abkürzungsverzeichnis
     \input{latex_einstellungen/abkuezungen/abkuerzungen}

@@ -8,15 +8,17 @@ Klasse oder ein Objekt imitiert (\cite{doublex:docs:1.8.1}).
 \newline
 
 \lstinline{doublex} bietet drei Verschiedene Interfaces (vier zählt man die
-Unterklasse von Spy dazu), \Gls{stub}, Spy (, ProxySpy) und Mock. Da die Dokumentation
-hier sehr schöne und treffende Beschreibungen nimmt, werden diese nun hier zitiert.
-\begin{itemize}
-    \item "`\Glspl{stub} sagen dir was du hören willst."'\footlabel{doublex:doc:trans}{Übersetzt aus dem Englischen} \footlabel{doublex:doc:cite}{\cite{doublex:docs:1.8.1}}
-    \item "`Spies erinnern sich an alles was Ihnen passiert."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}
-    \item "`Proxy spies leiten aufrufe an Ihre originale Instanz weiter."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}
-    \item "`Mock erzwingt das vordefinierte Skript."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}
-\end{itemize}
-\noindent
+Unterklasse von Spy dazu), \Gls{stub}, Spy (, ProxySpy) und Mock. Da die
+Dokumentation hier sehr schöne und treffende Beschreibungen nimmt, werden diese 
+nun hier zitiert. "`\Glspl{stub} sagen dir was du hören 
+willst."'\footlabel{doublex:doc:trans}{Übersetzt aus dem Englischen} 
+\footlabel{doublex:doc:cite}{\cite{doublex:docs:1.8.1}}. "`Spies erinnern sich 
+an alles was Ihnen passiert."'\footref{doublex:doc:trans} 
+\footref{doublex:doc:cite}. "`Proxy spies leiten aufrufe an Ihre originale 
+Instanz weiter."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}. "`Mock 
+erzwingt das vordefinierte Skript."'\footref{doublex:doc:trans} 
+\footref{doublex:doc:cite}.
+
 Mit diesen Beschreibungen der einzelnen Interfaces kann ein Entwickler bereits
 entscheiden welches der Objekte relevant für die zu erledigende Arbeit ist, ohne
 den Code dazu kennen zu müssen. Um dennoch einen erweiterten Einblick zu
@@ -28,7 +30,7 @@ haben, jedoch keine Instanz dieser Klasse sind. Dadurch bleiben manche
 Möglichkeiten dem Entwickler verwehrt, wie zum Beispiel das Nutzen einer
 implementierten Methode aus der original Klasse.
 Die Duplikate sollen als Ersatz gelten für Objekte die in einer Bestimmten
-Umgebung ausgeführt werden müssen oder änderungen vornehmen, die während
+Umgebung ausgeführt werden müssen oder Änderungen vornehmen, die während
 einem Test nicht gewünscht sind.
 \newline
 
@@ -142,7 +144,7 @@ Auch die Effizienz ist nicht optimal. Dadurch, dass das Duplikat nicht die
 originalen Methoden aufruft, muss jede Methode mit einem Return Wert
 überschrieben werden. Dies mag für manche Tests vollkommen ausreichen, macht
 aber die Entwicklung mit TDD sehr schwer, da Tests von Zeit zu Zeit ausgeführt
-werden müssen und dort die original Implementierung selbst verständlich genutzt
+werden müssen und dort die original Implementierung ab und zu genutzt
 werden soll. Hat man allerdings eine Externe Klasse auf die kein Einfluss ist
 kann dieses Tool durchaus nützlich werden.
 

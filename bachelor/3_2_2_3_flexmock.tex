@@ -32,11 +32,10 @@ Zusätzlich ist es möglich originale Funktionen eines Objektes zu
 zu überprüfen ob eine unveränderte Funktion oder Methode bestimmten
 Anforderungen Entspricht. Das Interface dafür, ist das gleiche wie bei einem
 \Gls{stub}.
-
-\lstinline{flexmock} bietet des weiteren Funktionalität um den gefälschten
-Objekten neue Methoden hinzu zu fügen, wodurch nicht existierende Funktionen
-abgebildet werden können oder Objekte in ihrem Funktionsumfang temporär
-erweitert werden können.
+\lstinline{flexmock} bietet die Möglichkeit einen leeren \Gls{mock} zu 
+erstellen und diesem beliebige Methoden hinzu zu fügen. Dies ist jedoch nicht 
+möglich bei Objekten deren Methoden bereits fest stehen, so ist es also nicht 
+möglich eine neue Methode zu einem gemockten Objekt hinzu zu fügen.
 \newline
 
 Ein besonders interessantes Feature ist, dass überprüfen des Ergebnisses nach
@@ -75,16 +74,19 @@ Code zu schreiben war demnach sehr gering. Lediglich das erstellen einer
 Methode die im Originalen Objekt nicht existiert war nicht möglich, aus diesem
 Grund ist der Code in \lstinline{test_call_helper_help()} nicht korrekt und
 wirft eine Exception, diese kann in Listing \ref{listing:flexmock:exception}
-eingesehen werden.
+eingesehen werden. Das Problem wurde mit Hilfe des Erstellers des Tools
+versucht zu lösen, jedoch konnte bis zur Abgabe dieser Arbeite keine
+funktionierende Lösung gestellt werden.
 \newline
 
 Die Anwendbarkeit von \lstinline{flexmock} ist ausgezeichnet, da es zunächst
 keine weiteren Abhängigkeiten installiert außer sich selbst und mit allen
-Test-runnern kompatibel ist. Im Bezug auf TDD lässt \lstinline{flexmock} nichts
-zu wünschen übrig, dem Entwickler werden allerhand Funktionalität geboten
+Test-runnern kompatibel ist. Im Bezug auf TDD lässt \lstinline{flexmock} fast
+nichts zu wünschen übrig. Dem Entwickler werden allerhand Funktionalität geboten
 \Glspl{stub} oder \Glspl{mock} zu erstellen und zu verwenden. Dabei lässt sich
 alles überprüfen von der Aufruf Anzahl bis zu den Parametern die verwendet
-wurden.
+wurden. Lediglich das setzen einer nicht implementieren Methode war mit
+\lstinline{flexmock} nicht möglich.
 
 Im Aspekt Effizienz ist \lstinline{flexmock} ein Parade-Beispiel, einmal
 \lstinline{flexmock()} aufgerufen kann bereits los gelegt werden, dabei muss der
@@ -99,5 +101,3 @@ wünschen kann und bietet dabei auch noch ein Interface, dass es ermöglicht
 Programmierung die von \lstinline{flexmock} geboten wird. Unübersichtlich
 wird dadurch der Code nicht mehr als er im laufe der Zeit sowieso werden würde,
 eher noch hilft \lstinline{flexmock} dabei die Übersicht länger zu wahren.
-Lediglich das ersetzen einer nicht Existenten Funktion/Methode war mit
-\lstinline{flexmock} nicht möglich.

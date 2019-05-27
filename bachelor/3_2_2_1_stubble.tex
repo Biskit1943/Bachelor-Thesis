@@ -2,9 +2,9 @@
 \paragraph{stubble}\label{python-tools:stubble}\mbox{}
 \newline
 \lstinline{stubble} zählt zwar zu den \gls{mock}ing Tools, jedoch werden hier
-nur \Glspl{stub} als Funktionalität gegeben. Demnach ist es zwar möglich
-Objekte zu ersetzen und Rückgabewerte zu fälschen, jedoch lässt sich nicht
-verfolgen, wie oft und mit welchen Parametern ein Objekt aufgerufen wurde.
+nur \Glspl{stub} als Funktionalität gegeben. Dennoch ist es möglich mithilfe 
+eines der vorgefertigten \Glspl{stub} \gls{mock}ing Funktionalität zu erhalten.
+\newline
 
 Angenommen ein Objekt \lstinline{class Original} hat eine Abhängigkeit zu dem zu
 testenden Objekt. Mit \lstinline{stubble} lässt sich ein Objekt
@@ -92,6 +92,7 @@ schnelle Möglichkeit den \lstinline{stdout} zu ersetzen oder ein Objekt zu
 Monitoren. Um jedoch selbst ein Objekt zu auszutauschen, wird vergleichsweise
 viel Code benötigt, da nicht nur der Rückgabewert neu gesetzt wird,
 sondern die Methode neu geschrieben werden muss. Dies kann allerdings bei
-komplexeren Anforderungen wiederum zum Vorteil werden, weshalb sich das ganze
-wiederum ausgleicht. Durch die \Glspl{context} ist der Code, der geschrieben
-wird, sehr übersichtlich und gut gegliedert.
+komplexeren Anforderungen wiederum zum Vorteil werden. Durch die
+\Glspl{annotation} ist der Code, der geschrieben wird, sehr übersichtlich und 
+gut
+gegliedert.

@@ -5,11 +5,12 @@
 \href{http://rspec.info/}{\lstinline{rspec}}\footlabel{rspec}{http://rspec.info/}
 inspiriert wurde. Dabei soll \lstinline{mocktest} kein Port von
 \lstinline{rspec}\footref{rspec} sein, sondern eine kleine leichtere
-Version in Python(\cite{mocktest:doc}). Da sich \lstinline{mocktest} derzeit in
+Version in Python (\cite{mocktest:doc}). Da sich \lstinline{mocktest} derzeit in
 der Version \lstinline{0.7.3} (Stand 16. April 2019) befindet, sind noch nicht
 alle Features vollkommen entwickelt und ausgereift, dennoch lässt sich das Tool
 bereits produktiv einsetzen, da die Basisfunktionalität aus
-\lstinline{rspec}\footref{rspec} bereits implementiert wurde.
+\lstinline{rspec}\footref{rspec} bereits implementiert wurde
+(\cite{mocktest:doc}).
 \newline
 
 Das Hauptfeature von \lstinline{mocktest} ist die Testisolation. Diese
@@ -34,7 +35,9 @@ Objekt genutzt.
 \lstinline{mocktest} nutzt \lstinline{unittest} als Basis für seine
 Testumgebung. \lstinline{mocktest.TestCase} erbt von
 \lstinline{unittest.TestCase}, wodurch die gesamte Funktionalität von
-\lstinline{unittest} geerbt wird. \lstinline{mocktest.TestCase} führt dabei in
+\lstinline{unittest} geerbt wird.
+\\  % Code geht über rand
+\lstinline{mocktest.TestCase} führt dabei in
 seiner \lstinline{setUp()} und \lstinline{tearDown()} Methode Code aus, der
 benötigt wird, um \lstinline{mocktest} nutzen zu können. Zusätzlich wird mit
 \lstinline{mocktest} unittest um eine \lstinline{assert} Methode erweitert.
@@ -62,7 +65,7 @@ Variable ist eine Liste von allen getätigten Aufrufen und ihren Parametern.
 \newline
 
 Folgende Features werden von \lstinline{mocktest} unterstützt:
-Rückgabelvariation der \Glspl{stub} mit
+Rückgabewert Variation der \Glspl{stub} mit
 \lstinline{.and_return(erg1, erg2,ergX)} oder alternativ
 \lstinline{.then_return()}, Festlegen der erwarteten Aufrufe einer
 Funktion/Methode mit \lstinline{.at_least(n)}, \lstinline{.at_most(n))},
@@ -88,7 +91,8 @@ Um TDD zu betreiben bietet \lstinline{mocktest} alles, was ein Entwickler zum
 teilweise zu ersetzen, oder neue Objekte zu erstellen, welche die Signatur eines
 anderen Objektes haben. Auch globale Objekte lassen sich für den Zeitraum eines
 Tests ersetzen. Dadurch ist alles an Funktionalität geboten, was ein
-\gls{mock}-testing Tool bieten muss.
+\gls{mock}-testing Tool bieten muss. Dabei wird keine weitere Abhängigkeit zu
+\lstinline{mocktest} selbst benötigt.
 
 Bezüglich der Effizienz kann \lstinline{mocktest} problemlos eingesetzt werden,
 da quasi kein Vorwissen von Nöten ist um Objekte erfolgreich zu \gls{mock}en.
