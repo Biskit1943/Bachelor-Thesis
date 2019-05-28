@@ -1,0 +1,95 @@
+\section{Methodik}\label{methodik}
+Die zu analysierenden Tools, werden zwischen STDLIB und externen Tools 
+unterschieden. Zusätzlich findet eine Gliederung in unit-,\gls{mock}- und 
+\gls{fuzz} Tools statt.
+
+Die unit-testing Tools sind Tools, die Funktionalität zum Testen bereitstellen.
+Jedoch wird für TDD weit mehr als nur Tests benötigt. Aus diesem Grund werden
+\gls{mock}-testing - und \gls{fuzz} Tools zusätzlich behandelt. Dabei soll
+zwischen einer reinen Erweiterung eines Tools und der Erweiterung von allen
+Tools unterschieden werden. Ist zum Beispiel ein Tool nur zusammen mit einem
+anderen Tool, welches das die Funktionalität bereit stellt Tests aus zu führen,
+so ist dieses Tool als Erweiterung zu sehen und wird nicht analysiert. Bietet
+ein Tool allerdings Funktionen zum Erweitern von verschiedenen Test Tools, so
+wird es hier zur  Analyse verwendet. Diese Unterscheidung wird genutzt um
+Duplikationen in den einzelnen Vergleichen zu vermeiden und verhindert, dass
+Tools mit sehr vielen Erweiterungen den Rahmen dieser Arbeit sprengen.Sollten
+sich für ein Tool besonders interessante Erweiterungen finden, so werden diese
+in der Analyse des jeweiligen Tools erwähnt und verlinkt.
+\newline
+
+Jedes Tool wird anhand folgender Aspekte untersucht. Anwendbarkeit: Bietet das
+Tool alles, um TDD betreiben zu können? Bei unit-testing Tools beinhaltet dies
+\Glspl{fixture} und \Glspl{mock} gegenüber den verschiedenen Features bei den
+\gls{mock}- und \gls{fuzz} Tools. Sowohl das \gls{mock}en als auch das
+\gls{stub}en sind für das TDD von großer Bedeutung, einerseits ist es wichtig
+nach zu verfolgen, welches Modul wann und mit welchen Parametern aufgerufen
+wurde und andererseits ist es genau so wichtig Tests ab zu schotten. Dies
+geschieht mithilfe der \Glspl{stub}, welche es ermöglichen externe
+Abhängigkeiten zu ersetzten um Fehler aus anderen Quellen aus zu schließen 
+(\cite{percival:tdd:python}).
+Zusätzlich wird in diesem Aspekt auch die benötigten Abhängigkeiten eines
+Pakets untersucht, die benötigt werden um das Paket betrieben zu können. Mehr
+Abhängigkeiten führen dazu, dass mehr Entwicklern vertraut werden muss, dass
+diese Ihre Pakete aktuell und fehlerfrei halten.
+Der zweite Aspekt ist die Effizienz mit der sich ein Tool einsetzen lässt. Dabei
+wird darauf geachtet wie viel Aufwand benötigt wird, das Tool ein zu setzen. Im
+besonderen wird hier auf die Vorarbeit, die benötigt wird um das Tool verwenden
+zu können geachtet. Des weiteren wird in diesem Aspekt bei den unit-testing
+Tools die Effizienz mit der Tests ausgewertet werden können analysiert.
+Als dritter Aspekt wird die Komplexität des Tools bewertet. Dabei wird die
+Komplexität nicht zwangsläufig als Negativ gesehen. Hat ein Tool viel
+Funktionalität neben seiner Basis Features, so hat es in diesem Bezug eine hohe
+Komplexität, die als Positiv zu sehen ist. Hingegen wird viel oder
+unübersichtlicher Code den das Tool produziert als Negativ Komplex gesehen.
+Zuletzt wird bei den unit-testing Tools auf die Erweiterbarkeit geachtet. Diese
+umfasst Erweiterungen der Entwickler als auch der Community. Bei den mock- und
+fuzz-testing Tools, wird dieser Aspekt aus gelassen, da es sich bei diesen Tools
+vorwiegend um Erweiterungen zu den unit-testing Tools handelt.
+\newline
+
+Zum Vergleich der einzelnen unit-testing Tools untereinander werden diese auf
+den in Listing \ref{listing:base:my_module} abgebildeten Code angewendet. Da
+sich diese Arbeit auch mit \gls{mock}-testing Tools beschäftigt, wurde auch für
+diese ein Modul geschrieben das zu testen ist.
+Der Code dazu befindet sich in Listing \ref{listing:base:my_mock_module}. Durch
+das anwenden des jeweiligen Tools auf diesen Code, ist es möglich die Aspekte
+dieser untereinander zu vergleichen.
+
+Das Modul aus Listing \ref{listing:base:my_module} für die unit-testing Tools
+enthält eine selbst geschriebene Implementierung der Funktion \lstinline|pow()|,
+welche eine Zahl \lstinline|a| mit einer Zahl \lstinline|b| quadriert. Um die
+Komplexität zu erhöhen wurde eine in-memory Datenbank implementiert, welche
+eine Items Tabelle enthält. Jedes Item hat eine ID (\lstinline|id|), einen Namen
+(\lstinline|name|), einen Lagerplatz (\lstinline|storage_location|) und eine
+Anzahl der vorrätigen Items \lstinline|amount|. Dazu besitzt jedes Item eine
+Methode \lstinline|do_something()| welche eine externe Funktion/Methode,
+die jedoch noch nicht existiert \lstinline|do_something_which_does_not_exist()|,
+aufruft.
+
+Für die \gls{mock}-testing Tools wurde eine Klasse geschrieben, welche 
+Funktionen besitzt, durch ihren Namen ausdrücken, welche Aktion sie ausführen 
+sollten.
+Um jedoch testen zu können, ob das jeweilige Tool diese Methode \gls{stub}en
+kann, gibt nicht jede dieser Methoden das gewünschte Ergebnis zurück. Das Tool 
+soll hier dafür sorgen, dass das gewünschte Ergebnis erfolgt.
+Selbstverständlich ist realer Code viel komplexer als in diesem Listing
+(\ref{listing:base:my_mock_module}) dargestellt, jedoch reicht dieser Code aus,
+um viele Tools an die grenzen Ihrer Funktionalität zu bringen. So muss in
+\lstinline{call_internal_functin_n_times} überprüft werden, ob sie \lstinline{n}
+mal aufgerufen wurde. Auch \lstinline{call_helper_help} wird nicht ohne 
+weiteres funktionieren, da die Methode der Klasse \lstinline{Helper} noch nicht 
+implementiert wurde. Auch die Methode \lstinline{return_false_filepath}
+bringt das ein oder andere Tool an die grenzen seiner Funktionalität, da eine 
+externe Methode aus der STDLIB ersetzt werden muss, wobei dies nicht global 
+geschehen darf.
+
+Für die Fuzz-testing Tools werden keine Beispiele geschrieben, da diese meist 
+auf komplexen Beispielen basieren um Sinn zu ergeben. Stattdessen werden im 
+jeweiligen Kapitel kleinere Beispiel
+genannt, wie das Tool ein zu setzen ist oder es wird auf Beispiele aus der 
+jeweiligen Dokumentation
+verwiesen.
+
+Verfügt ein Tool über keinen Test-runner, so wird der von der STDLIB gestellte 
+runner \lstinline{unittest} verwendet.

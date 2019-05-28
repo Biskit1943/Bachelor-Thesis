@@ -29,8 +29,7 @@
 % für Tabellen
 \usepackage{array}
 
-% Schaltet den zusätzlichen Zwischenraum ab, den LaTeX normalerweise nach einem 
-%Satzzeichen einfügt.
+% Schaltet den zusätzlichen Zwischenraum ab, den LaTeX normalerweise nach einem Satzzeichen einfügt.
 \frenchspacing
 
 % Paket für Zeilenabstand
@@ -49,21 +48,14 @@
 \usepackage[titles]{tocloft}
 
 %% Fußnotenverzeichnis von https://stackoverflow.com/a/6914775/8339179
-\newcommand{\listfootnotesname}{Fußnotenverzeichnis}%     % 'List of Footnotes' 
-%%title 
-\newlistof[chapter]{footnotes}{fnt}{\listfootnotesname}%  % New 'List of...' 
-%%for footnotes 
-\let\oldfootnote\footnote%                                % Save the old 
-%%\footnote{...} command 
-\renewcommand\footnote[1]{%                               % Redefine the new 
-%%footnote to also add 'List of Footnote' entries. 
-    \refstepcounter{footnotes}%                           % Add and step a 
-    %%reference to the footnote/counter. 
-    \oldfootnote{#1}%                                     % Make a regular 
-    %%footnote. 
+\newcommand{\listfootnotesname}{Fußnotenverzeichnis}%     % 'List of Footnotes' title 
+\newlistof[chapter]{footnotes}{fnt}{\listfootnotesname}%  % New 'List of...' for footnotes 
+\let\oldfootnote\footnote%                                % Save the old \footnote{...} command 
+\renewcommand\footnote[1]{%                               % Redefine the new footnote to also add 'List of Footnote' entries. 
+    \refstepcounter{footnotes}%                           % Add and step a reference to the footnote/counter. 
+    \oldfootnote{#1}%                                     % Make a regular footnote. 
     \addcontentsline{fnt}{footnotes}{\protect% 
-        \numberline{\thefootnotes}#1}%                    % Add the 'List 
-        %%of...' entry. 
+        \numberline{\thefootnotes}#1}%                    % Add the 'List of...' entry. 
 }
 
 % Ermöglicht mehr als 3 punkte tiefe -> 1.2.3.4
@@ -72,8 +64,7 @@
 
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\noindent}
 
-% Von https://tex.stackexchange.com/a/10110 mit additions aus 
-%https://stackoverflow.com/a/6914775/8339179
+% Von https://tex.stackexchange.com/a/10110 mit additions aus https://stackoverflow.com/a/6914775/8339179
 \newcommand{\footlabel}[2]{%
     \refstepcounter{footnotes}%
     \addcontentsline{fnt}{footnotes}{\protect 
@@ -148,8 +139,7 @@
 % neue Kopfzeilen mit fancypaket
 \usepackage{fancyhdr}                  % Paket laden
 \pagestyle{fancy}                      % eigener Seitenstil
-\fancyhf{}                             % alle Kopf- und Fußzeilenfelder 
-%bereinigen
+\fancyhf{}                             % alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{\nouppercase{\leftmark}} % Kopfzeile links
 \fancyhead[C]{}                        % zentrierte Kopfzeile
 \fancyhead[R]{\thepage}                % Kopfzeile rechts
@@ -192,11 +182,11 @@
 
     % einzelne Kapitel
     \input{bachelor/2_einleitung}
-    \input{bachelor/2_2_definition}
-    \input{bachelor/3_0_methodik}
+    \input
     \input{bachelor/3_python_test_tools}
     \input{bachelor/7_diskussion}
     \input{bachelor/8_fazit}
+    \input{bachelor/9_nachwort}
 
     \onecolumn
 

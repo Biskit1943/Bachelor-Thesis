@@ -1,4 +1,45 @@
 % !TeX root = ../bachelor.tex
 \subsection{Kombinierung von Tools}\label{kombinierung}
+Um eine verbesserte Funktionalität zu bekommen, ist es ratsam verschiedene
+Tools miteinander zu kombinieren. Die in diesem Kapitel aufgezeigten
+Möglichkeiten zur Kombinierung ergeben sich aus den analysierten Features der
+jeweiligen Tools. Dabei wird zuerst geprüft ob die beiden, am besten geeigneten
+Tools aus unit- und \gls{mock}-testing Tools miteinander verwendet werden
+können, um so einen Mehrwert zu erhalten.
 
-Sofern dies möglich ist werden hier mögliche Kombinationen von Tools diskutiert.
+Bei den unit-testing Tools ist \lstinline{doctest}, das am wenigsten geeignete
+Tool für die alleinige Anwendung mit TDD. Dennoch bietet das Tool Features, die
+für die Anwendung von TDD nützlich sind. So kann \lstinline{doctest} als
+testende Dokumentation gesehen werden. Manche Funktionen oder Methoden sind in
+ihrem Funktionsumfang so gering, dass ein ganzer Test als zu viel erscheint.
+Bei diesen Funktionen oder Methoden kann dann Beispielsweise ein
+\lstinline{doctest} geschrieben werden, der diese kleine Funktionalität prüft.
+Des weiteren kann \lstinline{doctest} als ergänzendes Tool für die
+Dokumentation des Codes gesehen werden, denn die Dokumentation ist ein
+wichtiger Bestandteil eines Projekts (\cite{python.org:PEP8}).
+\lstinline{doctests} können dafür sorgen, dass die Dokumentation besser
+verstanden wird und eindeutiger ist. Aus diesen Gründen kann
+\lstinline{doctest} immer als ergänzendes Tool in jede Entwicklung aufgenommen
+werden.
+
+Da das Tool \lstinline{hypothesis} aus den \gls{fuzz} Tools, ist als alleiniger
+Vertreter seiner Kategorie das empfohlene Tool, wenn \gls{fuzz} benötigt wird.
+Da \lstinline{hypothesis} mit jedem anderen Tool verwendet werden kann,
+empfiehlt es sich, dieses so oft wie es möglich ist ein zu setzen um eine
+bessere Testabdeckung zu erreichen.
+
+Demnach ist es ratsam sowohl \lstinline{doctest} als auch
+\lstinline{hypothesis} immer ein zu setzen wo es möglich ist.
+\newline
+
+Grundsätzlich lässt sich ein jedes unit-testing Tool mit jedem 
+\gls{mock}-testing Tool kombinieren. Der dadurch erhaltene Mehrwert ist meist 
+beachtlich gegenüber der Verwendung der Tools alleine. Es ist jedem Entwickler 
+überlassen welches Tool er mit welchem Kombiniert, dennoch hervorgehend aus der 
+Analyse bietet es sich an \lstinline{pytest} zusammen mit \lstinline{mocktest} 
+zu verwenden, dazu noch \lstinline{doctest} und \lstinline{hypothesis} und der 
+Entwickler erhält ein Toolset, dass ihm alles an Funktionalität bietet was er 
+benötigen kann. Ist es erwünscht \lstinline{unittest} statt \lstinline{pytest} 
+zu verwenden, so kann dies auch getan werden, jedoch zeigt die Analyse, dass 
+der Einsatz von \lstinline{pytest} dem Einsatz von \lstinline{unittest} vor zu 
+ziehen ist.
