@@ -1,58 +1,51 @@
 % !TeX root = ../bachelor.tex
 \subsection{Test-driven development}\label{einleitung:tdd}
-
-Test-driven development ist eine Ausrichtung der Entwicklung nach einem definierten Schema.
-Bei TDD dreht sich in der Entwicklung alles um die Tests die ausgeführt werden sollen.
-
-Der Basis Ansatz dabei ist, dass bevor der Tatsächliche Code geschrieben wird, die Anforderungen
-an den Code definiert sind. Je genauer die Definition ist, desto besser lässt sich TDD betreiben.
-Aus der Definition heraus lassen sich die einzelnen Units (Funktionen und Methoden) und deren
-angestrebte Funktionalität abstrahieren. Ist dies geschehen werden Tests geschrieben, die die
-Funktionalität der nicht vorhanden Units prüft. Dabei sollte jede Spezifikation getestet werden
-die vorher fest gelegt wurde. Je nach Auslegung werden erst alle Tests und dann der Code geschrieben
-oder jeweils der Test und dann der Code, dabei ist es nicht von Nöten, dass der Entwickler der den
-Test geschrieben hat auch den Code schreibt.
-
-Die Implementierung wird dabei stets so vorgenommen, dass ein Test nach dem Anderem erfolgreich ist,
-wobei Tests, die bereits Erfolgreich waren, immer Erfolgreich bleiben müssen. Bei diesem Prozess ist
-es normal, dass zunächst alle Tests fehl schlagen und von Zeit zu Zeit weniger werden. Der Ablauf ist
-demnach immer, Code schreiben, Tests ausführen, wenn Erfolgreich Code aufräumen und nächste Unit
-schrieben und wenn nicht Erfolgreich den Code verbessern. Dieser Prozess wird immer und immer
-wiederholt bis alle Tests erfolgreich durchgelaufen sind.
-
-Sollten während der Test Phase Units auf anderen Units basieren können diese mithilfe von
-\gls{mock}ing ersetzt werden um so die Funktionalität unabhängig testen zu können. Wird dies
-nicht getan, so ist nicht mehr von Unit Tests die rede, sondern von Integration Tests.
-
-Sollte dem Programm nun während der Entwicklung weitere Units hinzugefügt werden, so ist hier auch
-stets zuerst der Test zu schreiben und dann der Code. Das gleiche gilt auch wenn die Funktionalität
-einer Unit erweitert werden soll.
-
-Neben dieser allgemeinen Herangehensweise gibt es auch Definitionen, wie die von Kent Beck in
-"`Test Driven Development: By Example"' geschilderte. Demnach sieht der Entwicklungsprozess
+Das Test-driven development (TDD) wurde durch Kent Beck richtig Bekannt. Dieser
+beschreibt in seinem Buch "`Test Driven Development: By Example"' wie bei der
+Anwendung von TDD vorgegangen werden soll. Demnach sieht der Entwicklungsprozess
 folgendermaßen aus (\cite{beck:tdd}):
-\begin{enumerate}
-    \item Schreiben eines Tests, der neue Funktionalität oder Verbesserung zu einer bestehenden Unit
-    hinzufügt. Dieser Test sollte möglichst kurz und aussagekräftig sein. Dazu muss der Entwickler
-    die Spezifikationen und Anforderungen des Features genau verstehen um den Test wirklich effektiv
-    schreiben zu können.
-    \item Alle Tests durchführen und sehen, ob der neue Test fehlschlägt. Dies bestätigt, dass der
-    neue Test die anderen Tests nicht beeinflusst und auch ohne neuen Code nicht bestanden wurde.
-    Dadurch kann der Entwickler ausschließen, dass ein Test immer Korrekt ist, wodurch das Vertrauen
-    des Entwicklers in den Test gesteigert wird.
-    \item Schreiben des Code, dabei ist unwichtig wie unschön der Code ist, Hauptsache, der Test wird
-    bestanden. Die Code Qualität spielt hier keine Rolle, da sie in Punkt Fünf überarbeitet wird.
-    Der Entwickler darf in diesem Prozess auch keinen Weiteren Code hinzufügen, der nicht notwendig
-    ist um den Test zu bestehen.
-    \item Alle Test durchführen und überprüfen ob alle Tests erfolgreich waren. Sollte dies nicht der
-    Fall sein muss Punkt Drei wiederholt werden.
-    \item Der neue Code muss aufgeräumt werden. Dieser Punkt ist sehr wichtig, da in Punkt Drei der
-    Code nur Funktionieren muss kann es sein, dass hier Code entstanden ist, der nicht den Anforderungen
-    entspricht. Sämtliche Objekte sollten einen aussagekräftigen Namen erhalten und der Code sollte,
-    sofern dies nötig ist an einen Ort verlegt werden, der seiner Logischen Aufgabe entspricht und
-    Duplikationen sollten entfernt werden. Nach jeder Aufräumaktion sollten die Tests noch einmal
-    ausgeführt werden, um zu verifizieren, dass alles noch so Funktioniert wie es sollte.
-\end{enumerate}
-\noindent
-Dieser Vorgang soll für jedes Feature wieder holt werden bis alle Anforderungen an das Programm
-erfüllt sind. Dabei sollten die einzelnen Tests und Features möglichst klein sein.
+
+Zunächst sollte geklärt sein, welche Funktionen erfüllt werden müssen. Anhand
+dieser beginnt dann die Anwendung von TDD. Dazu wird der Folgende Zyklus
+beschrieben der sich immer und immer wiederholt bis alle Features implementiert
+und getestet sind.
+Der Erste schritt dazu ist das schreiben eines Tests, der neue Funktionalität
+oder Verbesserung zu einer bestehenden Unit hinzufügt. Dieser Test sollte
+möglichst kurz und aussagekräftig sein. Dazu muss der Entwickler die
+Spezifikationen und Anforderungen des Features genau verstehen um den Test
+wirklich effektiv schreiben zu können. Ein Entwickler, der die Anforderung
+nicht ganz versteht, ist nicht in der Laage einen Test zu schreiben, welcher
+alle Bereiche abdeckt. Der Entwickler, der den Test geschrieben hat, muss
+jedoch nicht auch der Entwickler sein, der die dazu passende Funktionalität
+implementiert.
+Als nächstes werden alle Tests die bereits bestehen, sowie der neue
+durchgeführt um zu sehen, ob der neue Test fehlschlägt. Dies bestätigt unter
+anderem auch, dass der neue Test die anderen Tests nicht beeinflusst und auch
+ohne neuen Code nicht bestanden wurde. Dadurch kann der Entwickler
+ausschließen, dass ein Test immer Korrekt ist, wodurch das Vertrauen des
+Entwicklers in den Test gesteigert wird.
+Der nächste schritt ist die Implementierung des Codes, der getestet werden soll,
+dabei ist unwichtig wie der Code ist geschrieben wird, das bedeutet, dass es
+erlaubt ist "`schmutzigen"' Code zu produzieren, welcher so nicht akzeptiert
+werden würde. Die Hauptsache dabei ist, dass der Test bestanden wird. Die Code
+Qualität spielt hier keine Rolle, da sie in Punkt Fünf überarbeitet wird.
+Der Entwickler darf in diesem Prozess auch keinen Weiteren Code hinzufügen, der
+nicht notwendig ist um den Test zu bestehen. Dies verhinder, das Code
+geschrieben wird, der keine zugehörigen Tests hat.
+Ist die gesamte Logik implementiert, werden alle Test durchgeführt und
+überprüft, ob alle Tests erfolgreich waren. Sollte dies nicht der Fall sein
+muss Punkt Drei wiederholt werden, welcher die Implementierung der
+Funktionalität ist.
+Sind alle Tests bestanden wird im Finalen schritt der neue Code aufgeräumt.
+Dieser Punkt ist sehr wichtig, da in Punkt Drei der Code nur Funktionieren muss
+kann es sein, dass hier Code entstanden ist, der nicht den Qualitativen
+Anforderungen entspricht. Sämtliche Objekte sollten einen aussagekräftigen
+Namen erhalten und der Code sollte, sofern dies nötig ist an einen Ort verlegt
+werden, der seiner Logischen Aufgabe entspricht. Duplikationen müssen entfernt
+werden und nach jeder Aufräumaktion sollten die Tests noch einmal ausgeführt
+durchlaufen, um zu verifizieren, dass alles noch so Funktioniert wie es soll.
+
+Dieser Zyklus wird nun von vorne wiederholt, bis jedes Feature implementiert
+ist und die Software als Fertig gilt. Die schritte, die dabei gemacht werden
+sollen, sollten möglichst klein sein, um eine höhere Test Abdeckung zu
+erreichen.
