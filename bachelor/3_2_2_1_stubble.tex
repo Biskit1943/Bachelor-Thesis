@@ -2,8 +2,8 @@
 \paragraph{stubble}\label{python-tools:stubble}\mbox{}
 \newline
 \lstinline{stubble} zählt zwar zu den \gls{mock}ing Tools, jedoch werden hier
-nur \Glspl{stub} als Funktionalität gegeben. Dennoch ist es möglich mithilfe 
-eines der vorgefertigten \Glspl{stub} \gls{mock}ing Funktionalität zu erhalten.
+nur \Glspl{stub} als Funktionalität gegeben. Dennoch ist es möglich, mithilfe 
+eines der vorgefertigten \Glspl{stub}, \gls{mock}ing Funktionalität zu erhalten.
 \newline
 
 Angenommen ein Objekt \lstinline{class Original} hat eine Abhängigkeit zu dem zu
@@ -17,11 +17,11 @@ werden, die in \lstinline{class Fake} definiert wurden.
 
 Um Helfermethoden zu \lstinline{class Fake} hinzu zu fügen, müssen diese mit
 \lstinline{@exempt} annotiert werden. Ist das Objekt von
-\lstinline{class Original} bereits initialisiert, so lässt es sich dieses an
-\lstinline{class Fake} übergeben, wenn diese von
+\lstinline{class Original} bereits initialisiert, so lässt sich dieses an
+\lstinline{class Fake} übergeben, wenn diese von 
 \lstinline{reahl.stubble.Delegate} erbt. Dadurch ist es möglich zur Laufzeit
 ein Objekt durch einen \Gls{stub} ersetzen. Als weiteres Feature wird die
-Möglichkeit geboten \Glspl{stub} mit \lstinline{setuptools} zu verwenden um
+Möglichkeit geboten, \Glspl{stub} mit \lstinline{setuptools} zu verwenden um
 Installationen zu \gls{stub}ben.
 \newline
 \\
@@ -31,12 +31,12 @@ Zum einen der
 \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#systemoutstub}{SystemOutStub}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#systemoutstub},
 der den Standard Out ersetzt und zum anderen der
 \href{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#callmonitor}{CallMonitor}\footnote{https://www.reahl.org/docs/4.0/devtools/stubble.d.html\#callmonitor},
-der dazu dient zu überprüfen welche Methoden wann, mit welchen Parametern und
+der dazu dient zu überprüfen, welche Methoden wann, mit welchen Parametern und
 wie häufig aufgerufen wurden.
-Diese \Glspl{stub} lassen sich als \glspl{context} einsetzen, wodurch es
+Diese \Glspl{stub} lassen sich als \Glspl{context} einsetzen, wodurch es
 leichter wird, Code mit diesen zu schreiben. Ein weiterer \Glspl{context} ist
-\lstinline{replaced}, dieser lässt den Entwickler eine Methode oder Funktion
-durch eine andere ersetzen, wodurch solange der \glspl{context} aktiv ist, die
+\lstinline{replaced}. Dieser lässt den Entwickler eine Methode oder Funktion
+durch eine andere ersetzen, wodurch solange der \Gls{context} aktiv ist, die
 neue Methode/Funktion genutzt wird.
 \newline
 
@@ -52,7 +52,7 @@ Ein weiteres experimentelles Feature ist das Ersetzen eines bereits bestehenden
 Objekts (\lstinline{Delegation}). Dies wurde bereits in den Hauptfeatures
 beschrieben, da es als sehr praktisch an zu sehen ist. Lediglich die
 Instanz-variablen eines Objektes machen hierbei Probleme, da diese nicht mit
-einem \Gls{stub} ersetzt werden können. So werden auch Objekt-variablen, die von
+einem \Gls{stub} ersetzt werden können. So werden auch Objektvariablen, die von
 originalen Methoden gesetzt oder verändert werden, nicht im \Gls{stub} gesetzt.
 Aus diesem Grund wird \lstinline{Delegation} als experimentelles Features
 gesehen, da ein Bug, der durch dieses Feature entstanden ist, schwer zu finden
@@ -89,7 +89,7 @@ Lediglich die Komplexität von stubble ist geringer. Zwar wird dem Entwickler
 alles geboten um ein Objekt zu ersetzen, jedoch aber auch nicht mehr.
 Zusätzlich bietet stubble mit seinen vorgefertigten \Glspl{stub} eine gute
 schnelle Möglichkeit den \lstinline{stdout} zu ersetzen oder ein Objekt zu
-Monitoren. Um jedoch selbst ein Objekt zu auszutauschen, wird vergleichsweise
+überwachen. Um jedoch selbst ein Objekt zu auszutauschen, wird vergleichsweise
 viel Code benötigt, da nicht nur der Rückgabewert neu gesetzt wird,
 sondern die Methode neu geschrieben werden muss. Dies kann allerdings bei
 komplexeren Anforderungen wiederum zum Vorteil werden. Durch die

@@ -3,83 +3,85 @@
 \addcontentsline{toc}{section}{Einleitung}
 
 Die Ansprüche an Software sind in den letzten Jahren immer weiter gestiegen.
-Dies liegt vor allem an der Reichweite, die Software heute hat, so besitzen
+Dies liegt vor allem an der Reichweite, die Software heute hat. So besitzen
 im Jahr 2018 bereits circa 66\% aller Menschen ein Smartphone
 (\cite{FraukeSchobelt:Smartphone}) und im Arbeitsleben ist ein PC meist nicht
 mehr weg zu denken. Die dadurch benötigte Software muss bestimmte
-Anforderungen, welche die Nutzer an diese stellen gewährleisten und
-sicherstellen. Mit steigenden Nutzer Zahlen, steigen oft auch die Anforderungen
-an eine Software sowie die gefundenen \Glspl{bug} in dieser.
+Anforderungen, welche die Nutzer an diese stellen, gewährleisten und
+sicherstellen. Mit steigenden Nutzerzahlen, steigen oft auch die Anforderungen
+an eine Software, sowie die gefundenen \Glspl{bug} in dieser.
 
 Im weltweiten Markt gibt es viele große Unternehmen, die gegenseitig um ihre
 Nutzer kämpfen. Die Anwender präferieren meist denjenigen Anbieter, welcher die
 bessere Software bietet. An dieser Stelle ist der Software-Architekt einer
-jeden Anwendung gefragt, welche Technologie eingesetzt wird um die Qualitativen
+jeden Anwendung gefragt, welche Technologie eingesetzt wird um die qualitativen
 Anforderungen an diese zu gewährleisten. Eine dieser Technologien ist das
 Test-driven development, welches sich durch eine hohe resultierende
 Test-Abdeckung ihren Namen gemacht hat. Bei dieser Methode werden zuerst die
 Tests und dann der Code geschrieben, um so später sicher stellen zu können,
 dass die Software alle Anforderungen erfüllt und keine \Glspl{bug} enthält.
 
-Gerade zum eintritt einer Neuen Software ist es für Unternehmen schwer Nutzer
+Gerade zum Release einer neuen Software ist es für Unternehmen schwer, Nutzer
 zu akquirieren. Andere Anwendungen, die bereits auf dem Markt sind, haben
 schon viele ihrer \Glspl{bug} gefixed und verfügen über eine durch den
-Anwender ausgiebig getestete Anwendung. Um eine neue Applikation in diesen
+Anwender ausgiebig getestete Software. Um eine neue Applikation auf diesen
 Markt zu bringen, ist es erforderlich, dass diese zum Start ohne Fehler läuft.
-Dies kann beispielsweise mit Test-driven development sicher gestellt werden.
+Dies kann mit Test-driven development sicher gestellt werden.
 
 Eine der Programmiersprachen mit der Test-driven development möglich ist, ist
 Python. Python wird heutzutage von vielen Entwicklern immer häufiger eingesetzt
-und ist Mittlerweile die am zweit meisten geliebte und am vierthäufigsten
-genutzte Sprache Weltweit (\cite{stackoverflow:2019}).
+und ist Mittlerweile die am zweit meisten beliebte und am vierthäufigsten
+genutzte Sprache weltweit (\cite{stackoverflow:2019}).
 
-Aufgrund der Zunehmenden Beliebtheit, sowie meiner Eigenen Vorliebe für die
-Programmiersprache Python (Die Bezeichnung dafür ist \Gls{Pythonista}) habe ich
+Aufgrund der zunehmenden Beliebtheit, sowie meiner eigenen Vorliebe für die
+Programmiersprache Python (auch \Gls{Pythonista} genannt) habe ich
 mich dazu entschieden meine Bachelorarbeit dieser zu widmen. Da ich beginnend
 mit dem Praxissemester und danach als Werkstudent in einer Firma an der
-Entwicklung der Hausinternen Test-Umgebung mitgewirkt habe, wurde ich immer
+Entwicklung der hausinternen Test-Umgebung mitgewirkt habe, wurde ich immer
 interessierter an dem Thema Testen. Durch die Beschäftigung mit Tests in meiner
-Freizeit bin ich irgendwann auf das Test-driven development gestoßen und war
-sofort überzeugt, das dies eine Technologie ist, die ich anwenden möchte. Doch
+Freizeit bin ich auf das Test-driven development gestoßen und war
+sofort überzeugt, dass dies eine Technologie ist, die ich anwenden möchte. Doch
 leider war die Auswahl der Tools, welche für Test-driven development in Frage
 kamen so hoch, das ich Angst hatte etwas verpassen zu können, da ich ein Tool
 einem anderen vorzog. Beim Analysieren der Tools viel mir auf, dass viele der
 Tools veraltet oder ungeeignet waren, was einen Einsatz für Test-driven
-development ausschloss. Die übrig gebliebenen Tools waren in Ihrem Umfang so
-mächtig, dass ich darüber lustig machte, dass es möglich sei eine ganze Arbeit
-darüber zu schreiben, weshalb ich das Projekt erst einmal zur Seite legte.
+development ausschloss. Die übrig gebliebenen Tools waren so umfangreich, dass
+ich das Projekt erst einmal zur Seite legte.
 
-Kurze Zeit später musste ich mich für meine Bachelorarbeit bereit machen und
-kam wieder auf das Thema zurück. Da ich bereits ein fundiertes Wissen bezüglich
-Test-driven development besaß, entschied ich mich dazu dieses Wissen aufs
-Papier zu bringen um anderen Entwicklern die Arbeit zu ersparen die einzelnen
-Tools Analysieren zu müssen.
+Die Bachelorarbeit erschien mir als der passende Rahmen für die intellektuelle
+und praktische Beschäftigung mit dieser Thematik. Zum einen konnte ich so meine
+Privaten Pläne diesbezüglich verwirklichen und zum anderen erschien mir das
+Thema relevant für meine späteren Beruflichen Perspektiven.
 
-Das Ziel dieser Arbeit ist es, verschiedene Aktuelle Test-Tools der
+Das Ziel dieser Arbeit ist es, verschiedene aktuelle Test-Tools der
 Programmiersprache Python auf ihre Tauglichkeit für den Einsatz von Test-driven
 development zu untersuchen und zu vergleichen. Dabei wird zuerst jedes Tool und
 seine Funktionalitäten beschrieben. Im Anschluss wird ein jedes auf die
 verschiedene Anforderungen untersucht, welche es erfüllen muss um für
 Test-driven development in Frage zu kommen. Dies geschieht anhand eines
-erstellten Codes Beispiels, welche gewisse Funktionalität liefert (oder nicht).
-Dieses Beispiel wird mithilfe der Verschiedenen Tools auf die gleiche Art
-getestet. Die dabei entstehenden Komplikationen sowie der benötigte Aufwand
-ergeben die Ergebnisse, welche für die Analyse benötigt werden.
+erstellten Codebeispiels, welches gewisse Funktionalität liefern sollte.
+Dieses Beispiel wird mithilfe der verschiedenen Tools auf die gleiche Art
+getestet. Die dabei entstehenden Komplikationen, sowie der benötigte Aufwand
+zeigen auf, welche Tools für die Analyse benötigt werden.
 
-Das Ergebnis der Arbeit soll aufzeigen Welche Tools zusammen die optimale
-Verbindung bieten um Test-driven development durch zu führen. Dabei erwarte ich
-mir auch tiefere Einblicke in das Test-driven development zu erhalten um so
-heraus zu finden ob diese Technologie für mich relevant ist.
+Die Arbeit soll aufzeigen welche Kombination der verschiedenen Tools die
+optimale Verbindung bieten um Test-driven development durch zu führen. Dabei
+erwarte ich mir tiefere Einblicke in das Test-driven development zu erhalten,
+um heraus zu finden ob diese Technologie für mich und für meine weiteren
+Arbeiten relevant ist.
 
 Dazu wird in Kapitel \ref{definition} zunächst geklärt, welche Eigenschaften
 die Programmiersprache Python hat, sowie die Definition von Test-driven
 development. Die genutzte Methodik wird in Kapitel \ref{methodik} beschrieben
 und anschließend in Kapitel \ref{python-tools} angewendet. Die Analyse ist in
 vier Unterpunkte gegliedert, in Punkt \ref{python-tools:stdlib} werden zunächst
-die Tools der Standardbibliothek analysiert. Anschließend werden unter Punkt
-\ref{python-tools:extlib} die Tools, welche nicht in der Standardbibliothek
-sind analysiert. Darauffolgend werden unter Punkt \ref{python-tools:vergleich}
-die analysierten Tool verglichen um dann unter Punkt
-\ref{python-tools:kombination} mögliche Kombinationen dieser auf zu Zeigen.
-Bevor in Kapitel \ref{fazit} das Fazit gezogen wird, werden die Ergebnisse der
-Arbeit in Kapitel \ref{diskussion} diskutiert.
+die Tools der Standardbibliothek analysiert. Diese sind \lstinline{unittest}
+und \lstinline{doctest}. Zusammengefasst unter Punkt \ref{python-tools:extlib}
+sind die Tools, welche nicht in der Standardbibliothek zu finden sind. Diese
+setzen sich aus \lstinline{pytest}, \lstinline{stubble}, \lstinline{mocktest},
+\lstinline{flexmock}, \lstinline{doublex} und \lstinline{hypothesis}.
+Darauffolgend werden unter Punkt \ref{python-tools:vergleich} die analysierten
+Tool verglichen um unter Punkt \ref{python-tools:kombination} mögliche
+Kombinationen dieser auf zu Zeigen. Bevor in Kapitel \ref{fazit} das Fazit
+gezogen wird, werden die Ergebnisse der Arbeit in Kapitel \ref{diskussion}
+diskutiert.

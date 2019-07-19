@@ -10,27 +10,27 @@ vollständigen Unterstützung beim Testen von Python-Programmen und der möglich
 unauffälligen Erstellung von gefälschten Objekten."'\footnote{Übersetzt aus dem Englischen}
 (\cite{flexmock:docs:0.10.3}). Die Features von \lstinline{flexmock} sind denen
 von \nameref{python-tools:mocktest} sehr ähnlich. So bildet \lstinline{flexmock}
-seine Tests, \glspl{stub} und \glspl{mock} wie ausgesprochen dar.
+seine Tests, \Glspl{stub} und \Glspl{mock} wie ausgesprochen dar.
 \newline
 
 \lstinline{flexmock} bietet dem Nutzer einiges an Funktionalität, auch wenn es
-sich erst in der Version \lstinline{0.10.4} (Stand 22. April 2019) befindet. So
+sich erst in der Version \lstinline{0.10.4} (Stand 19. Juli 2019) befindet. So
 lässt sich bereits ein \Gls{stub} für Klassen, Module und Objekte mithilfe von
 \lstinline{flexmock()} einrichten. Damit ist es möglich alles Notwendige für
 ein erfolgreiches Durchlaufen der Tests zu erstellen.
 
-Auch \gls{mock}ing ist kein Problem mit \lstinline{flexmock}. Mit der gleichen
+Auch \Gls{mock}ing ist kein Problem mit \lstinline{flexmock}. Mit der gleichen
 Funktion, mit der \Glspl{stub} erstellt werden, lassen sich
 \Glspl{mock} erstellen. Dadurch ist es möglich, einen \Gls{stub} als einen
 \Gls{mock} und umgekehrt zu verwenden. Daraus resultierend besteht für den
-Entwickler die Möglichkeit zu überprüfen wie oft etwas aufgerufen wurde, welche
+Entwickler die Möglichkeit, zu überprüfen wie oft etwas aufgerufen wurde, welche
 Parameter verwendet wurden, welcher Rückgabe Wert zu erwarten ist und/oder
 welche Exception zu geworfen werden soll.
 
 Zusätzlich ist es möglich, originale Funktionen eines Objektes zu
 \gls{mock}en. Dadurch enthält der Entwickler die Möglichkeit
 zu überprüfen, ob eine unveränderte Funktion oder Methode bestimmten
-Anforderungen Entspricht. Das Interface dafür ist das Selbe wie bei einem
+Anforderungen entspricht. Das Interface dafür ist das Selbe, wie bei einem
 \Gls{stub}.
 \lstinline{flexmock} bietet die Möglichkeit einen leeren \Gls{mock} zu
 erstellen und diesem eine beliebige Methoden hinzu zu fügen. Dies ist jedoch
@@ -53,8 +53,8 @@ Das letzte in der Dokumentation erwähnte Feature ist die Ersetzung von Klassen
 noch vor ihrer Instanziierung (\cite{flexmock:docs:0.10.3}). Dabei gibt es
 mehrere Ansätze, die verschiedene Ausgänge haben. Der erste Ansatz ist
 auf Modul Level. Dabei wird im Modul die Klasse mit einem Objekt, das
-entweder ein \lstinline{flexmock} oder ein Beliebig anderes sein kann, ersetzt.
-Nachteil dieser Methode ist, dass durch das ersetzen der Klasse durch eine
+entweder ein \lstinline{flexmock} oder ein beliebig anderes sein kann, ersetzt.
+Nachteil dieser Methode ist, dass durch das Ersetzen der Klasse durch eine
 Funktion, Probleme herbeigeführt werden. Um dem entgegen zu wirken, kann
 alternativ \lstinline{.new_instance(obj)} verwendet werden, welches beim
 Erstellen das Objekt zurück gibt, welches \lstinline{.new_instnce()} übergeben
@@ -97,7 +97,7 @@ natürlich auch für die \Glspl{stub}.
 
 Genauso ist die Komplexität von \lstinline{flexmock} ausgezeichnet.
 \lstinline{flexmock} bieten für den Entwickler zahlreiche sinnvolle Aspekte und
-darüber hinaus  ein Interface, welches das Schreiben von übersichtlichen Code
+darüber hinaus  ein Interface, welches das Schreiben von übersichtlichen Codes
 ermöglicht. Dies liegt vor allem an der deskriptiven Programmierung, die von
 \lstinline{flexmock} geboten wird. Auch die Unübersichtlichkeit des Codes hält 
 sich dabei in Grenzen.

@@ -6,15 +6,15 @@
 inspiriert wurde. Dabei soll \lstinline{mocktest} kein Port von
 \lstinline{rspec}\footref{rspec} sein, sondern eine kleine leichtere
 Version in Python (\cite{mocktest:doc}). Da sich \lstinline{mocktest} derzeit in
-der Version \lstinline{0.7.3} (Stand 16. April 2019) befindet, sind noch nicht
-alle Features vollkommen entwickelt und ausgereift, dennoch lässt sich das Tool
+der Version \lstinline{0.7.3} (Stand 19. Juli 2019) befindet, sind noch nicht
+alle Features vollkommen entwickelt und ausgereift. Dennoch lässt sich das Tool
 bereits produktiv einsetzen, da die Basisfunktionalität aus
 \lstinline{rspec}\footref{rspec} bereits implementiert wurde
 (\cite{mocktest:doc}).
 \newline
 
 Das Hauptfeature von \lstinline{mocktest} ist die Testisolation. Diese
-verhindert, dass \Gls{mock}objekte außerhalb eines Test Falles weiterhin
+verhindert, dass \Gls{mock}objekte außerhalb eines Testfalles weiterhin
 Veränderungen vornehmen und so andere Tests beeinflussen. Demnach werden Tests
 immer innerhalb einer \lstinline{mocktest.MockTransaction} ausgeführt, sofern
 diese einen oder mehrere \Glspl{mock} nutzen.
@@ -25,7 +25,7 @@ Funkion oder Methode aufgerufen wurde. Dabei ist es nebensächlich, ob es sich
 hierbei um ein globales oder lokales Objekt handelt. Des Weiteren lassen sich
 auch \Glspl{stub} nutzen, mit deren Hilfe Funktionen und Methoden präpariert
 werden können. Wie auch beim Überprüfen des Aufrufs ist es ebenfalls irrelevant,
-ob es sich um ein Lokales oder Globales Objekt handelt.
+ob es sich um ein lokales oder globales Objekt handelt.
 Die Präparation lässt sich nach Bedarf auch anpassen, so kann der Entwickler
 beispielsweise festlegen, dass nur bei einem bestimmten Aufruf mit bestimmten
 Parametern das \Gls{mock} Objekt aufgerufen wird. Andernfalls wird das originale
@@ -54,12 +54,12 @@ der \Glspl{fixture} unterstützt.
 
 Für die Überprüfung von \Glspl{mock} kann entweder \lstinline{when(obj)} oder
 \lstinline{expect(obj)} verwendet werden. Der Unterschied hier ist lediglich,
-dass \lstinline{when(obj)} nicht überprüft ob eine Methode aufgerufen wurde oder
-nicht. \lstinline{expect(obj)} hingegen überprüft ob die Methode aufgerufen
-wurde. So würde Beispielsweise \lstinline{expect(os).system} einen Fehler
+dass \lstinline{when(obj)} nicht überprüft, ob eine Methode aufgerufen wurde 
+oder nicht. \lstinline{expect(obj)} hingegen überprüft ob die Methode aufgerufen
+wurde. So würde beispielsweise \lstinline{expect(os).system} einen Fehler
 werfen, wenn \lstinline{os.system} nicht aufgerufen wurde. Bei
 \lstinline{when(os).system} wäre dies nicht der Fall. Ist es zu einem späteren
-Zeitpunk gewünscht zu überprüfen wie oft und mit welchen Parametern ein Objekt
+Zeitpunk gewünscht zu überprüfen, wie oft und mit welchen Parametern ein Objekt
 aufgerufen wurde, ist es möglich \lstinline{received_calls} ab zu prüfen. Diese
 Variable ist eine Liste von allen getätigten Aufrufen und ihren Parametern.
 \newline
@@ -68,11 +68,11 @@ Folgende Features werden von \lstinline{mocktest} unterstützt:
 Rückgabewert Variation der \Glspl{stub} mit
 \lstinline{.and_return(erg1, erg2,ergX)} oder alternativ
 \lstinline{.then_return()}, Festlegen der erwarteten Aufrufe einer
-Funktion/Methode mit \lstinline{.at_least(n)}, \lstinline{.at_most(n))},
-\lstinline{.between(a, b)} und \lstinline{.exact(n)}, \gls{stub}en von
+Funktion/Methode mit \lstinline{.at_least(n)}, \lstinline{.at_most(n)},
+\lstinline{.between(a, b)} und \lstinline{.exact(n)}, \Gls{stub}en von
 Methoden/Funktionen mit einer anderen Funktion/Methode mit Hilfe von
-\lstinline{.then_call(ersatz_func)}, setzen von Klassen-variablen mit
-\lstinline{.with_children(**kwargs)} und das setzen von neuen Klassen-Methoden
+\lstinline{.then_call(ersatz_func)}, Setzen von Klassenvariablen mit
+\lstinline{.with_children(**kwargs)} und das Setzen von neuen Klassenmethoden
 mit Hilfe von \lstinline{.with_method(**kwargs)} (\cite{mocktest:doc}).
 \newline
 
@@ -87,7 +87,7 @@ Komplikationen aufwies wird hier auf eine weitere Analyse verzichtet.
 \newline
 
 Um TDD zu betreiben bietet \lstinline{mocktest} alles, was ein Entwickler zum
-\gls{mock}en benötigt. So ist es möglich bestehende Objekte gänzlich oder
+\Gls{mock}en benötigt. So ist es möglich, bestehende Objekte gänzlich oder
 teilweise zu ersetzen, oder neue Objekte zu erstellen, welche die Signatur eines
 anderen Objektes haben. Auch globale Objekte lassen sich für den Zeitraum eines
 Tests ersetzen. Dadurch ist alles an Funktionalität geboten, was ein

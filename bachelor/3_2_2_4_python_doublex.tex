@@ -10,11 +10,11 @@ Klasse oder ein Objekt imitiert (\cite{doublex:docs:1.8.1}).
 \lstinline{doublex} bietet drei verschiedene Interfaces (vier zählt man die
 Unterklasse von Spy dazu), \Gls{stub}, Spy (ProxySpy) und Mock. Da die
 Dokumentation hier sehr schöne und treffende Beschreibungen nimmt, werden diese 
-nun hier zitiert. "`\Glspl{stub} sagen dir was du hören 
+nun zitiert. "`\Glspl{stub} sagen dir, was du hören 
 willst."'\footlabel{doublex:doc:trans}{Übersetzt aus dem Englischen} 
 \footlabel{doublex:doc:cite}{\cite{doublex:docs:1.8.1}}. "`Spies erinnern sich 
 an alles was Ihnen passiert."'\footref{doublex:doc:trans} 
-\footref{doublex:doc:cite}. "`Proxy spies leiten aufrufe an Ihre originale 
+\footref{doublex:doc:cite}. "`Proxy spies leiten Aufrufe an ihre originale 
 Instanz weiter."'\footref{doublex:doc:trans} \footref{doublex:doc:cite}. "`Mock 
 erzwingt das vordefinierte Skript."'\footref{doublex:doc:trans} 
 \footref{doublex:doc:cite}.
@@ -35,18 +35,17 @@ Umgebung ausgeführt werden müssen oder Änderungen vornehmen, die während
 eines Tests unerwünscht sind.
 \newline
 
-Das \Gls{stub} Interface ist, ein
-\Gls{stub} mit dem es dem Entwickler möglich ist, Rückgabewerte von Funktionen
-zu setzen oder ähnliche Aktionen zu definieren. Dabei ist es dem Entwickler
-möglich, zwischen verschiedenen Parametern zu unterscheiden oder gar auf alle
-aufrufe zu prüfen.
+Das \Gls{stub} Interface ist ein \Gls{stub} mit dem es dem Entwickler möglich 
+ist, Rückgabewerte von Funktionen zu setzen oder ähnliche Aktionen zu 
+definieren. Dabei ist es dem Entwickler möglich, zwischen verschiedenen 
+Parametern zu unterscheiden oder gar auf alle Aufrufe zu prüfen.
 
-Das Interface bietet die Möglichkeit Parameter von einem Objekt zu ändern
+Das Interface bietet die Möglichkeit Parameter von einem Objekt zu modifizieren
 um den Ausgang von Methoden zu verändern. Hierbei wird zwischen einem \Gls{stub}
 und einem "`free"' \Gls{stub} unterschieden. Ersterer nimmt eine Klasse als
 Parameter und ersetzt diese, zweiterer nimmt keine Parameter und fungiert als
 generelles Objekt. Dabei ist der wichtigste Unterschied, dass der normale
-\Gls{stub} nur Methoden abßändern kann, welche die originale Klasse auch 
+\Gls{stub} nur Methoden abändern kann, welche die originale Klasse auch 
 besitzt. Der "`free"' \Gls{stub} hingegen ist in dieser Hinsicht ungebunden und 
 kann alles sein, was der Entwickler programmiert.
 \newline
@@ -56,10 +55,9 @@ Als zweites Interface wird in der Dokumentation das Spy Interface erwähnt
 überwachen. Dabei legt der Entwickler fest, welche Methode wie oft und mit
 welchen Parametern aufgerufen werden muss. Werden die Erwartungen nicht
 getroffen, wird eine Exception geworfen. Mit Hilfe des Überprüfen der Parameter 
-ist es
-möglich, mit Hilfe des exakten Wertes, einer Regex oder mit dem von
-\lstinline{doublex} definierten Schlüsselwort \lstinline{ANY_ARG}, welches, wie
-der Name sagt, jedes Argument validiert.
+und mit Hilfe des exakten Wertes ist es möglich, einer Regex oder mit dem von
+\lstinline{doublex} definierten Schlüsselwort \lstinline{ANY_ARG} zu erstellen, 
+welches, wie der Name sagt, jedes Argument validiert.
 
 Zusätzlich gibt es einen "`free"' Spy, welcher von keiner
 Klasse abhängig ist. Hierdurch ist es möglich, jede beliebige Methode auf
@@ -74,10 +72,10 @@ wodurch keine Veränderung an diesem vorgenommen werden kann.
 \newline
 
 Das letzte Interface, ist das Mock Interface. Mit diesem lässt sich vor dem Test
-festlegen welche Methode wann und wie aufgerufen werden muss, damit der Test
+festlegen, welche Methode wann und wie aufgerufen werden muss, damit der Test
 erfolgreich ist. Die Reihenfolge spielt dabei eine wichtige Rolle, außer es wird
-\lstinline{any_order_verify()} genutzt. Das Mock Objekt lässt sich, wie
-jedes andere Objekt verändern und wie ein \Gls{stub} präparieren.
+\lstinline{any_order_verify()} genutzt. Das Mockobjekt lässt sich, wie
+jedes andere Objekt, verändern und wie ein \Gls{stub} präparieren.
 
 Auch der "`free"' Mock ist, wie bei den anderen Interfaces, verfügbar und bietet
 die gleichen Möglichkeiten der freien Gestaltung des Objekts.
@@ -90,8 +88,8 @@ Instanz arbeiten kann.
 
 Zu jedem Interface ist ein freies verfügbar, welches mit beliebigen
 Methoden aufgerufen werden kann ohne Fehler zu werfen. Abschließend lässt sich
-zusätzlich sagen, dass jedes Interface, die Möglichkeit bietet,
-\gls{stub}ing zu betreiben, wobei nur das \Gls{stub} Interface sonst keine
+sagen, dass jedes Interface, die Möglichkeit bietet,
+\gls{stub}ing zu betreiben, wobei nur das \Gls{stub}interface sonst keine
 weitere Funktionalität bietet.
 \newline
 
@@ -99,17 +97,17 @@ Die Features von \lstinline{doublex} wurden auf den in Listing
 \ref{listing:base:my_mock_module} definierten Code angewandt (vgl. Listing
 \ref{listing:doublex:example}). Wie dort zu erkennen ist, konnte nicht jeder
 Test ohne Probleme validiert werden. So war es zwar möglich die ersten drei
-Tests erfolgreich zu validieren, jedoch ist es fraglich ob, dieser Code
+Tests erfolgreich zu validieren, jedoch ist es fraglich, ob dieser Code
 wirklich etwas bringt, da die getesteten Objekte einfach nur zurück geben, was
-erwartet ist und dabei nicht einmal das originale Objekt sind.
+erwartet wird und dabei nicht einmal das originale Objekt sind.
 
-Bei dem Test, der eine interne Methode aufrufen soll kommt das Spy Interface an
+Bei dem Test, der eine interne Methode aufrufen soll, kommt das Spy Interface an
 seine Grenzen, da es nicht überprüfen kann, ob die interne Methode aufgerufen
-wurde. Standessen wird eine Exception geworfen, welche in einem
+wurde. Stadtessen wird eine Exception geworfen, welche in einem
 Kommentar in der Testmethode festgehalten wurde.
 
 Das Testen, ob \lstinline{Helper.help()} aufgerufen wurde, war teilweise
-erfolgreich, da es dank des Duplikates ein Objekt mit dem richtigen Interface
+erfolgreich, da es Dank des Duplikates ein Objekt mit dem richtigen Interface
 bekommen hat. Es konnte jedoch nicht vortäuschen, die gewünschte Klasse zu sein.
 Auch hier wurde der Fehler in einem Kommentar festgehalten.
 
@@ -127,22 +125,23 @@ effizientes
 TDD. Wie der Name des Tools verrät, handelt es sich um Duplikate von Objekten,
 deren Funktionalität aber vom Entwickler festgelegt werden muss. So würde eine
 Klasse mit einer Methode \lstinline{return_input(input)} die den übergebenen
-Parameter zurück gibt standardmäßig \lstinline{None} zurück geben, solange
+Parameter zurück gibt, standardmäßig \lstinline{None} zurück geben, solange
 nichts anderes im Duplikat festgelegt wurde. Lediglich die Signatur des Aufrufs
 wird überprüft. Deswegen würde \lstinline{stub.reuturn_input()} eine Exception
 werfen.
 
 Zwar lässt sich das Standardverhalten von \lstinline{doublex} verändern, jedoch
 kann nur ein fester Wert gesetzt werden, der für alle nicht ersetzten Methoden
-gilt. Ebenso globale Objekte oder Module lassen sich nicht ersetzen. Hinzu 
+gilt. Globale Objekte oder Module lassen sich ebenso nicht ersetzen. Hinzu 
 kommt, dass das Tool drei Abhängigkeiten benötigt und selbst noch nicht in 
-stabilem
-Zustand ist. Während der Analyse sind zwei \lstinline{DeprecationWarning}s
-aufgetaucht, wovon eine bereits mit Python 3.0 ausgelaufen ist. Diese weißen auf
-eine nicht sehr aktive Entwicklung des Tools hin.
+stabilem Zustand ist. Während der Analyse sind zwei 
+\lstinline{DeprecationWarning}s aufgetaucht, wovon eine bereits mit Python 3.0 
+ausgelaufen ist. Diese weisen auf eine nicht sehr aktive Entwicklung des Tools 
+hin.
 
 Selbstverständlich wurden die Fehler auf GitHub gemeldet, sodass der Entwickler
-sich in Zukunft darum kümmern kann (Stand 23. April 2019).
+sich in Zukunft darum kümmern kann (Stand 23. April 2019). Jedoch wurden diese 
+bis zum Abschluss dieser Arbeit nicht gefixed (Stand 19. Juli 2019).
 
 Auch die Effizienz ist nicht optimal. Dadurch, dass das Duplikat nicht die
 originalen Methoden aufruft, muss jede Methode mit einem Returnwert
@@ -153,7 +152,7 @@ werden soll. Hat man allerdings eine externe unbeeinflussbare Klasse
 kann dieses Tool durchaus nützlich werden.
 
 An Komplexität fehlt es \lstinline{doublex} ein wenig. So kann der \Gls{stub}
-lediglich festlegen welche Funktion ausgeführt, welcher Rückgabewert zurück
+lediglich festlegen, welche Funktion ausgeführt, welcher Rückgabewert zurück
 gegeben oder welche Exception geworfen wird.
 
 Das Spy Interface hingegen ist leicht zu nutzen und bietet fast alles, was ein

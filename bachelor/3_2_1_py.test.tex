@@ -10,10 +10,10 @@ gewonnen hat.
 \noindent
 Die Basis Features von \lstinline{pytest} sind folgende:
 Simple \lstinline{assert} Statements anstatt \lstinline{self.assert}, Error
-Überprüfung mit \Gls{context}, Informativer Output in Farbe, der angepasst
-werden kann, Feature reiche \Glspl{fixture} sowie Vordefinierte \Glspl{fixture}
+Überprüfung mit \Gls{context}, informativer Output in Farbe, der angepasst
+werden kann, Feature reiche \Glspl{fixture} sowie vordefinierte \Glspl{fixture}
 von \lstinline{pytest} selbst, die unter den verschiedenen Tests geteilt werden
-können oder Global definiert für mehrere Module verfügbar gemacht werden
+können oder global definiert für mehrere Module verfügbar gemacht werden
 können, sowie die Parametrisierung dieser, die Überprüfung von
 \lstinline{stdout} und \lstinline{stderr}, das \gls{stub}en von Objekten und
 zuletzt die Gliederung der Testfälle durch Markieren, Nodes (Auswahl der Modul
@@ -30,7 +30,7 @@ um Tests zu schreiben und aus zu führen. So ist mit den gebotenen
 eines \glspl{decorator} markiert und den Test Funktionen als Parameter
 übergeben. Um die \lstinline{setUp} und \lstinline{tearDown} Funktionalität zu
 bekommen muss lediglich das keyword \lstinline{yield} verwendet werden. Die
-\Gls{fixture} wird dann den Code bis zum \lstinline{yield} ausführen und nach
+\Gls{fixture} wird dann den Code bis zum \lstinline{yield} fortsetzen und nach
 der Funktion den Rest nach \lstinline{yield} ausführen. Ein Beispiel dazu ist in
 Listing \ref{listing:pytest:yield} zu finden, der dazugehörige Output in
 Listing \ref{listing:pytest:yield_output}. Diese lassen sich durch zusätzliche
@@ -39,7 +39,7 @@ der Dokumentation beschrieben (\cite{docs.pytest.org:4.4}).
 \newline
 
 Des Weiteren bietet \lstinline{pytest} auch \gls{stub}ing. So lässt sich
-beispielsweise mit \lstinline{monkeypatch.setattr()} der Rückgabe Wert einer
+beispielsweise mit \lstinline{monkeypatch.setattr()} der Rückgabewert einer
 Funktion ersetzen. Dies wird in \lstinline{pytest} automatisch am Ende der
 Funktion rückgängig gemacht, wodurch der Entwickler sich mehr auf das
 eigentliche Testen konzentrieren kann und weniger um das Aufräumen nach dem
@@ -80,7 +80,7 @@ Test eingegangen.
 Im Aspekt der Anwendbarkeit bietet \lstinline{pytest} fast alles, um TDD 
 effektiv anwenden zu können, da sowohl \Glspl{stub}, als auch \Glspl{fixture} 
 ohne Erweiterungen möglich sind und dazu noch im Umfang einiges zusätzlich zur
-Basisfunktionalität bieten. Lediglich das \gls{mock}en von Objekten ist im 
+Basisfunktionalität bieten. Lediglich das \Gls{mock}en von Objekten ist im 
 Basisumfang nicht enthalten. Da \lstinline{pytest} nicht in der STDLIB ist, muss
 es aus externen Quellen installiert werden. Dabei werden für
 \lstinline{pytest 4.4.0} die in Listing \ref{listing:pytest:requirements}
@@ -107,8 +107,8 @@ steigender Komplexität, dank der Strukturen von \lstinline{pytest} nicht wenige
 lesbar.
 
 Sollten dem Nutzer die Features von \lstinline{pytest} nicht genügen, so lässt
-sich unter \url{http://plugincompat.herokuapp.com/} eine Liste von 618 (Stand:
-2. April 2019) Erweiterungen für \lstinline{pytest 4.3.0} finden.
+sich unter \url{http://plugincompat.herokuapp.com/} eine Liste von 683 (Stand:
+19. Juli 2019) Erweiterungen für \lstinline{pytest 5.0.0} finden.
 \lstinline{pytest} selbst kann allerdings auch als Erweiterung zu unittest
 genutzt werden, indem es als Test-runner für diese verwendet wird. Dadurch ist
 es dem Entwickler möglich, den verbesserten Output von \lstinline{pytest} zu

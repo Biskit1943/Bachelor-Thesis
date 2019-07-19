@@ -26,17 +26,17 @@ Möchte der Entwickler einen etwas größeren Test schreiben, so kann er sich ei
 Funktionalität von \lstinline{doctest} bedienen, die es ihm ermöglicht Tests in
 eine externe Datei zu verlagern. Dabei wird die Datei als ein \Gls{docstring}
 behandelt, wodurch sie keine \lstinline{"""} (drei Interpunktionszeichen) 
-benötigt. Um jedoch Code in diese Datei ausführen zu können muss das zu 
+benötigt. Um jedoch Code in diese Datei ausführen zu können, muss das zu 
 testende Modul importiert werden.
 
 Durch das Schreiben der Tests in den \Glspl{docstring} werden die Module, in
-denen längere Tests geschrieben werden, schnell sehr unübersichtlich und lang.
+denen längere Tests geschrieben werden, schnell unübersichtlich und lang.
 Zwar wird durch externe Textdateien Abhilfe geschaffen, dennoch sind zu lange 
 und komplexe doctests schwer zu lesen und nach zu vollziehen.
 \newline
 
 Das Listing \ref{listing:doctest:advanced} zeigt den Code aus Listing
-\ref{listing:base:my_module} versehen mit \Glspl{docstring}. Dieser Test wurde
+\ref{listing:base:my_module}, versehen mit \Glspl{docstring}. Dieser Test wurde
 mit Hilfe der \lstinline{main} Funktion von Python ausgeführt. Der in Listing
 \ref{listing:doctest:advanced_text} ausgelagerte Test wurde mit Hilfe des CLIs
 von \lstinline{doctest} ausgeführt. Da beide Tests keine Fehler werfen, 
@@ -54,7 +54,7 @@ Diese ermöglicht es Tests aus Kommentaren, sowie Textdateien in
 \nameref{python-tools:unittest}, ist auch doctest in der STDLIB, wodurch keine
 externen Abhängigkeiten geladen werden müssen. Für die Analyse wird diese 
 Integration allerdings nicht in Betracht gezogen, da \lstinline{doctest} als 
-Modul selbst analysiert werden soll und nicht die Funktionalität die von 
+Modul selbst analysiert werden soll und nicht die Funktionalität, die von 
 \lstinline{unittest} geboten wird.
 \newline
 
@@ -70,23 +70,23 @@ Methoden, sowie ein Abgleich des Outputs mit dem erwarteten Wert. Sollten
 allerdings \Glspl{fixture} gewünscht sein, so ist dies nur mit Vorarbeit
 möglich, da diese jedes mal an der benötigten Stelle geschrieben werden müssen.
 Der Output von \lstinline{doctest} gleicht dem von \lstinline{unittest} und
-verfügt über die selben Schwächen. Bei vielen Fehlern und langem
+verfügt über dieselben Schwächen. Bei vielen Fehlern und langem
 \gls{stacktrace} wird der Output im Terminal schwer lesbar. Die Effizienz mit
 der \lstinline{doctest} genutzt werden kann, ist demnach mittelmäßig. Zum einen
 ist es einfach Tests zu schreiben und zum anderen ist viel Code nötig.
 Funktionalität, wie das \gls{mock}en, fehlen.
 
 \lstinline{doctest} selbst bietet wenig Komplexität von sich aus. Stattdessen
-ist die Komplexität, die möglich ist vom Entwickler abhängig, da
+ist die Komplexität, welche möglich ist, vom Entwickler abhängig, da
 dieser die Tests komplett selber schreiben muss. Je nach zu testender
-Funktion/Methode kann dies abhängig des Test Aufwands schnell unübersichtlich
+Funktion/Methode kann dies, abhängig vom Testaufwand schnell unübersichtlich
 werden, wenn viel Code abseits des eigentlichen Tests benötigt wird.
 \lstinline{doctest} stellt dem Entwickler lediglich ein paar Möglichkeiten
 Optionen zu aktivieren, die den Test beeinflussen können. Diese sind in der
 Dokumentation unter dem Punkt \lstinline{Option Flags} zu
 finden\footnote{https://docs.python.org/3.7/library/doctest.html\#option-flags}.
 \\
-Als Erweiterung bestet lediglich die Integration in
+Als Erweiterung besteht lediglich die Integration in
 \lstinline{unittest}\footcite{docs.python:doctest} sowie
 \lstinline{pytest}\footcite{docs.pytest.org:4.4}.
 \newline
