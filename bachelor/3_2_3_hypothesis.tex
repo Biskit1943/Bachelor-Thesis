@@ -2,96 +2,104 @@
 \paragraph{hypothesis}\label{python-tools:hypothesis}\mbox{}
 \newline
 Das größte und am weitesten verbreitete Tool für Fuzz-testing mit Python ist
-\lstinline{hypothesis}. Recherchen im Internet weisen auf kein weiteres aktuelles
-Tool hin, dass Open Source ist, demnach ist \lstinline{hypothesis} das einzige
-Tool welches zum Fuzz-testing mit Python derzeit genutzt werden kann (Python 3.7).
+\lstinline{hypothesis}. Recherchen im Internet weisen auf kein weiteres 
+aktuelles Tool hin, welches Open Source ist, demnach ist \lstinline{hypothesis} 
+das einzige Tool welches zum Fuzz-testing mit Python derzeit genutzt werden 
+kann (Python 3.7).
 
-Bevor man anfangen kann mit \lstinline{hypothesis} zu testen, muss man verstehen
-wie \lstinline{hypothesis} funktioniert. Möchte man Daten haben die einer
+Bevor man anfangen kann mit \lstinline{hypothesis} zu testen muss man verstehen,
+wie \lstinline{hypothesis} funktioniert. Möchte man Daten haben, die einer
 Spezifikation entsprechen, benötigt man \lstinline{hypothesis.strategies}. In
 \lstinline{hypothesis} sind Strategien Spezifikationen für die Generierung von
-Daten. Wäre eine Spezifikation also, dass die Daten \lstinline{Integer} sind, dann
-würde man \lstinline{hypothesis.strategies.integers()} verwenden. Diese Strategie
-würde verschiedene Daten die \lstinline{Integer} sind ausgeben. Möchte man nur
-Werte zwischen A und B, so wäre die Strategie
+Daten. Wäre eine Spezifikation also, dass die Daten \lstinline{Integer} sind, 
+dann würde man \lstinline{hypothesis.strategies.integers()} verwenden. Diese 
+Strategie würde verschiedene Daten die \lstinline{Integer} sind ausgeben. 
+Möchte man nur Werte zwischen A und B, so wäre die Strategie 
 \lstinline{.integers(min_value=A, max_value=B)}. Dies kann man mit beliebig
-vielen Daten Typen und Spezifikationen durchführen, dabei verfügt
-\lstinline{hypothesis} über so viele verschiedene Spezifikationen, dass es schwer
-sein wird alle zu kennen. Die Basics lassen sich allerdings in der
+vielen Daten Typen und Spezifikationen durchführen. Dabei verfügt 
+\lstinline{hypothesis} über so viele verschiedene Spezifikationen, dass es 
+schwer sein wird, alle zu kennen. Die Basics lassen sich allerdings in der
 \href{https://hypothesis.readthedocs.io/en/latest/data.html}{Dokumentation}
 \footnote{https://hypothesis.readthedocs.io/en/latest/data.html} finden.
 
-Ist die Spezifikation bekannt und die Strategie gefunden werden Tests mithilfe einer
-\Gls{annotation} der Test Funktion übergeben, diese \Gls{annotation} nennt sich
-\lstinline{hypothesis.given()}. Ein kleines Beispiel dazu kann in Listing
-\ref{listing:hypothesis:given} gefunden werden. \lstinline{.given()} unterstützt
-dabei die \lstinline{*args} als auch die \lstinline{**kwargs} Übergabe der Strategien.
+Ist die Spezifikation bekannt und die Strategie gefunden, werden Tests mithilfe 
+einer \Gls{annotation} der Test Funktion übergeben. Diese \Gls{annotation} 
+nennt sich \lstinline{hypothesis.given()}. Ein kleines Beispiel dazu kann in 
+Listing \ref{listing:hypothesis:given} gefunden werden. \lstinline{.given()} 
+unterstützt dabei die \lstinline{*args} als auch die \lstinline{**kwargs} 
+Übergabe der Strategien.
 
-Hat man nun einen Fehler gefunden und möchte diesen für alle weiteren Tests testen,
-so kann man mit \lstinline{hypothesis.example()} den Test annotieren und die Werte
-bei denen der Test fehl geschlagen ist dort übergeben. Alternativ übernimmt dies
-\lstinline{hypothesis} durch das speichern des Wertes im Cache, allerdings kann dieser
-verloren gehen, oder durch umbenennen einer Funktion invalide werden. Um zu verhindern,
-dass der Cache von Entwickler zu Entwickler unterschiedlich ist, lässt sich der Cache
-in der VCS einbinden, dazu sollte alles in \lstinline{.hypothesis/examples/} hinzu
-gefügt werden. Alle anderen Ordnern in \lstinline{.hypothesis} sind nicht dafür
-ausgelegt in das VCS integriert zu werden, da sie zu Merge-Konflikten führen können.
+Hat man nun einen Fehler gefunden und möchte diesen für alle weiteren Tests 
+testen, so kann man mit \lstinline{hypothesis.example()} den Test annotieren 
+und die Werte, bei denen der Test fehl geschlagen ist, übergeben. Alternativ 
+übernimmt dies \lstinline{hypothesis} durch das Speichern des Wertes im Cache. 
+Allerdings kann dieser verloren gehen oder durch Umbenennen einer Funktion 
+invalide werden. Um zu verhindern, dass der Cache von Entwickler zu Entwickler 
+unterschiedlich ist, lässt sich der Cache in der VCS einbinden. Dazu sollte 
+alles in \lstinline{.hypothesis/examples/} hinzu gefügt werden. Alle anderen 
+Ordner in \lstinline{.hypothesis} sind nicht dafür ausgelegt in das VCS 
+integriert zu werden, da sie zu Mergekonflikten führen können.
 
-Möchte der Entwickler etwas mehr Information darüber weshalb ein Test fehl geschlagen
-ist, so ist es Ihm möglich mit \lstinline{hypothesis.note()} vor einer Assertion
-einen Text aus zu geben, der Ihm diese Informationen gibt. \lstinline{note()} wird
+Möchte der Entwickler etwas mehr Information darüber, weshalb ein Test fehl 
+geschlagen ist, so ist es ihm möglich mit \lstinline{hypothesis.note()} vor 
+einer Assertion einen Text aus zu geben, der ihm diese Informationen gibt. 
+\lstinline{note()} wird
 allerdings nur aus gegeben, wenn der Test fehl schlägt.
 
-Möchte man ein paar Statistiken darüber was \lstinline{hypothesis} gemacht hat und man
-nutzt \lstinline{pytest} als Test runner, so kann man mit \lstinline{--hypothesis-show-statistics}
-sich die Statistiken zu den Tests anschauen. Dabei werden folgende Informationen 
-zu jeder Test Funktion gezeigt:
-\begin{itemize}
-    \item Gesamte Anzahl der Durchläufe mit der Anzahl der fehlgeschlagenen und der Anzahl der invaliden Tests.
-    \item Die ungefähre Laufzeit des Tests.
-    \item Wie viel Prozent davon für die Datengenerierung aufgewendet wurde.
-    \item Wieso der Test beendet wurde.
-    \item Alle aufgetretenen Events von \lstinline{hypothesis}
-\end{itemize}
+Möchte man ein paar Statistiken darüber was \lstinline{hypothesis} gemacht hat 
+und man nutzt \lstinline{pytest} als Test runner, so kann man mit 
+\lstinline{--hypothesis-show-statistics} sich die Statistiken zu den Tests 
+anschauen. Dabei werden folgende Informationen zu jeder Test Funktion gezeigt:
+Die gesamte Anzahl der Durchläufe mit der Anzahl der fehlgeschlagenen und der 
+Anzahl der invaliden Tests, die ungefähre Laufzeit des Tests, wie viel Prozent 
+davon für die Datengenerierung aufgewendet wurde, weshalb der Test beendet 
+wurde sowie alle aufgetretenen Events von \lstinline{hypothesis}.
 
-Ein Event kann allerdings auch vom Entwickler genau so wie \lstinline{note()} genutzt
-werden, mit dem Unterschied, dass ein Event immer zu einem Output führt wenn die
-Zeile im Code ausgeführt wird (Sofern \lstinline{pytest} und
+Ein Event kann allerdings auch vom Entwickler genau so, wie \lstinline{note()} 
+genutzt werden, mit dem Unterschied, dass ein Event immer zu einem Output 
+führt, wenn die Zeile im Code ausgeführt wird (sofern \lstinline{pytest} und 
 \lstinline{--hypothesis-show-statistics} genutzt werden).
 
-Mit diesem Wissen lässt sich \lstinline{hypothesis} bereits für die einfachsten Dinge
-Nutzen, hat man allerdings etwas Spezifischere Anforderungen, so muss etwas tiefer
+Mit diesem Wissen lässt sich \lstinline{hypothesis} bereits für die einfachsten 
+Dinge nutzen. Bestehen etwas Spezifischere Anforderungen, so muss etwas tiefer
 in die Materie eingestiegen werden. Angenommen, eine Funktion soll mit einem
-\lstinline{Integer} getestet werden, dieser muss aber durch sich selbst teilbar sein.
-Dies könnte mit einem \lstinline{if} Statement geprüft werden, würde aber die Anzahl
-der relevanten Tests erheblich senken. Standessen ist es möglich auf Strategien filter
-an zu wenden. Filter müssen dabei Funktionen sein, die einen Wert filtern und Ihn zurück
-geben. Für das eben genannte Beispiel würde die \Gls{annotation} dann so aussehen:
+\lstinline{Integer} getestet werden, der durch sich selbst teilbar sein muss.
+Dies könnte mit einem \lstinline{if} Statement geprüft werden, würde aber die 
+Anzahl der relevanten Tests erheblich senken. Standessen ist es möglich auf 
+Strategien Filter an zu wenden. Filter müssen dabei Funktionen sein, die einen 
+Wert filtern und zurück geben. Für das eben genannte Beispiel würde die 
+\Gls{annotation} dann so aussehen:
 \lstinline{@given(integers().filter(lambda i: i % i == 0))}.
 
-Gibt \lstinline{hypothesis} einem Test Daten die nicht gefiltert werden können oder sollen,
-so ist es möglich mit \lstinline{hypothesis.assume()} eine Annahme auf zu stellen. Ist die
-Annahme falsch, so wird dieser Test übersprungen. Allerdings kann dies zu Fällen führen bei
-denen \lstinline{hypothesis} keine validen Daten finden kann, was zu einer Exception und
-zum fehlschlagen des Tests führt.
+Gibt \lstinline{hypothesis} einem Test Daten, die nicht gefiltert werden können 
+oder sollen, so ist es möglich mit \lstinline{hypothesis.assume()} eine Annahme 
+auf zu stellen. Ist die Annahme falsch, so wird dieser Test übersprungen. 
+Allerdings kann dies zu Fällen führen, bei denen \lstinline{hypothesis} keine 
+validen Daten finden kann, was zu einer Exception und zum fehlschlagen des 
+Tests führt.
 
-\lstinline{hypothesis} verfügt noch über weit mehr Funktionalität als hier genannt werden kann,
-wie zum Beispiel das verketten von Strategien. Die Dokumentation zu allem, was
-\lstinline{hypothesis} ohne Erweiterungen erschaffen kann, kann
+\lstinline{hypothesis} verfügt noch über weit mehr Funktionalität als hier 
+genannt werden kann, wie zum Beispiel das Verketten von Strategien. Die 
+Dokumentation zu allem, was \lstinline{hypothesis} ohne Erweiterungen 
+erschaffen kann, kann 
 \href{https://hypothesis.readthedocs.io/en/latest/data.html}{online}\footnote{https://hypothesis.readthedocs.io/en/latest/data.html}
 eingesehen werden.
 
-Auch wenn die Standard Bibliothek von \lstinline{hypothesis} bereits sehr viele Strategien enthält,
-so gibt es dennoch einiges was mithilfe von Erweiterungen dazu gewonnen werden kann. So werden
-von \lstinline{hypothesis} selbst First-party Erweiterungen zur Verfügung gestellt. Dies dient
-vor allem dazu die Abhängigkeiten von der Standard Bibliothek so gering wie möglich zu halten
-(eine zusätzliche Abhängigkeit) und zum anderen um Kompatibilitätsprobleme zu verhindern. Aus
-diesem Grund können diese zusätzlichen Erweiterungen extra installiert werden, dazu finden sich
-in der Dokumentation drei Seiten, eine Generelle\footnote{https://hypothesis.readthedocs.io/en/latest/extras.html},
-eine für Django\footnote{https://hypothesis.readthedocs.io/en/latest/django.html} und eine für
-Wissenschaftliche Module\footnote{https://hypothesis.readthedocs.io/en/latest/numpy.html}.
-Zusätzlich zu den First-party Erweiterungen, gibt es auch noch Erweiterungen der Community,
-eine kleine Liste dazu kann in der 
+Auch wenn die Standard Bibliothek von \lstinline{hypothesis} bereits viele 
+Strategien enthält, so gibt es dennoch einiges, was mithilfe von Erweiterungen 
+dazu gewonnen werden kann. So werden von \lstinline{hypothesis} selbst 
+First-party Erweiterungen zur Verfügung gestellt. Dies dient vor allem dazu die 
+Abhängigkeiten von der Standard Bibliothek so gering wie möglich zu halten 
+(eine zusätzliche Abhängigkeit) und zum anderen um Kompatibilitätsprobleme zu 
+verhindern. Aus diesem Grund können diese zusätzlichen Erweiterungen extra 
+installiert werden, dazu finden sich in der Dokumentation drei Seiten, eine 
+Generelle\footnote{https://hypothesis.readthedocs.io/en/latest/extras.html}, 
+eine für 
+Django\footnote{https://hypothesis.readthedocs.io/en/latest/django.html} und 
+eine für Wissenschaftliche 
+Module\footnote{https://hypothesis.readthedocs.io/en/latest/numpy.html}.
+Zusätzlich zu den First-party Erweiterungen, gibt es auch noch Erweiterungen 
+der Community, eine kleine Liste dazu kann in der  
 Dokumentation\footnote{https://hypothesis.readthedocs.io/en/latest/strategies.html}
 gefunden werden oder durch das Explizite suchen einer Strategie im Internet.
 
@@ -106,34 +114,37 @@ und unter
 examples}"'\footnote{https://hypothesis.readthedocs.io/en/latest/examples.html}
 nachgesehen werden.
 
-Da \lstinline{hypothesis} das derzeit einzige aktiv Entwickelte Open Source Tool ist, müssen
-Entwickler, die \gls{fuzz} betreiben wollen auf dieses Tool zurück greifen. 
-Doch das
-ist nichts Negatives, \lstinline{hypothesis} bietet einem Entwickler alles um seine einzelnen
-Funktionen und Methoden auf Herz und Nieren zu testen. Selbstverständlich kommt es hier stets
-auf den Anwendungsfall an, denn nicht jede Funktion oder Methode lässt sich mit zufälligen Werten
-wirklich Effektiv testen, jedoch bietet \lstinline{hypothesis} dort wo es sinnvoll ist alles
-um ausgiebig zu testen. Sollten die in der Standard Bibliothek enthaltenen Strategien nicht
-reichen, so bietet \lstinline{hypothesis} mit seinen First-party Erweiterungen, Erweiterungen die
-zu 100\% mit \lstinline{hypothesis} Funktionieren. Dadurch ist die Standard Bibliothek besonders
-schlank.
+Da \lstinline{hypothesis} das derzeit einzige aktiv entwickelte Open Source 
+Tool ist, müssen Entwickler, die \gls{fuzz} betreiben wollen, auf dieses Tool 
+zurück greifen. Für das Testen von Funktionen und Methoden reicht dies aus. 
+Selbstverständlich kommt es hier stets auf den Anwendungsfall an, denn nicht 
+jede Funktion oder Methode lässt sich mit zufälligen Werten wirklich effektiv 
+testen. Jedoch bietet \lstinline{hypothesis} dort, wo es sinnvoll ist, alles
+um ausgiebig zu testen. Sollten die in der Standard Bibliothek enthaltenen 
+Strategien nicht reichen, so bietet \lstinline{hypothesis} mit seinen 
+First-party Erweiterungen, Erweiterungen die zu 100\% mit 
+\lstinline{hypothesis} funktionieren. Dadurch ist die Standardbibliothek 
+besonders schlank.
 
-\lstinline{hypothesis} selbst lässt den Entwickler sehr schnell einsteigen, da nicht sonderlich
-viel Vorarbeit notwendig ist um \lstinline{hypothesis} an zu wenden. Allerdings kommt mit den
-steigenden Anforderungen an die Daten auch die steigende Vorarbeit, die nötig ist um
-\gls{fuzz}-testing zu betreiben.
+\lstinline{hypothesis} selbst lässt den Entwickler sehr schnell einsteigen, da 
+nicht sonderlich viel Vorarbeit notwendig ist um \lstinline{hypothesis} an zu 
+wenden. Allerdings kommt mit den steigenden Anforderungen an die Daten auch die 
+steigende Vorarbeit, die nötig ist um \gls{fuzz}-testing zu betreiben.
 
-Die Komplexität von \lstinline{hypothesis} ist allerdings sehr hoch, so viel wie
-\lstinline{hypothesis} bietet, so komplex kann es auch werden es an zu wenden. Hat man spezielle
-Anforderungen abseits der Standard Werte wie \lstinline{int} oder \lstinline{str}
-ist mehr Arbeit und Verständnis Notwendig. Dies kann schon mal dazu führen das man als
-Entwickler etwas Zeit investieren muss um die Spezifikationen auf eine Strategie an zu wenden.
-Je nach Komplexität der erforderlichen Daten ist es also leicht bis schwer \lstinline{hypothesis}
-zu verwenden. Bei Komplexeren Anforderungen kann es auch dazu führen das der geschriebene Code
-unübersichtlich wird, wenn er nicht richtig dokumentiert wurde.
+Die Komplexität von \lstinline{hypothesis} ist allerdings sehr hoch. So viel wie
+\lstinline{hypothesis} bietet, so komplex kann es sein, dieses an zu wenden. 
+Hat man spezielle Anforderungen abseits der Standardwerte, wie \lstinline{int} 
+oder \lstinline{str} ist mehr Arbeit und Verständnis notwendig. Dies kann dazu 
+führen, dass man als Entwickler etwas Zeit investieren muss, um die 
+Spezifikationen auf eine Strategie an zu wenden. Je nach Komplexität der 
+erforderlichen Daten ist es also leicht bis schwer \lstinline{hypothesis}
+zu verwenden. Bei komplexeren Anforderungen kann es dazu führen, dass der 
+geschriebene Code unübersichtlich wird, wenn er nicht richtig dokumentiert 
+wurde.
 
-Auch wenn \lstinline{hypothesis} als Erweiterung in dieser Arbeit behandelt wird, so bietet es selbst
-allerdings auch Erweiterungen für sich selbst. Dies liegt aber daran, dass man den Entwicklern
-nicht standardmäßig alle Funktionalität an die Hand gibt, die vermutlich gar nicht verwendet wird.
-Und auch wenn \lstinline{hypothesis} über sehr viele Strategien verfügt, so hat die Community dennoch
-weitere Strategien entwickelt die zusätzlich genutzt werden können.
+Auch wenn \lstinline{hypothesis} als Erweiterung in dieser Arbeit behandelt 
+wird, so bietet es Erweiterungen für sich selbst. Dies liegt daran, dass man 
+den Entwicklern nicht standardmäßig alle Funktionalität an die Hand gibt, die 
+vermutlich gar nicht verwendet wird. Und auch wenn \lstinline{hypothesis} über 
+sehr viele Strategien verfügt, so hat die Community dennoch weitere Strategien 
+entwickelt die zusätzlich genutzt werden können.

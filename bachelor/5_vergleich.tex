@@ -5,74 +5,73 @@ Die in Kapitel \ref{python-tools:stdlib} und \ref{python-tools:extlib}
 analysierten Tools, werden anhand der Ergebnisse aus der Anwendung des
 jeweiligen Tools in diesem Kapitel verglichen. Der Vergleich wird in unit- und
 \gls{mock} Tools gegliedert. Die \gls{fuzz}-testing Tools werden hier
-nicht verglichen, da nur ein Tool analysiert wurde.
-Am Ende dieses Kapitels wird für die jeweilige Kategorie eine Empfehlung
-ausgesprochen, die anhand der Ergebnisse des Vergleichs festgelegt wird. Anhand
-dieser Empfehlungen werden in Kapitel \ref{kombinierung} verschiedene
-Möglichkeiten aufgezeigt, die Tools untereinander zu kombinieren um mehr
-Funktionalität für eine mögliche Anwendung zu bekommen.
+nicht verglichen, da nur ein Tool analysiert wurde. Am Ende dieses Kapitels 
+wird für die jeweilige Kategorie (unit- und mock-testing Tools) eine Empfehlung 
+ausgesprochen, die anhand der Ergebnisse des Vergleichs festgelegt wird. Anhand 
+dieser Empfehlungen werden in Kapitel \ref{python-tools:kombination} 
+verschiedene Möglichkeiten aufgezeigt, die Tools untereinander zu kombinieren 
+um mehr Funktionalität für eine mögliche Anwendung zu bekommen.
 
 \subsubsection{Unit-testing Tools}\label{python-tools:vergleich:unit}
 Die unit-testing Tools belaufen sich auf drei Tools, \lstinline{unittest},
 \lstinline{doctest} und \lstinline{pytest}. Die ersten beiden Tools sind beide
-in der STDLIB während \lstinline{pytest} mit sechs weiteren Paketen betrieben
+in der STDLIB, während \lstinline{pytest} mit sechs weiteren Paketen betrieben
 werden muss. Während \lstinline{unittest} und \lstinline{pytest} sich sehr
-ähnlich sind, ist \lstinline{doctest} vorkommen anders im Bezug auf Anwendung
+ähnlich sind, ist \lstinline{doctest} vollkommen anders im Bezug auf Anwendung
 und gegebener Funktionalität. \lstinline{doctest} unterstützt keine Testfälle
 oder Testumgebungen, stattdessen wird im \gls{docstring} der jeweiligen
 Funktion oder Methode der Test geschrieben. Zwar ist es möglich diesen in eine
-externe Datei aus zu lagern um so einen Zentralen Punkt zu schaffen an dem sich
-alle Tests befinden (Testumgebung/Testfälle), jedoch ist hier die Datei das
+externe Datei aus zu lagern um so einen zentralen Punkt zu schaffen, an dem sich
+alle Tests befinden (Testumgebung/ Testfälle), jedoch ist hier die Datei das
 Konstrukt, dass die Gliederung ermöglicht. Sowohl \lstinline{unittest} als auch
-\lstinline{pytest} bieten hier die Möglichkeiten Tests in Testumgebungen
-(Klassen) und Testfällen (Funktionen/Methoden) zu gliedern. \lstinline{pytest}
+\lstinline{pytest} bieten hier die Möglichkeiten, Tests in Testumgebungen
+(Klassen) und Testfällen (Funktionen/ Methoden) zu gliedern. \lstinline{pytest}
 bietet zusätzlich auch noch die Möglichkeit diese Tests zu markieren um eine
-noch feinere Gliederung zu schaffen oder um zwischen Testumgebungen, Testfälle
-zu kombinieren. Im Fall der Gliederung und Verwaltung von Tests ist hier
-\lstinline{pytest} sowohl \lstinline{unittest} als auch \lstinline{doctest}
-voraus. Lässt man die \lstinline{unittest} Integration für \lstinline{doctest}
-außen vor, so ist \lstinline{unittest} in diesem Fall der Gewinner. Wird
-allerdings die Anwendung der \lstinline{unittest} Integration von
-\lstinline{doctest} in Betracht gezogen, so sind \lstinline{unittest} und
-\lstinline{doctest} auf einem Level, was die Gliederung und Verwaltung von
-Tests betrifft.
+noch feinere Gliederung zu schaffen oder um zwischen Testumgebungen und 
+Testfälle zu kombinieren. Im Fall der Gliederung und Verwaltung von Tests sind 
+hier sowohl \lstinline{pytest} als auch \lstinline{unittest}, 
+\lstinline{doctest} überlegen. Lässt man die \lstinline{unittest} Integration 
+für \lstinline{doctest} außen vor, so ist \lstinline{unittest} in diesem Fall 
+der Gewinner. Wird allerdings die Anwendung der \lstinline{unittest} 
+Integration von \lstinline{doctest} in Betracht gezogen, so sind 
+\lstinline{unittest} und \lstinline{doctest} auf einem Level, was Gliederung 
+und Verwaltung von Tests betrifft.
 
-Ein Feature, dass eine Gliederung voraussetzt sind die Fixtures. Da
-\lstinline{doctest} keine Gliederung bietet sind Fixtures für dieses Tool
+Ein Feature, das eine Gliederung voraussetzt, sind die Fixtures. Da
+\lstinline{doctest} keine Gliederung bietet, sind Fixtures für dieses Tool
 nicht als Feature integriert. Es ist zwar möglich Fixtures manuell zu
-schreiben, jedoch ist der aufwand, der dafür betrieben werden muss zu hoch, als
+schreiben, jedoch ist der Aufwand, der dafür betrieben werden muss, zu hoch, als
 dass es sich rentieren würde. Die \lstinline{unittest} Integration ermöglicht es
-zwar Fixtures zu nutzen, jedoch wird diese Integration hier wieder außen vor
+zwar Fixtures zu nutzen, jedoch wird diese Integration außen vor
 gelassen. \lstinline{unittest} und \lstinline{pytest} hingegen unterstützen
 Testfixtures mit ihren \lstinline{setUp()} und \lstinline{tearDown()} Methoden.
 Beide Tools bieten die Möglichkeit die Fixtures sowohl für jedem Testfall, jede
 Testumgebung oder jedes Modul aus zu führen. \lstinline{pytest} bietet
 zusätzlich noch weitere Funktionalität, sowie fertige Fixtures die dem
-Entwickler zur Nutzung zur Verfügung stehen, welche in Kapitel
-\ref{python-tools:pytest} beschrieben wurden und in der
+Entwickler bei der Nutzung zur Verfügung stehen. Diese wurden in Kapitel
+\ref{python-tools:pytest} beschrieben und sind in der 
 \href{https://docs.pytest.org/en/latest/fixture.html}{Dokumentation}\footnote{\url{https://docs.pytest.org/en/latest/fixture.html}}
-zu finden sind. Im Bezug auf Testfixtures ist also \lstinline{pytest} das Tool
+zu finden. Im Bezug auf Testfixtures ist also \lstinline{pytest} das Tool
 mit den meisten Features, gefolgt von \lstinline{unittest}. \lstinline{doctest}
 scheidet bei dieser Kategorie vollkommen aus, da die Funktionalität gänzlich
 fehlt.
 
 Als nächstes integriertes Feature der unit-testing Tools sind \Glspl{mock} und
 \Glspl{stub} zu betrachten. Um für TDD in Frage zu kommen sollte ein
-unit-testing Tool \Glspl{stub} und \Glspl{mock} unterstützen, eine ausführliche
+unit-testing Tool \Glspl{stub} und \Glspl{mock} unterstützen. Eine ausführliche
 Erklärung dazu ist in Kapitel \ref{python-tools} zu finden. Wie in Kapitel
 \ref{python-tools:doctest} aus der Analyse von \lstinline{doctest} hervorgeht,
 gibt es weder die Möglichkeit einen \Gls{mock} noch einen \Gls{stub} auf zu
 setzen, weshalb \lstinline{doctest} in dieser Kategorie als unbrauchbar gesehen
 werden kann. \lstinline{unittest} als Modul selbst, besitzt keine \gls{mock}ing
 Funktionalität, jedoch ist es möglich, dass Submodul \lstinline{unittest.mock}
-dafür zu verwenden. \lstinline{unittest.mock} ist zwar eine Erweiterung, jedoch
-in Form eines Submoduls, weshalb es zu \lstinline{unittest} dazu gehört und in
-diesem Vergleich beachtet wird. Damit unterstützt \lstinline{unittest} sowohl
-das \gls{mock}en als auch das \gls{stub}en. \lstinline{pytest} hingegen verfügt
-in seiner Basisausführung lediglich über die Möglichkeit des \gls{stub}ens,
-nicht jedoch über die Möglichkeit ein Objekt zu \gls{mock}en. In diesem Falls
-ist also \lstinline{unittest} der klare Gewinner, gefolgt von
-\lstinline{pytest}.
+dafür zu verwenden. \lstinline{unittest.mock} ist zwar eine Erweiterung in Form 
+eines Submoduls, weshalb es zu \lstinline{unittest} dazu gehört und in diesem 
+Vergleich beachtet wird. Damit unterstützt \lstinline{unittest} sowohl das 
+\Gls{mock}en, als auch das \Gls{stub}en. \lstinline{pytest} hingegen verfügt in 
+seiner Basisausführung lediglich über die Möglichkeit des \Gls{stub}ens, nicht 
+jedoch über die Möglichkeit ein Objekt zu \gls{mock}en. In diesem Falls ist 
+also \lstinline{unittest} der klare Gewinner, gefolgt von \lstinline{pytest}.
 \newline
 
 Im Bezug auf die Effizienz der unit-testing Tools lässt sich folgendes
@@ -86,18 +85,18 @@ setzen bei \lstinline{unittest} etwas höher ist, da es so viele verschiedene
 bei allen drei unit-testing Tools auf dem Terminal. \lstinline{doctest} und
 \lstinline{unittest} haben beide einen Output der voneinander fast nicht zu
 trennen ist. Beide Tools haben den Nachteil gegenüber \lstinline{pytest}, dass
-ihr Output nicht farbig sonder Monochrom ist.  Aus diesem Grund ist 
+ihr Output nicht farbig, sondern monochrom ist.  Aus diesem Grund ist 
 \lstinline{pytest}, \lstinline{unittest} und \lstinline{doctest} im Bezug auf
-Effiziente Anwendung vor zu ziehen, wobei \lstinline{unittest} noch etwas 
+effiziente Anwendung vor zu ziehen, wobei \lstinline{unittest} noch etwas 
 besser als \lstinline{doctest} ist.
 \newline
 
-Der Aspekt der Komplexität ist in zwei unter Kategorien gegliedert, einerseits
-ist da die Fülle an Funktionen die geboten werden und Komplexität liefern und
-zum anderen ist da die Menge an Code die zu schreiben ist und die Anwendung und
-Wartung Komplexer gestaltet. Im Falle der ersten Kategorie, erweist sich
-\lstinline{doctest} als nicht all zu komplex. Fast die Gesamte gebotene
-Funktionalität bezieht sich auf die Ausführung, jedoch nicht das schreiben der
+Der Aspekt der Komplexität ist in zwei Unterkategorien gegliedert. So wird zum 
+Einen die Fülle an Funktionen, die geboten werden und Komplexität liefern, und
+andererseits die Menge an Code, die zu schreiben ist und die Anwendung und
+Wartung Komplexer gestaltet, betrachtet. Im Falle der ersten Kategorie, erweist 
+sich \lstinline{doctest} als nicht all zu komplex. Fast die Gesamte gebotene
+Funktionalität bezieht sich auf die Ausführung, jedoch nicht das Schreiben der
 Tests, welches alleine durch die Fähigkeit Python zu schreiben bestimmt wird.
 \lstinline{unittest} und \lstinline{pytest} hingegen bieten dem Entwickler
 einiges an Funktionalität um Tests zu schreiben und aus zu führen. Auch hier
@@ -106,45 +105,45 @@ kann \lstinline{unittest} nur mithalten, wenn das Submodul
 weitere Funktionalität bietet. \lstinline{unittest} und \lstinline{pytest}
 haben viele gemeinsame Features, wovon lediglich das \gls{mock}ing in
 \lstinline{pytest} nicht ohne Erweiterungen verfügbar ist. Ansonsten bietet
-\lstinline{pytest} viel zusätzliche Funktionalität um Tests feiner ein zu
-stellen oder um irgendwelche edge cases ab zu decken. In dieser Kategorie ist
-\lstinline{pytest} also etwas besser als \lstinline{unittest} und beide Tools
-sind \lstinline{doctest} bei weitem überlegen im Bezug auf die gebotenen
-Funktionalitäten.
+\lstinline{pytest} zusätzliche Funktionalität um Tests feiner ein zu
+stellen oder um edge cases ab zu decken. In dieser Kategorie ist
+\lstinline{pytest} also etwas besser als \lstinline{unittest}. Beide Tools
+sind \lstinline{doctest} bei Weitem im Bezug auf die gebotenen Funktionalitäten 
+überlegen.
 
-In der zweiten Kategorie, der Komplexität im Bezug auf Code Lesbarkeit und
-Umfang erweisen sich \lstinline{unittest} und \lstinline{pytest} als gleichauf.
-Beide Tools haben einen ähnlichen Aufbau, mit den der Code geschrieben wird
-(vgl. Listing \ref{listing:unittest:advanced} und
+In der zweiten Kategorie, der Komplexität im Bezug auf Codelesbarkeit und
+-umfang, erweisen sich \lstinline{unittest} und \lstinline{pytest} als 
+gleichauf. Beide Tools haben einen ähnlichen Aufbau, mit den der Code 
+geschrieben wird (vgl. Listing \ref{listing:unittest:advanced} und
 \ref{listing:pytest:advanced}). Die Lesbarkeit ist bei beiden Tools gleich gut
-und die Menge an Code die benötigt wird gleicht sich auch. Hier ist es dem
+und die Menge an Code, die benötigt wird, gleicht sich auch. Hier ist es dem
 Entwickler überlassen zu entscheiden, welches Tool den schöneren Code schreibt.
-\lstinline{doctest} hingegen, produziert viel Code, der mit zunehmender
+\lstinline{doctest} hingegen produziert viel Code, der mit zunehmender
 Funktionalität an Lesbarkeit verliert.Im Bezug auf die Komplexität der Tools
 ist \lstinline{pytest} also knapp vor \lstinline{unittest}, gefolgt von
 \lstinline{doctest}.
 \newline
 
 Als letztes ist die Erweiterbarkeit der unit-testing Tools zu vergleichen.
-Beginnend mit \lstinline{doctest}, lässt sich sagen, das es zwei sehr gute
+Beginnend mit \lstinline{doctest}, lässt sich sagen, dass es zwei sehr gute
 Erweiterungen gibt, die das Tool erheblich verbessern. Diese Erweiterungen sind
-die Integration in \lstinline{unittest} und \lstinline{pytest}, erstere wird
-von der Python Sprache selbst geboten und ist in \lstinline{unittest} verfügbar
-und zweite wird von \lstinline{pytest} geboten und ist auch im Basis Paket
+die Integration in \lstinline{unittest} und \lstinline{pytest}. Erstere wird
+von der Python Sprache selbst geboten und ist in \lstinline{unittest} verfügbar,
+zweite wird von \lstinline{pytest} geboten und ist auch im Basis Paket
 enthalten. Abgesehen von diesen zwei gibt es noch weitere Integrationen in
-andere Toolsets, jedoch wurden diese hier aus verschiedenen Gründen nicht
-behandelt und werden deshalb nicht erwähnt. Das Modul \lstinline{unittest}
-verfügt über einige Erweiterungen welche neue Funktionalität hinzu fügen oder
-alte Funktionalität verbessern. Das Tool mit den meisten Erweiterungen ist
-\lstinline{pytest}, welches derzeit 618 (Stand: 2. April
+andere Toolsets, jedoch wurden diese hier wie in Kapitel \ref{methodik} 
+beschrieben, nicht behandelt. Das Modul \lstinline{unittest} verfügt über 
+einige Erweiterungen welche neue Funktionalität hinzu fügen oder alte 
+Funktionalität verbessern. Das Tool mit den meisten Erweiterungen ist 
+\lstinline{pytest}, welches derzeit 683 (Stand: 19. Juli 
 2019\footnote{\url{http://plugincompat.herokuapp.com/}}) Erweiterungen
 bietet, wovon die meisten sehr nützliche Funktionalität bieten.
 \newline
 
-Im Vergleich der unit-testing Tools ergibt sich also ein klarer Gewinner,
-\lstinline{pytest}. Das Tool ist in fast allen Analysierten Aspekten die Beste
+Im Vergleich der unit-testing Tools ergibt sich also ein klarer Sieger:
+\lstinline{pytest}. Das Tool ist in fast allen Analysierten Aspekten die beste
 Wahl für den Einsatz mit TDD. Jedoch bietet \lstinline{unittest} für
-Entwickler, die keine Externen Abhängigkeiten möchten eine alternative, die
+Entwickler, die keine externen Abhängigkeiten möchten eine Alternative, die
 durchaus mit \lstinline{pytest} mithalten kann.
 
 \subsubsection{Mock-testing Tools}\label{python-tools:vergleich:mock}
@@ -152,40 +151,39 @@ Die analysierten \gls{mock}-testing Tools, sind \lstinline{stubble},
 \lstinline{mocktest}, \lstinline{flexmock} und \lstinline{doublex}. Alle vier
 bieten verschiedene Möglichkeiten \Glspl{mock} und/oder \Glspl{stub} ein zu
 setzen. Da es sich hier um Tools handelt, deren Funktionalität sich um das
-\gls{mock}en von Objekten dreht, wird der erste Analysierte Aspekt, die
+\Gls{mock}en von Objekten dreht, wird der erste analysierte Aspekt, die
 Anwendbarkeit, auf die gebotene Auswahl an Funktionalität im Bezug auf
-\gls{mock}en und \gls{stub}en betrachtet.
+\Gls{mock}en und \Gls{stub}en betrachtet.
 
-Das einzige Tool, das bei der Anwendung auf den zu Testenden Code keine
-Probleme mit sich barg, ist \lstinline{mocktest}. Das Tool bietet im Aspekt der
-Anwendbarkeit sämtliche Features um effektiv \Glspl{mock} und \Glspl{stub} ein
-zu setzen. \lstinline{mocktest} bietet seinem Anwender eine Deskriptive schreib
-weise, mit der es problemlos möglich ist Tests zu schreiben. Des weiteren wird
-eine Testisolation geboten, mit deren Hilfe es möglich ist Test besser
-voneinander ab zu schotten.Zusätzlich benötigt das Tool keine weiteren
-Abhängigkeiten zu sich selbst.
-Direkt danach wäre \lstinline{stubble} das  nächst beste Tool im Aspekt der
-Anwendbarkeit. So bietet das Tool zwar alles um  es für TDD zu verwenden,
-jedoch ist das \gls{stub}en einer nicht existierenden Methode nur unter
-Einschränkungen Möglich. Die Hauptfeatures von \lstinline{stubble} sind dabei
-die vorgefertigten \Glspl{stub}, welche nützliche Features für den Entwickler
-bieten. Um einen \Gls{stub} zu erstellen muss die zu \gls{stub}ende Klasse mit
-\lstinline{stubble} neu geschrieben werden.Zusätzlich benötigt
-\lstinline{stubble} eine weitere Abhängigkeit zu sich selbst.
-An dritter Stelle ist das Tool \lstinline{flexmock} welches alles bietet,
-abgesehen vom ersetzen einer nicht geschriebenen Methode, um TDD an zu wenden
-(vgl. Listing \ref{listing:flexmock:exception}). Wäre dieses Manko nicht, würde
-das Tool im Aspekt der Anwendbarkeit sehr weit oben stehen. Flexmock vereint
-die \Glspl{mock} und \Glspl{stub} in einer Klasse wodurch die gesamte
-Funktionalität mit einem Objekt geboten wird. Die schreib weise der Tests ist
-hierbei, wie bei \lstinline{mocktest}, deskriptiv. Auch die benötigten
-Abhängigkeiten von \lstinline{flexmock} sprechen für das Tool, da keine
-weiteren zu sich selbst benötigt werden. Als letztes Tool im Aspekt der
+Das einzige Tool, das bei der Anwendung auf den zu testenden Code keine
+Probleme mit sich brachte, ist \lstinline{mocktest}. Das Tool bietet im Aspekt 
+der Anwendbarkeit sämtliche Features um effektiv \Glspl{mock} und \Glspl{stub} 
+ein zu setzen. \lstinline{mocktest} bietet seinem Anwender eine deskriptive 
+Schreibweise, mit der es problemlos möglich ist Tests zu schreiben. Des 
+Weiteren wird eine Testisolation geboten, mit deren Hilfe es möglich ist, Tests 
+besser voneinander ab zu schotten. Zusätzlich benötigt das Tool keine weiteren
+Abhängigkeiten zu sich selbst. Direkt danach wäre \lstinline{stubble} das  
+nächstbeste Tool im Aspekt der Anwendbarkeit. So bietet das Tool zwar alles 
+um  es für TDD zu verwenden, jedoch ist das \Gls{stub}en einer nicht 
+existierenden Methode nur unter Einschränkungen möglich. Die Hauptfeatures von 
+\lstinline{stubble} sind dabei die vorgefertigten \Glspl{stub}, welche 
+nützliche Features für den Entwickler bieten. Um einen \Gls{stub} zu erstellen 
+muss die zu \gls{stub}ende Klasse mit \lstinline{stubble} neu geschrieben 
+werden. Zusätzlich benötigt \lstinline{stubble} eine weitere Abhängigkeit zu 
+sich selbst. An dritter Stelle ist das Tool \lstinline{flexmock} welches,
+abgesehen vom ersetzen einer nicht geschriebenen Methode um TDD an zu 
+wenden, vieles bietet (vgl. Listing \ref{listing:flexmock:exception}). Wäre 
+dieses Defizit nicht, würde das Tool im Aspekt der Anwendbarkeit sehr weit oben 
+stehen. Flexmock vereint die \Glspl{mock} und \Glspl{stub} in einer Klasse, 
+wodurch die gesamte Funktionalität mit einem Objekt geboten wird. Die Schreib 
+weise der Tests ist hierbei, wie bei \lstinline{mocktest}, deskriptiv. Auch die 
+benötigten Abhängigkeiten von \lstinline{flexmock} sprechen für das Tool, da 
+keine weiteren zu sich selbst benötigt werden. Als letztes Tool im Aspekt der
 Anwendbarkeit ist \lstinline{doublex} zu betrachten. Das Tool bietet zwar
 einiges an Funktionalität um zu \gls{mock}en oder zu \gls{stub}en, jedoch ist
-die Anwendung dieser Features nicht nutzbar für TDD. Es werden vier
+die Anwendung dieser Features für TDD nicht nutzbar. Es werden vier
 verschiedene Interfaces geboten, deren Funktionalität sich überschneidet und
-die jeweils ein Objekt hervorbringen, dass ein Duplikat vom Ziel Objekt ist.
+die jeweils ein Objekt hervorbringen, das ein Duplikat vom Zielobjekt ist.
 Die daraus resultierenden Anwendungszwecke bieten wenig Nutzbarkeit für TDD.
 Hinzu kommt, dass \lstinline{doublex} drei weitere Abhängigkeiten benötigt und
 anscheinend nicht mehr aktiv weiter entwickelt wird.
@@ -193,47 +191,47 @@ anscheinend nicht mehr aktiv weiter entwickelt wird.
 Demnach ist im Aspekt der Anwendbarkeit \lstinline{mocktest} also
 \lstinline{stubble} und \lstinline{flexmock} vor zu ziehen. \lstinline{doublex}
 fällt aufgrund dessen, dass es nicht für TDD geeignet ist und derzeit nicht
-aktiv weiter entwickelt wird komplett raus. Aus diesem Grund wird dieses Tool
-im weiteren verlauf des Vergleichs nicht mehr berücksichtigt.
+aktiv weiter entwickelt wird, komplett raus. Aus diesem Grund wird dieses Tool
+im weiteren Verlauf des Vergleichs nicht mehr berücksichtigt.
 \newline
 
 Als nächstes ist die Effizienz der jeweiligen Tools zu betrachten. Dabei spielt
-vor allem der benötigte Aufwand, das Tool ein zu setzen eine Rolle. Nebenbei
-wird dabei auch noch auf die Benötigte Vorarbeit geachtet, die geleistet werden
+vor allem der benötigte Aufwand das Tool ein zu setzen eine Rolle. Nebenbei
+wird dabei auch noch auf die benötigte Vorarbeit geachtet, die geleistet werden
 muss um das Tool an zu wenden. Sowohl bei \lstinline{mocktest} als auch bei
 \lstinline{flexmock} ist der zu betreibende Aufwand sehr gering. Beide Tools
-haben ein ähnliches Interface, mit dem deskriptiv beschrieben wird, was ein
+haben ein ähnliches Interface mit dem deskriptiv beschrieben wird, was ein
 Objekt zu machen hat. Der dabei entstehende Aufwand ist sehr gering, da sich
-der Code so schreibt wie ein Entwickler sich die Funktionalität vorstellt.
+der Code so schreibt, wie ein Entwickler sich die Funktionalität vorstellt.
 Beide Tools benötigen die gleiche Menge an Vorarbeit und sind demnach im Bezug
 auf die Effizienz mit der sie angewendet werden können gleich auf. Lediglich
 \lstinline{stubble} ist in diesem Aspekt etwas schlechter als die beiden
-anderen Tools. So ist die \gls{mock}ing Funktionalität lediglich mit einem
+anderen Tools. So ist die \gls{mock}ing Funktionalität ausschließlich mit einem
 vorgefertigten \Gls{stub} möglich, wodurch dieser erst verstanden werden muss,
-bevor er effektiv eingesetzt werden kann. Zusätzlich muss jeden zu
-\gls{stub}ende Objekt überschrieben werden wodurch die benötigte Vorarbeit sehr 
-hoch ausfällt.
+bevor er effektiv eingesetzt werden kann. Zusätzlich muss jedes zu
+\gls{stub}ende Objekt überschrieben werden, wodurch die benötigte Vorarbeit 
+sehr hoch ausfällt.
 
-Demnach sollte im Aspekt der Effizienten Anwendung der
-\gls{mock}-testing Tools \lstinline{stubble} nicht verwendet werden. Es ist dem
-Entwickler überlassen ob er in diesem Aspekt das Interface von
-\lstinline{mocktest} oder \lstinline{flexmock} lieber hat.
+Demnach sollte im Aspekt der effizienten Anwendung der \gls{mock}-testing Tools 
+\lstinline{stubble} nicht verwendet werden. Es ist dem Entwickler überlassen ob 
+er in diesem Aspekt das Interface von \lstinline{mocktest} oder 
+\lstinline{flexmock} lieber hat.
 \newline
 
 Zuletzt ist die Komplexität der \gls{mock}-testing Tools zu betrachten. Dabei
 wird zum einen auf die gestellten Funktionalitäten abseits der Basis
-Funktionalität geachtet und zum anderen auf den die Lesbarkeit des Entstehenden
+Funktionalität geachtet und zum anderen auf die Lesbarkeit des entstehenden
 Codes des Tools. Auch hier sind \lstinline{mocktest} und \lstinline{flexmock}
 auf einem Level, was die zusätzliche Funktionalität betrifft. Jedoch hat
-\lstinline{mocktest} etwas mehr zusätzliche Funktionalität geboten gegenüber
-\lstinline{flexmock} (vgl. Kapitel \ref{python-tools:mocktest} und
+\lstinline{mocktest} etwas mehr zusätzliche Funktionalität gegenüber
+\lstinline{flexmock} geboten (vgl. Kapitel \ref{python-tools:mocktest} und
 \ref{python-tools:flexmock}). \lstinline{stubble} bietet auch in diesem Aspekt
-weniger als die beiden Tools. Abseits der Basis Funktionalität wird von
+weniger als die beiden Tools. Abseits der Basisfunktionalität wird von
 \lstinline{stubble} nichts weiter geboten. Im Bezug der Lesbarkeit sieht es
-ähnlich aus, \lstinline{mocktest} und \lstinline{flexmock} befinden sich auf
+ähnlich aus. \lstinline{mocktest} und \lstinline{flexmock} befinden sich auf
 einem Level, während \lstinline{stubble} durch viel Code an Lesbarkeit
 verliert. Im Fall \lstinline{mocktest} gegen \lstinline{flexmock} ist es wieder
-dem Anwender überlassen welches der Beide Tools lesbarer ist als das andere.
+dem Anwender überlassen, welches der beiden Tools lesbarer ist als das andere.
 
 Im Bezug auf Komplexität geben sich \lstinline{mocktest} und
 \lstinline{flexmock} fast nichts, jedoch hat \lstinline{mocktest} durch die
@@ -242,12 +240,12 @@ hier auf dem letzten Platz.
 \newline
 
 Im gesamten Vergleich ist \lstinline{mocktest} durch seine Features und sein
-Interface an erster stelle, wenn es um den Einsatz von \gls{mock}-testing Tools
+Interface an erster Stelle, wenn es um den Einsatz von \gls{mock}-testing Tools
 geht. Der zweite Platz ist schwer zu wählen, da \lstinline{flexmock} mit seiner
 fehlenden Funktionalität nicht implementierte Methoden hinter
 \lstinline{stubble} liegt, das jedoch auch nur bedingt diese Anforderung
 erfüllt. In allen anderen Aspekten ist \lstinline{flexmock} \lstinline{stubble}
-voraus. Aus diesem Grund erhält \lstinline{flexmock} den zweite Platz der
+voraus. Aus diesem Grund erhält \lstinline{flexmock} den zweiten Platz der
 \gls{mock}-testing Tools und \lstinline{stubble} den dritten. Auf dem vierten
 wäre \lstinline{doublex}, jedoch ist dieses Tool für die Anwendung von TDD
 ungeeignet, weshalb es keine Platzierung erhält.
