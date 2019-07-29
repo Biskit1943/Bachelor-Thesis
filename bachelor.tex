@@ -1,5 +1,9 @@
 \documentclass[a4paper, 12pt, oneside, headspline]{scrartcl}
 \input{latex_einstellungen/v_main}
+
+% Deaktiviere den indent nach jedem Absatz
+\setlength{\parindent}{0pt}
+
 \usepackage[openbib]{currvita}
 
 % wichtig für Trennung von Wörtern mit Umlauten
@@ -175,7 +179,7 @@
 
     % Einleitung / Abstract
     \renewcommand{\abstractname}{Abstract}
-    \input{bachelor/1_abstract}
+    \input{bachelor/0_1_abstract}
 
     % einfacher Zeilenabstand
     \singlespacing
@@ -192,12 +196,12 @@
     \onehalfspacing
 
     % einzelne Kapitel
-    \input{bachelor/2_einleitung}
-    \input{bachelor/2_2_definition}
-    \input{bachelor/3_0_methodik}
-    \input{bachelor/3_python_test_tools}
-    \input{bachelor/7_diskussion}
-    \input{bachelor/8_fazit}
+    \input{bachelor/0_2_einleitung}
+    \input{bachelor/1_0_definition}
+    \input{bachelor/2_0_methodik}
+    \input{bachelor/3_0_python_test_tools}
+    \input{bachelor/5_diskussion}
+    \input{bachelor/6_fazit}
 
     \onecolumn
 

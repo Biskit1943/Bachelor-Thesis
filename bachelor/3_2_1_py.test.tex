@@ -7,7 +7,8 @@ veröffentlichte Tool \lstinline{pytest} (auch py.test genannt)
 ist ein sehr umfangreiches und weit entwickeltes Tool. Seit 2009 wird das Tool
 stets weiter entwickelt und vorangetrieben, wodurch es eine Menge an Features
 gewonnen hat.
-\noindent
+\newline
+
 Die Basis Features von \lstinline{pytest} sind folgende:
 Simple \lstinline{assert} Statements anstatt \lstinline{self.assert}, Error
 Überprüfung mit \Gls{context}, informativer Output in Farbe, der angepasst
@@ -19,7 +20,6 @@ können, sowie die Parametrisierung dieser, die Überprüfung von
 zuletzt die Gliederung der Testfälle durch Markieren, Nodes (Auswahl der Modul
 Abhängigkeit) oder anhand der Funktionsnamen (String Abgleich)
 (\cite{docs.pytest.org:4.4}).
-\newline
 
 Wie anhand der Basis Features erkennbar ist, bietet \lstinline{pytest} einiges
 um Tests zu schreiben und aus zu führen. So ist mit den gebotenen
@@ -36,7 +36,6 @@ Listing \ref{listing:pytest:yield} zu finden, der dazugehörige Output in
 Listing \ref{listing:pytest:yield_output}. Diese lassen sich durch zusätzliche
 Parameter weiter anpassen. Die dazugehörigen Dokumentation ist in Kapitel Fünf
 der Dokumentation beschrieben (\cite{docs.pytest.org:4.4}).
-\newline
 
 Des Weiteren bietet \lstinline{pytest} auch \gls{stub}ing. So lässt sich
 beispielsweise mit \lstinline{monkeypatch.setattr()} der Rückgabewert einer
@@ -46,7 +45,6 @@ eigentliche Testen konzentrieren kann und weniger um das Aufräumen nach dem
 Testen. Auch hier bietet \lstinline{pytest} weitere Möglichkeiten \Glspl{stub}
 zu verwenden. Die dazugehörige Dokumentation ist in Kapitel Sieben zu finden
 (\cite{docs.pytest.org:4.4}).
-\newline
 
 Ein weiteres Feature von \lstinline{pytest} ist die Gliederung in Test-Fälle.
 Diese lassen sich vom Entwickler mit vielen Einstellungsmöglichkeiten
@@ -61,7 +59,6 @@ ihrer Module ausführen. Dies geschieht durch die Angabe der Module. So würde
 \lstinline{test_methode} der Klasse \lstinline{TestKlasse} in der Datei
 \lstinline{test_datei.py} ausführen. Diese Features sind in Kapitel Sechs
 notiert (\cite{docs.pytest.org:4.4}).
-\newline
 
 Selbstverständlich bietet \lstinline{pytest} noch weitere Features, jedoch sind
 diese nicht zwangsläufig notwendig um TDD zu betreiben und sind mehr ein "`nice
@@ -69,13 +66,13 @@ to have"' Feature, als ein wirklich benötigtes. Für eine vollständige
 Auflistung und Erklärung aller Features kann jederzeit unter
 \url{https://docs.pytest.org/en/latest/} die aktuellste Version der
 Dokumentation abgefragt werden.
-\newline
 
 Das Testen des in Listing \ref{listing:base:my_module} definierten Moduls
 gestaltete sich mit \lstinline{pytest} ohne Probleme (vgl. Listing
 \ref{listing:pytest:advanced}, sowie \ref{listing:pytest:advanced_output}). Da
 beim Testen keine Probleme gefunden wurden,  wird hier nicht weiter auf den
 Test eingegangen.
+\newline
 
 Im Aspekt der Anwendbarkeit bietet \lstinline{pytest} fast alles, um TDD 
 effektiv anwenden zu können, da sowohl \Glspl{stub}, als auch \Glspl{fixture} 

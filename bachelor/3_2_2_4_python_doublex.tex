@@ -33,7 +33,6 @@ implementierten Methode aus der original Klasse, dem Entwickler verwehrt.
 Die Duplikate sollen als Ersatz für Objekte gelten, die in einer bestimmten
 Umgebung ausgeführt werden müssen oder Änderungen vornehmen, die während
 eines Tests unerwünscht sind.
-\newline
 
 Das \Gls{stub} Interface ist ein \Gls{stub} mit dem es dem Entwickler möglich 
 ist, Rückgabewerte von Funktionen zu setzen oder ähnliche Aktionen zu 
@@ -48,7 +47,6 @@ generelles Objekt. Dabei ist der wichtigste Unterschied, dass der normale
 \Gls{stub} nur Methoden abändern kann, welche die originale Klasse auch 
 besitzt. Der "`free"' \Gls{stub} hingegen ist in dieser Hinsicht ungebunden und 
 kann alles sein, was der Entwickler programmiert.
-\newline
 
 Als zweites Interface wird in der Dokumentation das Spy Interface erwähnt
 (\cite{doublex:docs:1.8.1}). Dieses bietet dem Nutzer die Möglichkeit Klassen zu
@@ -62,14 +60,12 @@ welches, wie der Name sagt, jedes Argument validiert.
 Zusätzlich gibt es einen "`free"' Spy, welcher von keiner
 Klasse abhängig ist. Hierdurch ist es möglich, jede beliebige Methode auf
 diesem aus zu führen, ohne dass dies zu einer Exception führen würde.
-\newline
 
 Zusätzlich zum Spy und "`free"' Spy, gibt es noch einen \lstinline{ProxySpy},
 welcher das zu überwachende Objekt aufruft und nicht ersetzt. Aus diesem Grund
 erhält der \lstinline{ProxySpy} ein Objekt als Parameter und kein
 Klasseninterface. Sämtliche Methoden werden auf das originale Objekt ausgeführt,
 wodurch keine Veränderung an diesem vorgenommen werden kann.
-\newline
 
 Das letzte Interface, ist das Mock Interface. Mit diesem lässt sich vor dem Test
 festlegen, welche Methode wann und wie aufgerufen werden muss, damit der Test
@@ -79,7 +75,6 @@ jedes andere Objekt, verändern und wie ein \Gls{stub} präparieren.
 
 Auch der "`free"' Mock ist, wie bei den anderen Interfaces, verfügbar und bietet
 die gleichen Möglichkeiten der freien Gestaltung des Objekts.
-\newline
 
 Zusammenfassend lässt sich sagen, dass jedes Interface die Möglichkeit bietet, 
 eine
@@ -121,14 +116,13 @@ sollte, da dazu das Interface der Methode geändert werden müsste.
 \newline
 
 \lstinline{doublex} bietet dem Entwickler viel, aber nicht alles Notwendige für 
-effizientes
-TDD. Wie der Name des Tools verrät, handelt es sich um Duplikate von Objekten,
-deren Funktionalität aber vom Entwickler festgelegt werden muss. So würde eine
-Klasse mit einer Methode \lstinline{return_input(input)} die den übergebenen
-Parameter zurück gibt, standardmäßig \lstinline{None} zurück geben, solange
-nichts anderes im Duplikat festgelegt wurde. Lediglich die Signatur des Aufrufs
-wird überprüft. Deswegen würde \lstinline{stub.reuturn_input()} eine Exception
-werfen.
+effizientes TDD. Wie der Name des Tools verrät, handelt es sich um Duplikate 
+von Objekten, deren Funktionalität aber vom Entwickler festgelegt werden muss. 
+So würde eine Klasse mit einer Methode \lstinline{return_input(input)} die den 
+übergebenen Parameter zurück gibt, standardmäßig \lstinline{None} zurück geben, 
+solange nichts anderes im Duplikat festgelegt wurde. Lediglich die Signatur des 
+Aufrufs wird überprüft. Deswegen würde \lstinline{stub.reuturn_input()} eine 
+Exception werfen.
 
 Zwar lässt sich das Standardverhalten von \lstinline{doublex} verändern, jedoch
 kann nur ein fester Wert gesetzt werden, der für alle nicht ersetzten Methoden
