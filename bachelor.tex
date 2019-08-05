@@ -165,12 +165,6 @@
 \addbibresource{bachelor.bib}
 
 \begin{document}
-    % Leere Seite am Anfang
-    \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
-    \section*{ }
-    
-    \newpage
-
     % Titelseite
     \input{latex_einstellungen/deckblatt}
 
@@ -210,6 +204,16 @@
 
     % Literaturverzeichnis
     \input{latex_einstellungen/literaturverzeichnis}
+    
+    
+    % 1,5 facher Zeilenabstand
+    \onehalfspacing
+    
+    % Eidesstattliche Erklärung
+    \input{erklaerung}
+    
+    % einfacher Zeilenabstand
+    \singlespacing
 
     \appendix
     \addcontentsline{toc}{section}{Anhang}
@@ -217,6 +221,9 @@
     
     % das Listingverzeichnis
     \input{latex_einstellungen/listingverzeichnis}
+    
+    % die Abbildungen
+    \input{bachelor/figures}
     
     % das Fußnotenverzeichnis
     \input{latex_einstellungen/fussnotenverzeichnis}
@@ -235,12 +242,6 @@
     
     % die Listings
     \input{bachelor/listings}
-
-    % 1,5 facher Zeilenabstand
-    \onehalfspacing
-
-    % Eidesstattliche Erklärung
-    \input{erklaerung}
 \end{document}
 
 % Indexerstellung

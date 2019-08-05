@@ -15,8 +15,8 @@ komplette Testumgebung zu erstellen und zu nutzen.
 
 Dazu wird die Testumgebung, eines der Hauptfeatures, von \lstinline{unittest}
 verwendet, mit der es möglich ist, Tests in logische Klassen zu gliedern. Es
-besteht die Möglichkeit ohne die Testumgebung \lstinline{unittest} ein zu
-setzen, jedoch ermöglichen diese eine strukturierte Arbeitsumgebung, sowie die
+besteht die Möglichkeit ohne die Testumgebung \lstinline{unittest} einzusetzen, 
+jedoch ermöglichen diese eine strukturierte Arbeitsumgebung, sowie die
 Verwendung von \Glspl{fixture}.
 
 Jede Testumgebung verfügt über Testfälle, welche einen Test repräsentieren.
@@ -54,18 +54,18 @@ es bereits möglich den Test oder die Tests so vor zu
 bereiten, dass diese funktionieren. Jedoch bieten \Glspl{mock} einfachere und
 schnellere Möglichkeiten Funktionen, Methoden, Klassen usw. zu imitieren.
 
-Jedoch gibt es in der STDLIB eine Erweiterung zu unittest mit dem Namen
-\lstinline{unittest.mock}, welche unter eben diesem importiert werden kann, um 
+Allerdings gibt es in der STDLIB eine Erweiterung zu unittest mit dem Namen
+\lstinline{unittest.mock}, welche unter eben diesem importiert werden kann, um
 die \gls{mock}ing Funktionalität zu bekommen. Diese Erweiterung, auch als
 \lstinline{submodule} bezeichnet, ist Teil der STDLIB seit Python 3.3 wie in
 PEP417 definiert wurde (\cite{python.org:PEP417}).
 
-\lstinline{unittest} bietet des Weiteren ein CLI, mit welchem es dem Benutzer 
-möglich ist, seine Tests gebündelt aus zu führen und aus zu werten. Mit dem CLI 
+\lstinline{unittest} bietet des Weiteren ein CLI, mit welchem es dem Benutzer
+möglich ist, seine Tests gebündelt auszuführen und auszuwerten. Mit dem CLI
 ist es auch möglich, automatisch Tests in einem Ordner zu 
-"`entdecken"'(discover) und aus zu führen. Dadurch ist es sehr leicht, neue 
-Tests in ein bestehendes Test System ein zu führen und diese ohne Veränderungen 
-am bestehenden System aus zu führen.
+"`entdecken"'(engl.: discover) und auszuführen. Dadurch ist es sehr leicht,
+neue Tests in ein bestehendes Test System einzuführen und diese ohne
+Veränderungen am bestehenden System aus zu führen.
 
 Die folgenden Listings \ref{listing:unittest:example_output_success} und
 \ref{listing:unittest:example_output_failure} zeigen wie ein erfolgreicher und 
@@ -113,11 +113,11 @@ würde hier
 ein wenig Abhilfe schaffen.
 
 \lstinline{unittest} bietet einiges an Funktionalität zum Schreiben von Tests.
-Durch die verschiedenen \lstinline{assert} Methoden, die bereit gestellt werden,
-ist es möglich übersichtliche und lesbare Tests zu schreiben, die dennoch Ihre
-Funktion erfüllen. Die gebotene Funktionalität sollte für die meisten Nutzer, 
-abgesehen von ein paar Edge cases, bei denen spezielle Anforderungen  gestellt 
-sind, ausreichend sein.
+Durch die verschiedenen \lstinline{assert} Methoden, ist es dem Entwickler
+möglich, übersichtliche und lesbare Tests zu schreiben. Die gebotene
+Funktionalität sollte für die meisten Nutzer, abgesehen von ein paar
+Randbedingungen, bei denen spezielle Anforderungen  gestellt sind, ausreichend 
+sein.
 
 \lstinline{unittest} verfügt über einige interessante Erweiterungen, welche das 
 Tools mit neuen Funktionalitäten auffrischen. Die folgende Auflistung zeigt ein 
